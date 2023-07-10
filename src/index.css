@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.bg-color{
+    background-color: rgb(9,170,38);
+}
+.text-color{
+    color: rgb(50,150,250);
+}
+.local-text{
+    color: rgb(20,50,100);
+    /* color: red; */
+}
+.nav-text{
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+}

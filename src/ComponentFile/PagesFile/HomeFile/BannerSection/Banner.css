@@ -1,0 +1,98 @@
+.main-div {
+    height: 85vh;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.main-div .slider {
+    border-radius: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+
+.main-div .slider .img img {
+    height: 83vh;
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    margin-top: 2px;
+}
+
+.main-div .dunamic-text-div {
+    position: relative;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* justify-items: center; */
+
+}
+
+.main-div .dunamic-text-div div {
+    /* background-color: aqua; */
+    width: 80%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+/* .main-div .dunamic-text-div div button {
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+} */
+
+.main-div .dunamic-text-div div button {
+    width: 10em;
+    position: relative;
+    height: 3em;
+    margin-top: 10px;
+    border: 3px ridge #149CEA;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main-div .dunamic-text-div div button::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    /* background-color: #212121; */
+    background-color: white;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+.main-div .dunamic-text-div div button::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    /* background-color: #212121; */
+    background-color: white;
+    transition: 0.5s;
+    
+}
+
+.main-div .dunamic-text-div div button:hover::before, button:hover::after {
+    transform: scale(0)
+}
+
+.main-div .dunamic-text-div div button:hover {
+    box-shadow: inset 0px 0px 25px #1479EA;
+}
