@@ -2,11 +2,18 @@ import { Link, Outlet } from "react-router-dom";
 import Nav from "../SharedFile/NavbarFile/Nav";
 import './Main.css'
 // import Link from "../SharedFile/Link/Link";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const Main = () => {
 
+    useEffect(()=>{
+        AOS.init({duration : 2000});
+    },[])
+
     return (
-        <div style={{ backgroundColor: "rgba(50,150,250,0.1)" }} className="local-text">
+        <div style={{ backgroundColor: "rgba(50,150,250,0.1)", height : "100%" }} className="local-text ">
 
             <Nav></Nav>
             <div className="Main-div">

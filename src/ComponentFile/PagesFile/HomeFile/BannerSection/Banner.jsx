@@ -115,8 +115,11 @@ const Banner = () => {
                 </div>
             </div>
 
-            <div className='block md:hidden'>
-                phone panner
+            <div className='block md:hidden '>
+
+               <img className='w-full' src="https://i.pinimg.com/736x/6b/06/27/6b0627f99145e0bfa4a745cc443a2ee4.jpg" alt="" />
+
+
             </div>
 
         </div>
