@@ -60,7 +60,7 @@ const Banner = () => {
                     <div className="dunamic-text-div">
 
                         <div>
-                            <h2 style={{color : "#1479EA"}} className='text-xl font-medium'>
+                            <h2  style={{color : "#1479EA"}} className='duration-700 text-xl font-medium'>
                                 {sliderData[activeIndexNo].title}
                             </h2>
                             <h2 className='text-2xl font-semibold my-1'>

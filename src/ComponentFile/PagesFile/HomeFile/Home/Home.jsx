@@ -1,6 +1,7 @@
 import Banner from "../BannerSection/Banner";
 import Catagories from "../CatagoriesSection/Catagories";
 import InformationSection from "../InformationSection/InformationSection";
+import SpacialCategories from "../SpacialCategoriesSection/SpacialCategories";
 
 const Home = () => {
     return (
@@ -8,6 +9,7 @@ const Home = () => {
             
             <Banner></Banner>
             <InformationSection></InformationSection>
+            <SpacialCategories></SpacialCategories>
             <Catagories></Catagories>
             
         </div>

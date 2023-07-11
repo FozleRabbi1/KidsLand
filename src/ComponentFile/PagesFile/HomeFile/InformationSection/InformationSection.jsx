@@ -31,7 +31,6 @@ const InformationSection = () => {
       setIsMediumScreen(true);
     }
   }, [scrollX]);
-  console.log(scrollX)
     
 
 
