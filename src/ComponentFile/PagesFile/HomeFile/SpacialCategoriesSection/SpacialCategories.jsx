@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -7,6 +7,7 @@ import useSpacialCategoriesData from '../../../HooksFile/useSpacialCategoriesDat
 import { Pagination } from 'swiper/modules';
 
 const SpacialCategories = () => {
+    const [imageIndex, setImageIndex] = useState(0)
     const [datas, refetch, isLoading] = useSpacialCategoriesData();
 
     const [activeIndexNo, setactiveIndexNo] = useState(0);
@@ -16,7 +17,17 @@ const SpacialCategories = () => {
             swiper.slidePrev();
         }
     };
-    console.log(datas[activeIndexNo])
+    // console.log(datas[activeIndexNo])
+    console.log(activeIndexNo)
+
+    // if(activeIndexNo > 0 ){
+    //     setImageIndex(0)
+    // }
+    useEffect(() => {
+        if (activeIndexNo > 0) {
+            setImageIndex(0)
+        }
+    }, [activeIndexNo])
 
     const slideNext = () => {
         if (swiper !== null) {
@@ -24,15 +35,28 @@ const SpacialCategories = () => {
         }
     };
 
+    const setIndexFun = () => {
+        // setImageIndex(imageIndex + 1)
+        // console.log(datas[activeIndexNo]?.images.length)
+        console.log(imageIndex)
+        if (datas[activeIndexNo]?.images.length == imageIndex + 1) {
+            setImageIndex(0)
+        }
+        else {
+            setImageIndex(imageIndex + 1)
+        }
+    }
+
     return (
         <div>
             <h2 className='text-center text-2xl font-bold text-color pb-10'>Spacial Cullection</h2>
-            
 
-            <div className='grid grid-cols-2 items-center'>
+
+            <div className='grid grid-cols-2 items-center px-14'>
+
                 <div className="show-details-div">
-
-                    <img src={datas[activeIndexNo]?.images[0]} alt="" />
+                    <p> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
+                    <img onMouseOver={setIndexFun} src={datas[activeIndexNo]?.images[imageIndex]} alt="" />
 
                 </div>
 
@@ -40,7 +64,7 @@ const SpacialCategories = () => {
                     <div>
 
                         <div className=' flex justify-between'>
-                        <h2>{datas.length}/ {activeIndexNo + 1}</h2>
+                            <h2>{datas.length}/ {activeIndexNo + 1}</h2>
 
                             <div className='flex'>
                                 <button onClick={() => slidePrev()} >pre</button>
