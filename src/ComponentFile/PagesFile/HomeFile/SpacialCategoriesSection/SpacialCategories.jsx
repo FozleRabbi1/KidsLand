@@ -5,6 +5,11 @@ import "swiper/css/pagination";
 import './SpatialCategories.css'
 import useSpacialCategoriesData from '../../../HooksFile/useSpacialCategoriesData';
 import { Pagination } from 'swiper/modules';
+import { GiSelfLove } from "react-icons/gi";
+import useFavouriteProduct from '../../../HooksFile/useFavouriteProduct';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -14,24 +19,14 @@ const SpacialCategories = () => {
     const [datas, refetch, isLoading] = useSpacialCategoriesData(selectedOption);
     const [swiper, setSwiper] = useState(null);
     const [imageError, setImageError] = useState(false);
+    const [, favaouriteRefatch] = useFavouriteProduct();
 
-    // console.log("selectedSerialNumber", selectedSerialNumber)
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value)
     }
     useEffect(() => {
         refetch()
     }, [selectedOption])
-
-
-    // console.log(selectedOption)
-
-
-    // const serialNumberFul = (e) => {
-    //     setSelectedSerialNumber(e.target.value)
-    //     const serialNumber = parseInt(e.target.value);
-    //     setactiveIndexNo(serialNumber)
-    // }
 
     const slidePrev = () => {
         if (swiper !== null) {
@@ -60,31 +55,82 @@ const SpacialCategories = () => {
         }
     }
 
+    const SaveOnFavouriteFun = (product, imageUrl) => {
+        // const favouriteData = { product: product, imageIndexNumber: imageUrl }
+        // console.log(favouriteData)
+        const { _id, images, ...rest } = product
+        const productData = { mainId: _id, ...rest, imageUrl: imageUrl }
+
+        axios.post("http://localhost:5000/favouriteProducts", productData)
+            .then(data => {
+
+
+
+                if (data.data.acknowledged) {
+                    toast.success('Wow Added In Favourite!', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                }
+                favaouriteRefatch()
+
+            })
+
+    }
+
     return (
         <div>
             <h2 className='text-center text-2xl font-bold text-color pb-10'>Spacial Cullection</h2>
 
             <div className='spacial-main-div '>
-                <div className="show-details-div relative  md:w-5/12">
-                    {imageError ? (
-                        <p onMouseOver={() => setImageError(false)} >
-                            <img className='img' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
-                        </p>
-                    ) : (
-                        <img
-                            src={datas[activeIndexNo]?.images[imageIndex]}
-                            onMouseOver={setIndexFun}
-                            alt="Image"
-                            onError={() => setImageError(true)}
-                        />
-                    )}
-                    <p className='absolute top-1 left-4 text-xl font-bold'> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
+
+                <div className="show-details-div w-9/12 overflow-hidden" >
+
+                    <div className=' relative h-full '>
+                        {imageError ? (
+                            <p onMouseOver={() => setImageError(false)} >
+                                <img className='img ' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
+                            </p>
+                        ) : (
+                            <img
+                                className=''
+                                src={datas[activeIndexNo]?.images[imageIndex]}
+                                onMouseOver={setIndexFun}
+                                alt="Image"
+                                onError={() => setImageError(true)}
+                            />
+                        )}
+                        <p className='absolute top-1 left-4 text-xl font-bold'> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
+
+                        <div className="show-details absolute flex justify-center items-center">
+                            <div className='flex items-center'>
+
+
+                                <button class="showMore">Show More</button>
+                                <span className=' w-10 flex justify-center'>
+                                    <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-red-700 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
+                                </span>
+                                <button class="showMore"> See All </button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
                 <div className="slider w-10/12 md:w-7/12">
                     {
                         isLoading ? "Loading..........." :
+
                             <div>
+
                                 <div className=' flex justify-between items-center mb-2'>
+
                                     <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10`}>
                                         <h2>{datas.length}/ {activeIndexNo + 1}</h2>
                                         <select
@@ -104,7 +150,9 @@ const SpacialCategories = () => {
                                         </div>
                                     </div>
 
+
                                 </div>
+
                                 <Swiper
                                     slidesPerView={3}
                                     centeredSlides={true}

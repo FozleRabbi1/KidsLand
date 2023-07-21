@@ -1,13 +1,24 @@
 import { Transition } from "@headlessui/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Activelink from "../ActiveLink/Activelink";
 import './Nav.css'
+import useFavouriteProduct from "../../HooksFile/useFavouriteProduct";
+import { GiSelfLove } from "react-icons/gi";
+import { RiDeleteBin2Fill } from "react-icons/ri";
+import axios from "axios";
+import { AuthContext } from "../../AuthProvider/AuthContextProvider";
 
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
-
     const [isScrollingDown, setIsScrollingDown] = useState(false);
     const [prevScrollY, setPrevScrollY] = useState(0);
+    const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
+    const [loading, setLoading] = useState(false)
+    const { user, logInOut } = useContext(AuthContext);
+
+    const logOutFun = () => {
+        logInOut();
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,6 +41,15 @@ const Nav = () => {
         };
     }, [prevScrollY]);
 
+    const deleteFunction = (id) => {
+        setLoading(true)
+        axios.delete(`http://localhost:5000/favouriteProducts/${id}`)
+            .then(data => {
+                favaouriteRefatch()
+                setLoading(false)
+            })
+        // setLoading(false)
+    }
 
 
     return (
@@ -47,8 +67,8 @@ const Nav = () => {
                                         alt="Workflow"
                                     />
                                 </div>
-                                <div className="hidden md:block ">
-                                    <div className="ml-10 flex items-baseline  space-x-6">
+                                <div className="hidden md:block  ">
+                                    <div className="ml-10 flex  items-center space-x-6">
 
                                         <Activelink to={"/"}>
                                             Home
@@ -59,11 +79,70 @@ const Nav = () => {
                                             Blog
                                         </Activelink>
 
-                                        <Activelink to={"login"}>
-                                            Login
-                                        </Activelink>
 
-                                       
+
+
+
+                                        <div className="dropdown dropdown-hover">
+                                            <label tabIndex={0} className="flex items-center m-1">
+                                                <GiSelfLove className="text-2xl text-red-700" ></GiSelfLove>
+                                                <i className="-mb-4 -ms-1 text-white">{favouriteProducts?.length || 0}</i>
+                                            </label>
+
+                                            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-44">
+                                                {
+                                                    favouriteProducts.length === 0 ? <p className="text-center">data not available</p> : <>
+                                                        <button>See All</button>
+                                                        {
+                                                            favouriteProducts?.map(products =>
+                                                                <span key={products._id} className=" m-2 flex justify-between items-center ">
+
+                                                                    <img className="w-16 h-16 rounded-full bg-green-400 p-1" src={products.imageUrl} alt="" />
+
+                                                                    {
+                                                                        loading ? "L.." :
+                                                                            <RiDeleteBin2Fill onClick={() => deleteFunction(products._id)} className="text-2xl cursor-pointer text-red-400 hover:text-red-700 duration-500"></RiDeleteBin2Fill>
+                                                                    }
+
+                                                                    {/* {
+                                                                        loading ? (
+                                                                            "L.."
+                                                                        ) : (
+                                                                            <RiDeleteBin2Fill
+                                                                                onClick={() => deleteFunction(products._id)}
+                                                                                className="text-2xl cursor-pointer text-red-400 hover:text-red-700 duration-500"
+                                                                            ></RiDeleteBin2Fill>
+                                                                        )
+                                                                    } */}
+
+
+
+                                                                </span>
+                                                            )
+                                                        }
+                                                    </>
+                                                }
+
+
+
+                                            </ul>
+
+                                        </div>
+
+                                        {
+                                            user ?
+                                                // <Activelink>
+                                                    <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>
+                                                // </Activelink>
+                                                 :
+                                                <Activelink to={"login"}>
+                                                    Login
+                                                </Activelink>
+                                        }
+
+
+
+
 
 
 
