@@ -15,6 +15,20 @@ const AuthContextProvider = ({ children }) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
+    const updateUserProfile = (name, email, photoUrl) => {
+        const updateUser = { ...user }
+        updateUser.displayName = name;
+        updateUser.email = email;
+        updateUser.photoURL = photoUrl
+        setUser(updateUser)
+
+        const auth = getAuth();
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photoUrl
+        })
+    }
+
 
     const userLogin = (email, password) => {
         setLoading(true);
@@ -45,6 +59,7 @@ const AuthContextProvider = ({ children }) => {
         createUserr,
         userLogin,
         loading: loading,
+        updateUserProfile,
         logInOut
     }
 

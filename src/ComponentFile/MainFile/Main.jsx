@@ -12,6 +12,7 @@ import { AuthContext } from "../AuthProvider/AuthContextProvider";
 const Main = () => {
     const location = useLocation();
     const { user, logInOut } = useContext(AuthContext)
+    console.log(user)
 
     useEffect(() => {
         AOS.init({ duration: 1500 });
@@ -50,11 +51,15 @@ const Main = () => {
                                 </span>
 
                                 <span className="text-right">
-                                    <span className="text-md font-semibold">
+                                    <span className="text-md font-semibold flex items-center">
                                         {
-                                            user ? user?.email : "user9790@gmail.com"
+                                            user ? user?.email : "user@gmail.com"
                                         }
 
+                                        {
+                                            user && <img className="w-12 h-12 rounded-full" src={user?.photoURL} alt="" />
+
+                                        }
                                     </span>
                                     <small className="block md:hidden"> +001-111-222-333</small>
                                 </span>

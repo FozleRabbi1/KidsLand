@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -10,6 +10,8 @@ import useFavouriteProduct from '../../../HooksFile/useFavouriteProduct';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { AuthContext } from '../../../AuthProvider/AuthContextProvider';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -20,6 +22,7 @@ const SpacialCategories = () => {
     const [swiper, setSwiper] = useState(null);
     const [imageError, setImageError] = useState(false);
     const [, favaouriteRefatch] = useFavouriteProduct();
+    const { user } = useContext(AuthContext);
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value)
@@ -59,26 +62,14 @@ const SpacialCategories = () => {
         // const favouriteData = { product: product, imageIndexNumber: imageUrl }
         // console.log(favouriteData)
         const { _id, images, ...rest } = product
-        const productData = { mainId: _id, ...rest, imageUrl: imageUrl }
+        const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email }
 
         axios.post("http://localhost:5000/favouriteProducts", productData)
             .then(data => {
 
-
-
                 if (data.data.acknowledged) {
-                    toast.success('Wow Added In Favourite!', {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    });
+                    favaouriteRefatch()
                 }
-                favaouriteRefatch()
 
             })
 
@@ -145,8 +136,8 @@ const SpacialCategories = () => {
                                     </div>
                                     <div className='flex items-center'>
                                         <div className='flex  items-center'>
-                                            <button className='button' onClick={() => slidePrev()} >pre</button>
-                                            <button className='ms-2 button' onClick={() => slideNext()} >next</button>
+                                            <button className='button' onClick={() => slidePrev()} > <AiOutlineArrowLeft className='font-bold' ></AiOutlineArrowLeft> </button>
+                                            <button className='ms-2 button' onClick={() => slideNext()} > <AiOutlineArrowRight className='font-bold' ></AiOutlineArrowRight> </button>
                                         </div>
                                     </div>
 

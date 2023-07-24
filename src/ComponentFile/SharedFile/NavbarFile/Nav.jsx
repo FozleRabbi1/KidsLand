@@ -12,9 +12,9 @@ const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrollingDown, setIsScrollingDown] = useState(false);
     const [prevScrollY, setPrevScrollY] = useState(0);
-    const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const [loading, setLoading] = useState(false)
     const { user, logInOut } = useContext(AuthContext);
+    const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
 
     const logOutFun = () => {
         logInOut();
@@ -89,38 +89,28 @@ const Nav = () => {
                                                 <i className="-mb-4 -ms-1 text-white">{favouriteProducts?.length || 0}</i>
                                             </label>
 
-                                            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-44">
+                                            <ul tabIndex={0} className="dropdown-content z-[1] -ms-10 menu p-2 shadow bg-base-100 rounded-box w-44">
                                                 {
-                                                    favouriteProducts.length === 0 ? <p className="text-center">data not available</p> : <>
-                                                        <button>See All</button>
-                                                        {
-                                                            favouriteProducts?.map(products =>
-                                                                <span key={products._id} className=" m-2 flex justify-between items-center ">
+                                                    favouriteProducts.length === 0 ? <p className="text-center">data not available</p> :
+                                                        <>
+                                                            <button>See All</button>
+                                                            {
+                                                                favouriteProducts?.map(products =>
+                                                                    <span key={products._id} className="  m-1 flex justify-between items-center ">
 
-                                                                    <img className="w-16 h-16 rounded-full bg-green-400 p-1" src={products.imageUrl} alt="" />
+                                                                        <img className="w-16 h-16 rounded-full bg-green-400 p-1" src={products.imageUrl} alt="" />
 
-                                                                    {
-                                                                        loading ? "L.." :
-                                                                            <RiDeleteBin2Fill onClick={() => deleteFunction(products._id)} className="text-2xl cursor-pointer text-red-400 hover:text-red-700 duration-500"></RiDeleteBin2Fill>
-                                                                    }
-
-                                                                    {/* {
-                                                                        loading ? (
-                                                                            "L.."
-                                                                        ) : (
-                                                                            <RiDeleteBin2Fill
-                                                                                onClick={() => deleteFunction(products._id)}
-                                                                                className="text-2xl cursor-pointer text-red-400 hover:text-red-700 duration-500"
-                                                                            ></RiDeleteBin2Fill>
-                                                                        )
-                                                                    } */}
+                                                                        {
+                                                                            loading ? "L.." :
+                                                                                <RiDeleteBin2Fill onClick={() => deleteFunction(products._id)} className="text-2xl cursor-pointer text-red-400 hover:text-red-700 duration-500"></RiDeleteBin2Fill>
+                                                                        }
 
 
 
-                                                                </span>
-                                                            )
-                                                        }
-                                                    </>
+                                                                    </span>
+                                                                )
+                                                            }
+                                                        </>
                                                 }
 
 
@@ -132,9 +122,9 @@ const Nav = () => {
                                         {
                                             user ?
                                                 // <Activelink>
-                                                    <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>
+                                                <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>
                                                 // </Activelink>
-                                                 :
+                                                :
                                                 <Activelink to={"login"}>
                                                     Login
                                                 </Activelink>
