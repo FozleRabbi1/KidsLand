@@ -3,7 +3,6 @@ import { AuthContext } from "../../../AuthProvider/AuthContextProvider";
 
 const Catagories = () => {
     const {user,loading} = useContext(AuthContext)
-    console.log(user, loading);
 
     return (
         <div className="pb-10"> 
@@ -13,6 +12,7 @@ const Catagories = () => {
             {
                 // user && <p>{user}</p>
             }
+
         </div>
     );
 };

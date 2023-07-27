@@ -61,11 +61,7 @@ const Nav = () => {
                         <div className="flex items-center justify-between h-16">
                             <div className="flex w-full justify-between items-center">
                                 <div className="flex-shrink-0">
-                                    <img
-                                        className="h-8 w-8"
-                                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                                        alt="Workflow"
-                                    />
+                                    <h2>Logo</h2>
                                 </div>
                                 <div className="hidden md:block  ">
                                     <div className="ml-10 flex  items-center space-x-6">

@@ -12,7 +12,6 @@ import { AuthContext } from "../AuthProvider/AuthContextProvider";
 const Main = () => {
     const location = useLocation();
     const { user, logInOut } = useContext(AuthContext)
-    console.log(user)
 
     useEffect(() => {
         AOS.init({ duration: 1500 });
