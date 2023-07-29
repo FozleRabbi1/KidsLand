@@ -10,7 +10,6 @@
 
 
 .page-num{
-    /* border: 1px solid aqua; */
     width: 30px;
     height: 32px;
     display: flex;
@@ -21,7 +20,7 @@
 
 
 .page-num:hover{
-    background-color: red;
+    background-color: aqua;
     color: white;
     transition: all 0.5s;
 }
@@ -29,11 +28,12 @@
 
 .activeLink{
    background-color: aqua;
-    /* width: 30px;
-    height: 32px; */
     display: flex;
     justify-content: center;
     border-radius: 50%;
     transition: all 0.5s;
 }
 
+.active-pagination{
+    background-color: aqua;
+}

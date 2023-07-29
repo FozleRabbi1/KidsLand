@@ -4,7 +4,7 @@ import { GiSelfLove } from "react-icons/gi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsSearchHeart } from "react-icons/bs";
 
-const SingleDress = ({ data }) => {
+const SingleDress = ({ data, index }) => {
     const [imageError, setImageError] = useState(false);
     return (
         <div>
@@ -46,6 +46,7 @@ const SingleDress = ({ data }) => {
                             <>
                                 <h2 className="text-center font-bold">{data?.title}</h2>
                                 <p className="text-center">price : {data?.price} $</p>
+                                <p className="text-center">S/N : {index + 1} </p>
                             </>
                     }
                 </div>

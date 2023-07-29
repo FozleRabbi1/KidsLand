@@ -1,45 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useAllDressCollection from '../../../HooksFile/useAllDressCollection';
 import SingleDress from './SingleDress';
 import { useState } from 'react';
-import ReactPaginate from 'react-paginate';
 import "./AllDressCollection.css"
 
 const AllDressCollection = () => {
-    const [datas] = useAllDressCollection();
+    const [getData, setGetData] = useState({})
+    const [datas, refetch] = useAllDressCollection(getData);
+    const [productNumber, setProductNumber] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
 
-    const [itemOffset, setItemOffset] = useState(0);
     let itemsPerPage = 12;
-    const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    const currentItems = datas.slice(itemOffset, endOffset);
-    const pageCount = Math.ceil(datas.length / itemsPerPage);
-    
+    const pageCount = Math.ceil(productNumber / itemsPerPage);
+    const pageNumber = [...Array(pageCount).keys()]
 
-    const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % datas.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
-        setItemOffset(newOffset);
-    };
+    useEffect(() => {
+        fetch("http://localhost:5000/allProductNumber")
+            .then(res => res.json())
+            .then(data => setProductNumber(data))
+    }, [])
+
+
+    const getDataFun = (num) => {
+        const itemOffset = num * 12
+        const endOffset = itemOffset + itemsPerPage;
+        const getDataObj = { itemOffset, endOffset }
+        setGetData(getDataObj)
+    }
 
     return (
         <div className='mt-16'>
             <h2 className='text-center text-2xl font-bold text-color pb-10'>All Cullection</h2>
-
-
             <div className='flex'>
                 <div className="conterol-div w-2/12">
                     control div
                 </div>
-
                 <div className=' w-10/12'>
                     <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
-
                         {
-                            // datas.slice(0,12)?.map(data =>
-                            currentItems.map(data =>
+                            datas?.map(data =>
                                 <SingleDress
                                     key={data._id}
                                     data={data}
@@ -50,20 +49,14 @@ const AllDressCollection = () => {
 
                     </div>
 
-                    <ReactPaginate
-                        nextLabel=">"
-                        onPageChange={handlePageClick}
-                        pageRangeDisplayed={6}
-                        breakLabel="..."
-                        pageCount={pageCount}
-                        previousLabel="<"
-                        renderOnZeroPageCount={null}
-                        containerClassName={"pagination"}
-                        previousClassName={"page-num"}
-                        pageClassName={"page-num"}
-                        nextClassName={"page-num"}
-                        activeLinkClassName={"activeLink"}
-                    />
+                    <ul className='flex gap-10 mx-auto w-6/12 justify-center my-10'>
+                        {
+                            pageNumber?.map(pageNum =>
+                                <li onMouseUp={() => getDataFun(pageNum)} onClick={() => setCurrentPage(pageNum)} className={`${pageNum === currentPage ? "active-pagination " : "" } border cursor-pointer bg-gray-300 px-2`} key={pageNum}> {pageNum + 1} </li>
+                            )
+                        }
+                    </ul>
+
 
                     {/* <div className='bg-red-500 flex justify-center'>
                         <div className="join bg-green-500">
@@ -75,11 +68,8 @@ const AllDressCollection = () => {
                         </div>
                     </div> */}
 
-
                 </div>
-
             </div>
-
         </div>
     );
 };
