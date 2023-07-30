@@ -4,6 +4,7 @@ import Home from "./PagesFile/HomeFile/Home/Home";
 import Login from "./PagesFile/LoginFile/Login";
 import Blog from "./PagesFile/BlogFile/Blog";
 import Register from "./PagesFile/RegisterFile/Register";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export const router = createBrowserRouter([
     {path : "/", element : <Main></Main>,

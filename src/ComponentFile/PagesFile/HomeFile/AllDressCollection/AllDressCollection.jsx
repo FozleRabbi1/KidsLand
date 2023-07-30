@@ -3,14 +3,18 @@ import useAllDressCollection from '../../../HooksFile/useAllDressCollection';
 import SingleDress from './SingleDress';
 import { useState } from 'react';
 import "./AllDressCollection.css"
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import SkeletonCard from './SkeletonCard';
+
 
 const AllDressCollection = () => {
     const [getData, setGetData] = useState({})
-    const [datas, refetch] = useAllDressCollection(getData);
+    const [datas, , isLoading] = useAllDressCollection(getData);
     const [productNumber, setProductNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
 
-    let itemsPerPage = 12;
+    const itemsPerPage = 12;
     const pageCount = Math.ceil(productNumber / itemsPerPage);
     const pageNumber = [...Array(pageCount).keys()]
 
@@ -22,7 +26,7 @@ const AllDressCollection = () => {
 
 
     const getDataFun = (num) => {
-        const itemOffset = num * 12
+        const itemOffset = num * itemsPerPage
         const endOffset = itemOffset + itemsPerPage;
         const getDataObj = { itemOffset, endOffset }
         setGetData(getDataObj)
@@ -36,23 +40,27 @@ const AllDressCollection = () => {
                     control div
                 </div>
                 <div className=' w-10/12'>
-                    <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
-                        {
-                            datas?.map(data =>
-                                <SingleDress
-                                    key={data._id}
-                                    data={data}
-                                ></SingleDress>
-                            )
-                        }
 
+                    {
+                        isLoading ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
 
-                    </div>
+                            <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+                                
+                                {
+                                    datas?.map(data =>
+                                        <SingleDress
+                                            key={data._id}
+                                            data={data}
+                                        ></SingleDress>
+                                    )
+                                }
+                            </div>
+                    }
 
                     <ul className='flex gap-10 mx-auto w-6/12 justify-center my-10'>
                         {
                             pageNumber?.map(pageNum =>
-                                <li onMouseUp={() => getDataFun(pageNum)} onClick={() => setCurrentPage(pageNum)} className={`${pageNum === currentPage ? "active-pagination " : "" } border cursor-pointer bg-gray-300 px-2`} key={pageNum}> {pageNum + 1} </li>
+                                <li onMouseUp={() => getDataFun(pageNum)} onClick={() => setCurrentPage(pageNum)} className={`${pageNum === currentPage ? "active-pagination " : ""} border cursor-pointer bg-gray-300 px-2`} key={pageNum}> {pageNum + 1} </li>
                             )
                         }
                     </ul>

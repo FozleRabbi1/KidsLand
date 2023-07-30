@@ -46,7 +46,6 @@ const SingleDress = ({ data, index }) => {
                             <>
                                 <h2 className="text-center font-bold">{data?.title}</h2>
                                 <p className="text-center">price : {data?.price} $</p>
-                                <p className="text-center">S/N : {index + 1} </p>
                             </>
                     }
                 </div>

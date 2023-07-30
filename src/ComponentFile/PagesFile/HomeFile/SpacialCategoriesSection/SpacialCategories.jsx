@@ -8,10 +8,10 @@ import { Pagination } from 'swiper/modules';
 import { GiSelfLove } from "react-icons/gi";
 import useFavouriteProduct from '../../../HooksFile/useFavouriteProduct';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { AuthContext } from '../../../AuthProvider/AuthContextProvider';
+import Skeleton from 'react-loading-skeleton';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -59,8 +59,6 @@ const SpacialCategories = () => {
     }
 
     const SaveOnFavouriteFun = (product, imageUrl) => {
-        // const favouriteData = { product: product, imageIndexNumber: imageUrl }
-        // console.log(favouriteData)
         const { _id, images, ...rest } = product
         const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email }
 
@@ -70,7 +68,6 @@ const SpacialCategories = () => {
                 if (data.data.acknowledged) {
                     favaouriteRefatch()
                 }
-
             })
 
     }
@@ -78,50 +75,55 @@ const SpacialCategories = () => {
     return (
         <div>
             <h2 className='text-center text-2xl font-bold text-color pb-10'>Spacial Cullection</h2>
-
-            <div className='spacial-main-div '>
-
-                <div className="show-details-div w-9/12 overflow-hidden" >
-
-                    <div className=' relative h-full '>
-                        {imageError ? (
-                            <p onMouseOver={() => setImageError(false)} >
-                                <img className='img ' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
-                            </p>
-                        ) : (
-                            <img
-                                className=''
-                                src={datas[activeIndexNo]?.images[imageIndex]}
-                                onMouseOver={setIndexFun}
-                                alt="Image"
-                                onError={() => setImageError(true)}
-                            />
-                        )}
-                        <p className='absolute top-1 left-4 text-xl font-bold'> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
-
-                        <div className="show-details absolute flex justify-center items-center">
-                            <div className='flex items-center'>
-
-
-                                <button className="showMore">Show More</button>
-                                <span className=' w-10 flex justify-center'>
-                                    <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-red-700 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
-                                </span>
-                                <button className="showMore"> See All </button>
-                            </div>
+            {
+                isLoading ?
+                    <div className='flex gap-10 items-center' >
+                        <div className='w-6/12'><Skeleton width={500} height={550} ></Skeleton></div>
+                        <div className='w-6/12 flex gap-10 justify-between'>
+                            <Skeleton width={190} height={250} ></Skeleton>
+                            <Skeleton width={190} height={250} ></Skeleton>
+                            <Skeleton width={190} height={250} ></Skeleton>
                         </div>
                     </div>
+                    :
 
-                </div>
+                    <div className='spacial-main-div '>
+                        <div className="show-details-div w-9/12 overflow-hidden" >
 
-                <div className="slider w-10/12 md:w-7/12">
-                    {
-                        isLoading ? "Loading..........." :
+                            <div className=' relative h-full '>
+                                {imageError ? (
+                                    <p onMouseOver={() => setImageError(false)} >
+                                        <img className='img ' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
+                                    </p>
+                                ) : (
+                                    <img
+                                        className=''
+                                        src={datas[activeIndexNo]?.images[imageIndex]}
+                                        onMouseOver={setIndexFun}
+                                        alt="Image"
+                                        onError={() => setImageError(true)}
+                                    />
+                                )}
+                                <p className='absolute top-1 left-4 text-xl font-bold'> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
 
+                                <div className="show-details absolute flex justify-center items-center">
+                                    <div className='flex items-center'>
+
+
+                                        <button className="showMore">Show More</button>
+                                        <span className=' w-10 flex justify-center'>
+                                            <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-red-700 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
+                                        </span>
+                                        <button className="showMore"> See All </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div className="slider w-10/12 md:w-7/12">
                             <div>
-
                                 <div className=' flex justify-between items-center mb-2'>
-
                                     <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10`}>
                                         <h2>{datas.length}/ {activeIndexNo + 1}</h2>
                                         <select
@@ -140,10 +142,7 @@ const SpacialCategories = () => {
                                             <button className='ms-2 button' onClick={() => slideNext()} > <AiOutlineArrowRight className='font-bold' ></AiOutlineArrowRight> </button>
                                         </div>
                                     </div>
-
-
                                 </div>
-
                                 <Swiper
                                     slidesPerView={3}
                                     centeredSlides={true}
@@ -170,13 +169,12 @@ const SpacialCategories = () => {
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
-
                             </div>
-                    }
-                </div>
+                        </div>
 
+                    </div>
+            }
 
-            </div>
         </div>
     );
 };
