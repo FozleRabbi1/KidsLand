@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { AuthContext } from '../../../AuthProvider/AuthContextProvider';
 import Skeleton from 'react-loading-skeleton';
+import useFavouriteHook from '../../../HooksFile/useFavouriteHook';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -23,6 +24,10 @@ const SpacialCategories = () => {
     const [imageError, setImageError] = useState(false);
     const [, favaouriteRefatch] = useFavouriteProduct();
     const { user } = useContext(AuthContext);
+    const [favProduct, setFavProduct] = useState();
+    // const [] = useFavouriteHook(favProduct)
+
+    // console.log(favProduct)
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value)
@@ -61,10 +66,12 @@ const SpacialCategories = () => {
     const SaveOnFavouriteFun = (product, imageUrl) => {
         const { _id, images, ...rest } = product
         const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email }
+        
+        // setFavProduct(productData)
+        // favaouriteRefatch()
 
         axios.post("http://localhost:5000/favouriteProducts", productData)
             .then(data => {
-
                 if (data.data.acknowledged) {
                     favaouriteRefatch()
                 }

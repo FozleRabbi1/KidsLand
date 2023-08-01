@@ -64,9 +64,9 @@ const AllDressCollection = () => {
                 <div className="conterol-div w-2/12 pe-3">
                     <h2 className='text-center mb-4 text-color text-xl font-bold'>control panel</h2>
                     <div className='my-2'>
-                        <h2>total Product = {productNumber}</h2>
-                        <h2>Find Product = {productLength}</h2>
-                        <h2 >total Product = {datas?.length} / page</h2>
+                        <h2>Total Product = <span className='font-semibold' >{productNumber}</span> </h2>
+                        <h2>Find Product = <span className='font-semibold' >{productLength}</span> </h2>
+                        <h2>Show Product = {datas?.length === 0 ? <span className='text-red-500 text-xl font-bold'>{datas?.length}</span> : <span className='font-semibold' >{datas?.length}</span> } / page</h2>
                     </div>
 
                     <div>
@@ -123,18 +123,6 @@ const AllDressCollection = () => {
 
                                 }
                             </div>
-                        // <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
-
-                        //     {
-                        //         datas?.map(data =>
-                        //             <SingleDress
-                        //                 key={data._id}
-                        //                 data={data}
-                        //             ></SingleDress>
-                        //         )
-                        //     }
-
-                        // </div>
                     }
 
                     <ul className='flex gap-10 mx-auto w-6/12 justify-center my-10'>

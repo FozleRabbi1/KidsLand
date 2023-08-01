@@ -2,10 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 
 const useAllDressCollection = (getDataObj, selectedOption, value, selectedOption2) => {
 
-    console.log(selectedOption2)
-    // console.log(value[1])
-    // console.log( getDataObj?.value[0])
-    // console.log( getDataObj?.value[1])
     const { data: datas = [], refetch, isLoading } = useQuery({
         queryKey: ['allDressCollection', getDataObj.itemOffset, getDataObj.endOffset, value, selectedOption, selectedOption2],
         queryFn: async () => {
