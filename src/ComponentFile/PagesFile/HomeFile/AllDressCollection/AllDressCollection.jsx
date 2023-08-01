@@ -3,16 +3,24 @@ import useAllDressCollection from '../../../HooksFile/useAllDressCollection';
 import SingleDress from './SingleDress';
 import { useState } from 'react';
 import "./AllDressCollection.css"
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import SkeletonCard from './SkeletonCard';
+import RangeSlider from 'react-range-slider-input';
+import 'react-range-slider-input/dist/style.css';
 
 
 const AllDressCollection = () => {
     const [getData, setGetData] = useState({})
-    const [datas, , isLoading] = useAllDressCollection(getData);
+    const [value, setValue] = useState([30, 60]);
+    const [selectedOption, setSelectedOption] = useState("All")
+    const [datas, productLength, refetch, isLoading] = useAllDressCollection(getData, selectedOption);
     const [productNumber, setProductNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
+
+    useEffect(() => {
+        refetch()
+    }, [getData, selectedOption])
+
 
     const itemsPerPage = 12;
     const pageCount = Math.ceil(productNumber / itemsPerPage);
@@ -28,24 +36,52 @@ const AllDressCollection = () => {
     const getDataFun = (num) => {
         const itemOffset = num * itemsPerPage
         const endOffset = itemOffset + itemsPerPage;
-        const getDataObj = { itemOffset, endOffset }
+        const getDataObj = { itemOffset, endOffset, }
         setGetData(getDataObj)
+    }
+
+    const handleOptionChange = (e) => {
+        setSelectedOption(e.target.value)
     }
 
     return (
         <div className='mt-16'>
             <h2 className='text-center text-2xl font-bold text-color pb-10'>All Cullection</h2>
             <div className='flex'>
-                <div className="conterol-div w-2/12">
-                    control div
+                <div className="conterol-div w-2/12 px-2">
+                    <h2 className='text-center mb-4 text-color text-xl font-bold'>control panel</h2>
+                    <div className='my-2'>
+                        <h2>total Product = {productLength}</h2>
+                        <h2 >total Product = {datas?.length} / page</h2>
+                    </div>
+
+                    <div>
+                        <RangeSlider min={0} max={120} step={5} onInput={setValue} />
+                        <div className='flex justify-between mt-2'>
+                            <span> {value[0]} $</span>
+                            <span> --- </span>
+                            <span>{value[1]} $</span>
+                        </div>
+                    </div>
+
+                    <select
+                        value={selectedOption}
+                        onChange={handleOptionChange}
+                        className="bg-green-400  mt-2 button rounded  text-gray-800"
+                    >
+                        <option className='ms-2' value="All">All</option>
+                        <option className='ms-2' value="Boy">Boy</option>
+                        <option className='ms-2' value="Girl">Girl</option>
+                    </select>
+
+
+
                 </div>
                 <div className=' w-10/12'>
-
                     {
-                        isLoading ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
-
+                        isLoading || datas.length === 0 ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
                             <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
-                                
+
                                 {
                                     datas?.map(data =>
                                         <SingleDress
@@ -65,16 +101,6 @@ const AllDressCollection = () => {
                         }
                     </ul>
 
-
-                    {/* <div className='bg-red-500 flex justify-center'>
-                        <div className="join bg-green-500">
-                            <button className="join-item btn">1</button>
-                            <button className="join-item btn">2</button>
-                            <button className="join-item btn btn-disabled">...</button>
-                            <button className="join-item btn">99</button>
-                            <button className="join-item btn">100</button>
-                        </div>
-                    </div> */}
 
                 </div>
             </div>

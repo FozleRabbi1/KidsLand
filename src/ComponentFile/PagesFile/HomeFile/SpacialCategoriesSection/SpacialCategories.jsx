@@ -78,7 +78,7 @@ const SpacialCategories = () => {
             {
                 isLoading ?
                     <div className='flex gap-10 items-center' >
-                        <div className='w-6/12'><Skeleton width={500} height={550} ></Skeleton></div>
+                        <div className='w-6/12'><Skeleton width={"82%"} height={550} ></Skeleton></div>
                         <div className='w-6/12 flex gap-10 justify-between'>
                             <Skeleton width={190} height={250} ></Skeleton>
                             <Skeleton width={190} height={250} ></Skeleton>

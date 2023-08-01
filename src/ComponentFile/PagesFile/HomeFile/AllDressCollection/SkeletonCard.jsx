@@ -7,11 +7,11 @@ const SkeletonCard = ({ cards }) => {
 
             <div key={index} className="skeletonCard-style">
                 <div>
-                    <Skeleton height={270} width={238} />
+                    <Skeleton height={266} width={"100%"} />
                 </div>
                 <div>
-                    <Skeleton width={180} />
-                    <Skeleton width={100} />
+                    <Skeleton width={"80%"} />
+                    <Skeleton width={"50%"} />
                 </div>
             </div>
 
