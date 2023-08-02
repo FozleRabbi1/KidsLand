@@ -7,6 +7,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import SkeletonCard from './SkeletonCard';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
+import useFavouriteProduct from '../../../HooksFile/useFavouriteProduct';
+import { GiSelfLove } from 'react-icons/gi';
 
 
 const AllDressCollection = () => {
@@ -17,7 +19,8 @@ const AllDressCollection = () => {
     const [datas, productLength, refetch, isLoading] = useAllDressCollection(getData, selectedOption, value, selectedOption2);
     const [productNumber, setProductNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
-    const [phoductDynamicNumber, setphoductDynamicNumber] = useState(0)
+    const [phoductDynamicNumber, setphoductDynamicNumber] = useState(0);
+    const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
 
     useEffect(() => {
         refetch()
@@ -66,7 +69,7 @@ const AllDressCollection = () => {
                     <div className='my-2'>
                         <h2>Total Product = <span className='font-semibold' >{productNumber}</span> </h2>
                         <h2>Find Product = <span className='font-semibold' >{productLength}</span> </h2>
-                        <h2>Show Product = {datas?.length === 0 ? <span className='text-red-500 text-xl font-bold'>{datas?.length}</span> : <span className='font-semibold' >{datas?.length}</span> } / page</h2>
+                        <h2>Show Product = {datas?.length === 0 ? <span className='text-red-500 text-xl font-bold'>{datas?.length}</span> : <span className='font-semibold' >{datas?.length}</span>} / page</h2>
                     </div>
 
                     <div>
@@ -98,6 +101,11 @@ const AllDressCollection = () => {
                             <option className='ms-2' value="descending ">High to low</option>
                         </select>
 
+                    </div>
+                    <div className='mt-2'>
+                        <i className="flex items-center">Favourite Product : {favouriteProducts?.length || 0}
+                            <GiSelfLove className="text-xl text-red-600 ms-2 " ></GiSelfLove>
+                        </i>
                     </div>
 
 

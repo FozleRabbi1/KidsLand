@@ -4,7 +4,7 @@ import { AuthContext } from "../AuthProvider/AuthContextProvider";
 import { useContext } from "react";
 
 const useFavouriteProduct = () => {
-    const { user, logInOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const { data: favouriteProducts = [], refetch: favaouriteRefatch, isLoading } = useQuery({
         queryKey: ['favouriteProducts', user?.email],

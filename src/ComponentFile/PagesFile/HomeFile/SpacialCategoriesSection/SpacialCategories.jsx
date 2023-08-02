@@ -8,26 +8,19 @@ import { Pagination } from 'swiper/modules';
 import { GiSelfLove } from "react-icons/gi";
 import useFavouriteProduct from '../../../HooksFile/useFavouriteProduct';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { AuthContext } from '../../../AuthProvider/AuthContextProvider';
 import Skeleton from 'react-loading-skeleton';
-import useFavouriteHook from '../../../HooksFile/useFavouriteHook';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState("All")
-    const [selectedSerialNumber, setSelectedSerialNumber] = useState("1")
     const [activeIndexNo, setactiveIndexNo] = useState(0);
     const [datas, refetch, isLoading] = useSpacialCategoriesData(selectedOption);
     const [swiper, setSwiper] = useState(null);
     const [imageError, setImageError] = useState(false);
     const [, favaouriteRefatch] = useFavouriteProduct();
     const { user } = useContext(AuthContext);
-    const [favProduct, setFavProduct] = useState();
-    // const [] = useFavouriteHook(favProduct)
-
-    // console.log(favProduct)
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value)
@@ -67,9 +60,6 @@ const SpacialCategories = () => {
         const { _id, images, ...rest } = product
         const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email }
         
-        // setFavProduct(productData)
-        // favaouriteRefatch()
-
         axios.post("http://localhost:5000/favouriteProducts", productData)
             .then(data => {
                 if (data.data.acknowledged) {
@@ -131,6 +121,7 @@ const SpacialCategories = () => {
                         <div className="slider w-10/12 md:w-7/12">
                             <div>
                                 <div className=' flex justify-between items-center mb-2'>
+
                                     <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10`}>
                                         <h2>{datas.length}/ {activeIndexNo + 1}</h2>
                                         <select
@@ -144,11 +135,12 @@ const SpacialCategories = () => {
                                         </select>
                                     </div>
                                     <div className='flex items-center'>
-                                        <div className='flex  items-center'>
+                                        <div className='flex items-center'>
                                             <button className='button' onClick={() => slidePrev()} > <AiOutlineArrowLeft className='font-bold' ></AiOutlineArrowLeft> </button>
                                             <button className='ms-2 button' onClick={() => slideNext()} > <AiOutlineArrowRight className='font-bold' ></AiOutlineArrowRight> </button>
                                         </div>
                                     </div>
+
                                 </div>
                                 <Swiper
                                     slidesPerView={3}
