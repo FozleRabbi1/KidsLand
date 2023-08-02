@@ -1,0 +1,8 @@
+.addStyle{
+    border: 1px solid red;
+    transition: all 0.5s;
+}
+.removeStyle{
+    border: 1px solid transparent;
+    transition: all 0.5s;
+}

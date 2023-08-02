@@ -8,7 +8,7 @@ import axios from "axios";
 import useFavouriteProduct from "../../../HooksFile/useFavouriteProduct";
 import { toast } from "react-toastify";
 
-const SingleDress = ({ data, index }) => {
+const SingleDress = ({ data, index, setProduct }) => {
     const [imageError, setImageError] = useState(false);
     const { user } = useContext(AuthContext)
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct()
@@ -45,7 +45,7 @@ const SingleDress = ({ data, index }) => {
     return (
         <div>
             <div className="">
-               
+
                 <div className="image-icon-div">
                     <div className="imgDiv">
                         {imageError ? (
@@ -72,8 +72,9 @@ const SingleDress = ({ data, index }) => {
 
                             <span className="flex justify-center items-center text-white hover:text-sky-600 duration-700"> <AiOutlineShoppingCart className="text-xl "></AiOutlineShoppingCart> </span>
 
-                            <span className="flex justify-center items-center text-white hover:text-sky-600 duration-700">
-                                <BsSearchHeart className="text-xl "></BsSearchHeart>
+                            <span onClick={() => setProduct(data)} className="flex justify-center items-center text-white hover:text-sky-600 duration-700">
+                                {/* <BsSearchHeart className="text-xl "></BsSearchHeart> */}
+                                <button className="" onClick={() => window.show_more_with_modal.showModal()}> <BsSearchHeart className="text-xl "></BsSearchHeart></button>
                             </span>
 
                             {/* You can open the modal using ID.showModal() method */}

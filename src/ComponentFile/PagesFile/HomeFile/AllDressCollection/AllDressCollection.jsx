@@ -9,6 +9,7 @@ import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import useFavouriteProduct from '../../../HooksFile/useFavouriteProduct';
 import { GiSelfLove } from 'react-icons/gi';
+import ShowMoreWithModal from './ShowMoreWithModal/ShowMoreWithModal';
 
 
 const AllDressCollection = () => {
@@ -20,6 +21,9 @@ const AllDressCollection = () => {
     const [productNumber, setProductNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
+    const [product, setProduct] = useState(null);
+
+    // console.log(product)
 
     useEffect(() => {
         refetch()
@@ -119,6 +123,7 @@ const AllDressCollection = () => {
                                                     <SingleDress
                                                         key={data._id}
                                                         data={data}
+                                                        setProduct={setProduct}
                                                     ></SingleDress>
                                                 )
                                             }
@@ -135,6 +140,10 @@ const AllDressCollection = () => {
                     </ul>
                 </div>
             </div>
+
+            {
+                product && <ShowMoreWithModal product={product}></ShowMoreWithModal>
+            }
         </div>
     );
 };
