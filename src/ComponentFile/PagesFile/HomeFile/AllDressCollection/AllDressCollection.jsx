@@ -19,23 +19,15 @@ const AllDressCollection = () => {
     const [datas, productLength, refetch, isLoading] = useAllDressCollection(getData, selectedOption, value, selectedOption2);
     const [productNumber, setProductNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
-    const [phoductDynamicNumber, setphoductDynamicNumber] = useState(0);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
 
     useEffect(() => {
         refetch()
-        setphoductDynamicNumber(productLength)
     }, [getData, selectedOption, value, productLength, selectedOption2])
 
 
     const itemsPerPage = 12;
     const pageCount = Math.ceil(productNumber / itemsPerPage);
-    let newPageCount
-    if (productLength) {
-        newPageCount = Math.ceil(productNumber / itemsPerPage);
-        // newPageCount = Math.ceil(phoductDynamicNumber / itemsPerPage);
-    }
-    // const pageNumber = [...Array(newPageCount).keys()]
     const pageNumber = [...Array(pageCount).keys()]
 
     useEffect(() => {
@@ -69,7 +61,11 @@ const AllDressCollection = () => {
                     <div className='my-2'>
                         <h2>Total Product = <span className='font-semibold' >{productNumber}</span> </h2>
                         <h2>Find Product = <span className='font-semibold' >{productLength}</span> </h2>
-                        <h2>Show Product = {datas?.length === 0 ? <span className='text-red-500 text-xl font-bold'>{datas?.length}</span> : <span className='font-semibold' >{datas?.length}</span>} / page</h2>
+                        <h2>Show Product =
+                            {datas?.length === 0 ?
+                                <span className='text-red-500 text-xl font-bold'>{datas?.length}</span>
+                                :
+                                <span className='font-semibold' >{datas?.length}</span>} / page</h2>
                     </div>
 
                     <div>
@@ -100,24 +96,24 @@ const AllDressCollection = () => {
                             <option className='ms-2' value="ascending ">Low to high</option>
                             <option className='ms-2' value="descending ">High to low</option>
                         </select>
-
                     </div>
                     <div className='mt-2'>
                         <i className="flex items-center">Favourite Product : {favouriteProducts?.length || 0}
                             <GiSelfLove className="text-xl text-red-600 ms-2 " ></GiSelfLove>
                         </i>
                     </div>
-
-
                 </div>
                 <div className=' w-10/12'>
                     {
                         isLoading ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
                             <div>
                                 {
-                                    datas?.length === 0 ? <p className='text-red-500 text-center my-44 text-3xl font-semibold'>No More Data Back to Previous Page</p> :
+                                    datas?.length === 0 ? <p className='text-red-500 text-center my-44 text-3xl font-semibold'>
+                                        {
+                                            productLength === 0 ? "No data Found Please Send Valid Requist" : "No More Data Back to Previous Page"
+                                        }
+                                    </p> :
                                         <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
-
                                             {
                                                 datas?.map(data =>
                                                     <SingleDress
@@ -126,13 +122,10 @@ const AllDressCollection = () => {
                                                     ></SingleDress>
                                                 )
                                             }
-
                                         </div>
-
                                 }
                             </div>
                     }
-
                     <ul className='flex gap-10 mx-auto w-6/12 justify-center my-10'>
                         {
                             pageNumber && pageNumber?.map(pageNum =>
@@ -140,8 +133,6 @@ const AllDressCollection = () => {
                             )
                         }
                     </ul>
-
-
                 </div>
             </div>
         </div>

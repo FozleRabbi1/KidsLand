@@ -11,6 +11,7 @@ import axios from 'axios';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { AuthContext } from '../../../AuthProvider/AuthContextProvider';
 import Skeleton from 'react-loading-skeleton';
+import { toast } from 'react-toastify';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -19,7 +20,7 @@ const SpacialCategories = () => {
     const [datas, refetch, isLoading] = useSpacialCategoriesData(selectedOption);
     const [swiper, setSwiper] = useState(null);
     const [imageError, setImageError] = useState(false);
-    const [, favaouriteRefatch] = useFavouriteProduct();
+    const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const { user } = useContext(AuthContext);
 
     const handleOptionChange = (e) => {
@@ -59,7 +60,21 @@ const SpacialCategories = () => {
     const SaveOnFavouriteFun = (product, imageUrl) => {
         const { _id, images, ...rest } = product
         const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email }
-        
+
+        if (favouriteProducts.length >= 5) {
+            toast.warn("You Can't Save More Then 5 Product", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            return
+        }
+
         axios.post("http://localhost:5000/favouriteProducts", productData)
             .then(data => {
                 if (data.data.acknowledged) {
@@ -90,7 +105,7 @@ const SpacialCategories = () => {
                             <div className=' relative h-full '>
                                 {imageError ? (
                                     <p onMouseOver={() => setImageError(false)} >
-                                        <img className='img ' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
+                                        <img className='img' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
                                     </p>
                                 ) : (
                                     <img
@@ -101,12 +116,10 @@ const SpacialCategories = () => {
                                         onError={() => setImageError(true)}
                                     />
                                 )}
-                                <p className='absolute top-1 left-4 text-xl font-bold'> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
+                                <p className='absolute top-1 right-4 text-2xl font-bold text-center bg-green-100 z-30 rounded-lg px-1 '> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
 
                                 <div className="show-details absolute flex justify-center items-center">
                                     <div className='flex items-center'>
-
-
                                         <button className="showMore">Show More</button>
                                         <span className=' w-10 flex justify-center'>
                                             <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-red-700 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
@@ -133,8 +146,13 @@ const SpacialCategories = () => {
                                             <option className='ms-2' value="Boy">Boy</option>
                                             <option className='ms-2' value="Girl">Girl</option>
                                         </select>
+
                                     </div>
-                                    <div className='flex items-center'>
+                                    <div className='flex items-center '>
+                                        <h2 className='me-6 flex items-center'>
+                                           <span className='text-xl'> {favouriteProducts?.length || 0}</span>
+                                            <GiSelfLove className="text-xl text-red-600 ms-1 " ></GiSelfLove>
+                                        </h2>
                                         <div className='flex items-center'>
                                             <button className='button' onClick={() => slidePrev()} > <AiOutlineArrowLeft className='font-bold' ></AiOutlineArrowLeft> </button>
                                             <button className='ms-2 button' onClick={() => slideNext()} > <AiOutlineArrowRight className='font-bold' ></AiOutlineArrowRight> </button>
