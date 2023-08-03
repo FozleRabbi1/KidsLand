@@ -13,6 +13,7 @@ const SingleDress = ({ data, index, setProduct }) => {
     const { user } = useContext(AuthContext)
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct()
     const [loading, setLoading] = useState(false)
+    console.log(data)
 
     const addToFavourive = (datas, image) => {
         setLoading(true)
@@ -44,7 +45,7 @@ const SingleDress = ({ data, index, setProduct }) => {
 
     return (
         <div>
-            <div className="">
+            <div className="single-main-div">
 
                 <div className="image-icon-div">
                     <div className="imgDiv">
@@ -72,9 +73,9 @@ const SingleDress = ({ data, index, setProduct }) => {
 
                             <span className="flex justify-center items-center text-white hover:text-sky-600 duration-700"> <AiOutlineShoppingCart className="text-xl "></AiOutlineShoppingCart> </span>
 
-                            <span onClick={() => setProduct(data)} className="flex justify-center items-center text-white hover:text-sky-600 duration-700">
+                            <span onClick={() => setProduct(data)} onMouseUp={() => window.show_more_with_modal.showModal()} className="flex justify-center items-center text-white hover:text-sky-600 duration-700 cursor-pointer">
                                 {/* <BsSearchHeart className="text-xl "></BsSearchHeart> */}
-                                <button className="" onClick={() => window.show_more_with_modal.showModal()}> <BsSearchHeart className="text-xl "></BsSearchHeart></button>
+                                <button className="" > <BsSearchHeart className="text-xl "></BsSearchHeart></button>
                             </span>
 
                             {/* You can open the modal using ID.showModal() method */}
@@ -87,11 +88,22 @@ const SingleDress = ({ data, index, setProduct }) => {
                 <div>
                     {
                         imageError ? <p className="text-center">No data Found</p> :
-                            <>
-                                <h2 className="text-center font-bold">{data?.title}</h2>
-                                <p className="text-center">quantity : {data?.quantity}</p>
-                                <p className="text-center">price : {data?.price} $</p>
-                            </>
+                            <div className="px-2 py-1"> 
+                                <h2 className=" font-bold">{data?.title}</h2>
+
+                                <div className="">
+                                    <div className="text-sm font-semibold">
+                                        <p className="">Brand : {data?.brand}</p>
+                                        <p className="">Quantity : {data?.quantity}</p>
+                                        <span className="flex justify-between items-center">
+                                            <p className="">Price : <span className="text-lg text-red-500">{data?.price}</span> $/=</p>
+                                            <small className="bg-green-300 rounded-xl px-1 font-bold"> {data?.upload_date} </small>
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                            </div>
                     }
                 </div>
             </div>

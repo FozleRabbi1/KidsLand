@@ -102,7 +102,7 @@ const AllDressCollection = () => {
                         </select>
                     </div>
                     <div className='mt-2'>
-                        <i className="flex items-center">Favourite Product : {favouriteProducts?.length || 0}
+                        <i className="flex items-center">Favourite Product : <span className='font-bold text-xl ms-2'>{favouriteProducts?.length || 0}</span>
                             <GiSelfLove className="text-xl text-red-600 ms-2 " ></GiSelfLove>
                         </i>
                     </div>
@@ -117,7 +117,7 @@ const AllDressCollection = () => {
                                             productLength === 0 ? "No data Found Please Send Valid Requist" : "No More Data Back to Previous Page"
                                         }
                                     </p> :
-                                        <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+                                        <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
                                             {
                                                 datas?.map(data =>
                                                     <SingleDress
@@ -142,7 +142,7 @@ const AllDressCollection = () => {
             </div>
 
             {
-                product && <ShowMoreWithModal product={product}></ShowMoreWithModal>
+                product && <ShowMoreWithModal product={product} setProduct={setProduct}></ShowMoreWithModal>
             }
         </div>
     );
