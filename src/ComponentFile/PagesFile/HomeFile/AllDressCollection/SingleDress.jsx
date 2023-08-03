@@ -13,7 +13,6 @@ const SingleDress = ({ data, index, setProduct }) => {
     const { user } = useContext(AuthContext)
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct()
     const [loading, setLoading] = useState(false)
-    console.log(data)
 
     const addToFavourive = (datas, image) => {
         setLoading(true)
@@ -74,13 +73,8 @@ const SingleDress = ({ data, index, setProduct }) => {
                             <span className="flex justify-center items-center text-white hover:text-sky-600 duration-700"> <AiOutlineShoppingCart className="text-xl "></AiOutlineShoppingCart> </span>
 
                             <span onClick={() => setProduct(data)} onMouseUp={() => window.show_more_with_modal.showModal()} className="flex justify-center items-center text-white hover:text-sky-600 duration-700 cursor-pointer">
-                                {/* <BsSearchHeart className="text-xl "></BsSearchHeart> */}
                                 <button className="" > <BsSearchHeart className="text-xl "></BsSearchHeart></button>
                             </span>
-
-                            {/* You can open the modal using ID.showModal() method */}
-                            {/* <button className="btn bg-red-500" onClick={() => window.my_modal_3.showModal()}>open modal</button> */}
-
 
                         </div>
                     </div>
