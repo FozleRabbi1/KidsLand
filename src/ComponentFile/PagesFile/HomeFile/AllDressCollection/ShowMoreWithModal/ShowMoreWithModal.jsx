@@ -1,32 +1,60 @@
 import { useEffect, useState } from "react";
 import './ShowMoreWithModal.css'
 import ReactImageMagnify from 'react-image-magnify';
+import { toast } from "react-toastify";
 
 const ShowMoreWithModal = ({ product, setProduct }) => {
     const [imageIndex, setImageIndex] = useState(0);
     const [size, setSize] = useState("");
     const [counetr, setCounter] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [warningText, setWarningText] = useState("");
+    const [percentage, setPercentage] = useState(0)
 
-    console.log(totalPrice)
-
-    useEffect(()=>{
+    useEffect(() => {
         setTotalPrice(product?.price * counetr)
-    },[, counetr])
+        // const percentageCount = 2 / 100 * totalPrice;
+        // setPercentage(percentageCount)
+    }, [counetr])
+
+    // useEffect(() => {
+    //     const percentageCount = 2 / 100 * product?.price;
+    //     setPercentage(percentageCount)
+    // }, [])
+
+    const allCutFunction = () => {
+        setTotalPrice(0);
+        setWarningText("");
+        setCounter(1);
+        setImageIndex(0);
+        setPercentage(0)
+    }
 
     const Increase = () => {
-        if (counetr >= 5) {
+        if (counetr >= 10) {
+            return
+        }
+        if (product?.quantity <= counetr) {
+            setWarningText("Opps! Product Not Available")
+            setTimeout(() => {
+                setWarningText("");
+            }, 3000);
             return
         }
         setCounter(counetr + 1)
-        
+        const percentageCount = (2 / 100) * totalPrice;
+        setPercentage(percentageCount)
     }
+
     const decrease = () => {
         console.log(counetr)
         if (counetr <= 1) {
             return
         }
         setCounter(counetr - 1)
+        setWarningText("")
+        const percentageCount = (2 / 100) * totalPrice;
+        setPercentage(percentageCount)
     }
 
     return (
@@ -95,15 +123,20 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                                     <div onClick={Increase} className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer"> + </div>
                                 </div>
 
-                                <h2 className=" ms-8"> total Price :: <span className="text-red-600 text-xl font-bold">{totalPrice || product?.price} $</span> </h2>
+                                <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice || product?.price} $</span> </h2>
+
+                                <h2>Vat :: {percentage || 2 / 100 * product?.price} </h2>
                             </div>
+                            {
+                                warningText && <p className="bg-yellow-200 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
+                            }
 
 
                         </div>
 
                     </div>
-                    <div onClick={()=>setTotalPrice(0)} onMouseUp={()=>setCounter(1)} onMouseDown={()=>setQuantity(0)} className=" absolute z-30 top-3 right-3  flex justify-center items-center">
-                        <button onClick={() => setImageIndex(0)} className="bg-green-300 rounded-full w-10 h-10 font-bold hover:text-red-500 duration-500 text-xl">X</button>
+                    <div onClick={() => allCutFunction()} className=" absolute z-30 top-3 right-3  flex justify-center items-center">
+                        <button className="bg-green-300 rounded-full w-10 h-10 font-bold hover:text-red-500 duration-500 text-xl">X</button>
                     </div>
                 </form>
             </dialog>
