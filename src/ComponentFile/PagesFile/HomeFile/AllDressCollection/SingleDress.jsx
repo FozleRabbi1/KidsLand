@@ -94,9 +94,7 @@ const SingleDress = ({ data, index, setProduct }) => {
                                             <small className="bg-green-300 rounded-xl px-1 font-bold"> {data?.upload_date} </small>
                                         </span>
                                     </div>
-
                                 </div>
-
                             </div>
                     }
                 </div>

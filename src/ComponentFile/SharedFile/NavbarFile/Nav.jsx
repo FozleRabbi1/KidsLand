@@ -7,6 +7,7 @@ import { GiSelfLove } from "react-icons/gi";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import axios from "axios";
 import { AuthContext } from "../../AuthProvider/AuthContextProvider";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -89,7 +90,7 @@ const Nav = () => {
                                                 {
                                                     favouriteProducts.length === 0 ? <p className="text-center">data not available</p> :
                                                         <>
-                                                            <button>See All</button>
+                                                            <Link to={"/seeAll"}>See All</Link>
                                                             {
                                                                 favouriteProducts?.map(products =>
                                                                     <span key={products._id} className="  m-1 flex justify-between items-center ">

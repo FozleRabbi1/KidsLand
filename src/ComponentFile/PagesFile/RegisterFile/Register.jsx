@@ -13,7 +13,6 @@ const Register = () => {
     const { register, handleSubmit, watch, formState: { errors, touchedFields } } = useForm();
 
     const { createUserr, user, updateUserProfile } = useContext(AuthContext);
-    console.log(user)
 
     const onSubmit = data => {
         const { name, email, photoUrl, password, confirmPassword } = data;
@@ -27,6 +26,8 @@ const Register = () => {
 
         const formData = new FormData();
         formData.append("image", data.image[0]);
+        console.log(data.image[0])
+
         fetch(image_hosting_url, {
             method: "POST",
             body: formData

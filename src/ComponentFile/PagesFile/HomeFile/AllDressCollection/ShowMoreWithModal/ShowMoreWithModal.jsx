@@ -9,18 +9,13 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
     const [counetr, setCounter] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
     const [warningText, setWarningText] = useState("");
-    const [percentage, setPercentage] = useState(0)
+
 
     useEffect(() => {
-        setTotalPrice(product?.price * counetr)
-        // const percentageCount = 2 / 100 * totalPrice;
-        // setPercentage(percentageCount)
+        const price = product?.price * counetr
+        setTotalPrice(price)
     }, [counetr])
 
-    // useEffect(() => {
-    //     const percentageCount = 2 / 100 * product?.price;
-    //     setPercentage(percentageCount)
-    // }, [])
 
     const allCutFunction = () => {
         setTotalPrice(0);
@@ -29,6 +24,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
         setImageIndex(0);
         setPercentage(0)
     }
+
 
     const Increase = () => {
         if (counetr >= 10) {
@@ -42,19 +38,14 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
             return
         }
         setCounter(counetr + 1)
-        const percentageCount = (2 / 100) * totalPrice;
-        setPercentage(percentageCount)
     }
 
     const decrease = () => {
-        console.log(counetr)
         if (counetr <= 1) {
             return
         }
         setCounter(counetr - 1)
         setWarningText("")
-        const percentageCount = (2 / 100) * totalPrice;
-        setPercentage(percentageCount)
     }
 
     return (
@@ -97,7 +88,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                             <h3 className="font-bold text-lg"> {product?.title} </h3>
                             <div className="mt-4">
                                 <p className="text-justify">description :: {product?.description}</p>
-                                <p className="mt-2">price :: {product?.price} $/=</p>
+                                <p className="mt-2">price :: <span className="text-red-600 font-semibold">{product?.price}</span> $/=</p>
                                 <p>quantity :: {product?.quantity}</p>
                                 <p>uploaded date :: {product?.upload_date}</p>
                                 <p>brand :: {product?.brand}</p>
@@ -123,9 +114,9 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                                     <div onClick={Increase} className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer"> + </div>
                                 </div>
 
-                                <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice || product?.price} $</span> </h2>
+                                {/* <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice || product?.price} $</span> </h2> */}
+                                <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice === 0 ? product?.price : totalPrice } $</span> </h2>
 
-                                <h2>Vat :: {percentage || 2 / 100 * product?.price} </h2>
                             </div>
                             {
                                 warningText && <p className="bg-yellow-200 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
