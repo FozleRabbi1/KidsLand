@@ -12,6 +12,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { AuthContext } from '../../../AuthProvider/AuthContextProvider';
 import Skeleton from 'react-loading-skeleton';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -22,6 +23,7 @@ const SpacialCategories = () => {
     const [imageError, setImageError] = useState(false);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const { user } = useContext(AuthContext);
+
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value)
@@ -120,11 +122,14 @@ const SpacialCategories = () => {
 
                                 <div className="show-details absolute flex justify-center items-center">
                                     <div className='flex items-center'>
-                                        <button className="showMore">Show More</button>
+                                        <button className="showMore"> Show <br /> More</button>
                                         <span className=' w-10 flex justify-center'>
                                             <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-red-700 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
                                         </span>
-                                        <button className="showMore"> See All </button>
+
+                                        {/* <button  className="showMore"> show deatails </button> */}
+                                        <Link to={`/spacialDetails/${datas[activeIndexNo]?._id}`} className="showMore"> show deatails </Link>
+
                                     </div>
                                 </div>
                             </div>
@@ -150,8 +155,9 @@ const SpacialCategories = () => {
                                     </div>
                                     <div className='flex items-center '>
                                         <h2 className='me-6 flex items-center'>
-                                           <span className='text-xl'> {favouriteProducts?.length || 0}</span>
+                                            <span className='text-xl'> {favouriteProducts?.length || 0}</span>
                                             <GiSelfLove className="text-xl text-red-600 ms-1 " ></GiSelfLove>
+                                            <Link className="border ms-1 px-1 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
                                         </h2>
                                         <div className='flex items-center'>
                                             <button className='button' onClick={() => slidePrev()} > <AiOutlineArrowLeft className='font-bold' ></AiOutlineArrowLeft> </button>
@@ -188,6 +194,8 @@ const SpacialCategories = () => {
                                 </Swiper>
                             </div>
                         </div>
+
+
 
                     </div>
             }

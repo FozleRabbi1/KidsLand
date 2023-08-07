@@ -8,6 +8,7 @@ import { useContext, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { AuthContext } from "../AuthProvider/AuthContextProvider";
+import Footer from "../SharedFile/FooterFile/Footer";
 
 const Main = () => {
     const location = useLocation();
@@ -99,6 +100,12 @@ const Main = () => {
 
                 <Outlet></Outlet>
             </div>
+
+            
+            {
+                showNavAndFooter && <Footer></Footer>
+            }
+
 
             <ToastContainer />
 

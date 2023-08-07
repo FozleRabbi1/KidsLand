@@ -22,7 +22,6 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
         setWarningText("");
         setCounter(1);
         setImageIndex(0);
-        setPercentage(0)
     }
 
 
@@ -56,23 +55,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                         <div className="image-div w-full md:w-10/12">
 
                             <img className="image w-full h-[400px] " src={product.images[imageIndex]} alt="" />
-                            {/* <div>
-                                <ReactImageMagnify className="w-72" {...{
-                                    smallImage: {
-                                        alt: 'Wristwatch by Ted Baker London',
-                                        isFluidWidth: true,
-                                        src: `${product.images[imageIndex]}`,
-                                       
-                                    },
-                                    largeImage: {
-                                        src: `${product.images[imageIndex]}`,
-                                        width: 1000,
-                                        height: 1200,
-                                    },
-                                    // enlargedImagePosition: "over"
-                                }} />
-                            </div> */}
-
+ 
                             <div className="img-div flex justify-center">
                                 {
                                     product?.images.map((image, index) =>

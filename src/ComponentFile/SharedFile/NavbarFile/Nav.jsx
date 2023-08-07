@@ -90,7 +90,7 @@ const Nav = () => {
                                                 {
                                                     favouriteProducts.length === 0 ? <p className="text-center">data not available</p> :
                                                         <>
-                                                            <Link to={"/seeAll"}>See All</Link>
+                                                            <Link className="border w-6/12 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
                                                             {
                                                                 favouriteProducts?.map(products =>
                                                                     <span key={products._id} className="  m-1 flex justify-between items-center ">

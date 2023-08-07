@@ -90,7 +90,7 @@ const SingleDress = ({ data, index, setProduct }) => {
                                         <p className="">Brand : {data?.brand}</p>
                                         <p className="">Quantity : {data?.quantity}</p>
                                         <span className="flex justify-between items-center">
-                                            <p className="">Price : <span className="text-lg text-red-500">{data?.price}</span> $/=</p>
+                                            <p className="-mt-1">Price : <span className="text-lg text-red-500">{data?.price}</span> $/=</p>
                                             <small className="bg-green-300 rounded-xl px-1 font-bold"> {data?.upload_date} </small>
                                         </span>
                                     </div>

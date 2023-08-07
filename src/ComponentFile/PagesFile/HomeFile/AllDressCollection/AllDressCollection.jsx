@@ -10,7 +10,9 @@ import 'react-range-slider-input/dist/style.css';
 import useFavouriteProduct from '../../../HooksFile/useFavouriteProduct';
 import { GiSelfLove } from 'react-icons/gi';
 import ShowMoreWithModal from './ShowMoreWithModal/ShowMoreWithModal';
-
+import { FaRegHandPointLeft } from "react-icons/fa";
+import { AiOutlineCloseSquare } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const AllDressCollection = () => {
     const [getData, setGetData] = useState({})
@@ -102,8 +104,9 @@ const AllDressCollection = () => {
                         </select>
                     </div>
                     <div className='mt-2'>
-                        <i className="flex items-center">Favourite Product : <span className='font-bold text-xl ms-2'>{favouriteProducts?.length || 0}</span>
+                        <i className="flex items-center">Favourite : <span className='font-bold text-xl ms-2'>{favouriteProducts?.length || 0}</span>
                             <GiSelfLove className="text-xl text-red-600 ms-2 " ></GiSelfLove>
+                            <Link className="border w-4/12 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
                         </i>
                     </div>
                 </div>
@@ -112,11 +115,18 @@ const AllDressCollection = () => {
                         isLoading ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
                             <div>
                                 {
-                                    datas?.length === 0 ? <p className='text-red-500 text-center my-44 text-3xl font-semibold'>
-                                        {
-                                            productLength === 0 ? "No data Found Please Send Valid Requist" : "No More Data Back to Previous Page"
-                                        }
-                                    </p> :
+                                    datas?.length === 0 ?
+                                        <div className='text-red-500 text-center my-44 text-3xl font-semibold'>
+                                            {
+                                                productLength === 0 ? <>
+                                                    <p>No data Found, Please Send Valid Requist</p>
+                                                  <i className='flex justify-center'>  <AiOutlineCloseSquare className='text-6xl'></AiOutlineCloseSquare></i>
+                                                </> : <>
+                                                    <p>No More Data Back to <span className='text-red-700 font-bold italic'>Previous</span> Page</p>
+                                                    <i className='flex justify-center'> <FaRegHandPointLeft className='text-6xl '></FaRegHandPointLeft></i>
+                                                </>
+                                            }
+                                        </div> :
                                         <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
                                             {
                                                 datas?.map(data =>
@@ -144,6 +154,7 @@ const AllDressCollection = () => {
             {
                 product && <ShowMoreWithModal product={product} setProduct={setProduct}></ShowMoreWithModal>
             }
+            
         </div>
     );
 };

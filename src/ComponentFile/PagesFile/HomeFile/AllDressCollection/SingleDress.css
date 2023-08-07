@@ -1,6 +1,6 @@
 .single-main-div{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    border-radius: 10px;
+    border-radius: 2px;
     overflow: hidden;
     padding: 1px;
 }
@@ -11,7 +11,7 @@
 .image-icon-div .imgDiv{
     height: 100%;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 2px;
     overflow: hidden;
 }
 .image-icon-div .imgDiv .img{
@@ -19,7 +19,7 @@
     width: 100%;
     transition: all 1.5s;
     z-index: -99;
-    border-radius: 10px 10px 5px 5px ;
+    border-radius: 0px 0px 5px 5px ;
 
 }
 .image-icon-div .icon-div{
