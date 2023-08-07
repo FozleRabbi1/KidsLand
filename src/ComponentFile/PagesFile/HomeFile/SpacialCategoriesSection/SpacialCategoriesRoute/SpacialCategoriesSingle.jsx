@@ -58,7 +58,7 @@ const SpacialCategoriesSingle = () => {
         setWarningText("")
     }
 
-    const getMarqueValue = (data) =>{
+    const getMarqueValue = (data) => {
         setdata(data)
     }
 
@@ -72,27 +72,16 @@ const SpacialCategoriesSingle = () => {
             {
                 data &&
                 <div className="grid md:grid-cols-2 justify-center md:px-16 my-4">
-
-                    {/* <div className="img-div w-2/12">
-                        {
-                            images?.map((image, index) =>
-                                <img src={image} onClick={() => setImageIndex(index)} className={`${imageIndex === index ? "addStyle" : "removeStyle"} w-20 h-20 m-1`} alt="" />
-                            )
-                        }
-                    </div> */}
-
                     <div className="image-div w-full md:w-10/12 flex">
-
-
 
                         <div className="img-div flex items-center flex-col justify-center me-2">
                             {
                                 images?.map((image, index) =>
-                                    <img src={image} onClick={() => setImageIndex(index)} className={`  w-20 h-20 ${imageIndex === index ? "addStyle" : "removeStyle"} w-20 h-20 m-1`} alt="" />
+                                    <img src={image} onClick={() => setImageIndex(index)} className={` ${imageIndex === index ? "addStyle" : "removeStyle"} w-20 h-20 m-1`} alt="" />
                                 )
                             }
                         </div>
-                        <img className="image w-full h-[400px] " src={images && images[imageIndex]} alt="" />
+                        <img className="image w-[360px] h-[380px] " src={images && images[imageIndex]} alt="" />
 
                     </div>
 
@@ -128,8 +117,6 @@ const SpacialCategoriesSingle = () => {
                                 <div onClick={Increase} className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer"> + </div>
                             </div>
 
-                            {/* <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{data?.price} $</span> </h2> */}
-                            {/* <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice === "NaN" ? data?.price : totalPrice} $</span> </h2> */}
                             <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{isNaN(totalPrice) ? data?.price : totalPrice} $</span> </h2>
 
                         </div>
@@ -147,14 +134,14 @@ const SpacialCategoriesSingle = () => {
             <h2 className='bg-green-800 text-white text-center rounded-full w-6 h-6'>{datas?.length}</h2>
 
             <div>
-                <Marquee pauseOnHover>
+                <Marquee pauseOnHover delay={2}>
                     {
-                        datas?.map( (data, index) => 
-                            <div key={data} onClick={()=> getMarqueValue(data)} className='m-2 relative'>
+                        datas?.map((data, index) =>
+                            <div key={data} onClick={() => getMarqueValue(data)} className='m-2 relative'>
                                 <img className='h-44 w-44' src={data?.images[0]} alt="" />
                                 <p className='absolute top-0 right-1 bg-gray-800 text-white text-center rounded-full w-6 h-6'>{index + 1}</p>
                             </div>
-                            )
+                        )
                     }
                 </Marquee>
             </div>

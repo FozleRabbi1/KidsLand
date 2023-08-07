@@ -17,7 +17,7 @@ const SingleDress = ({ data, index, setProduct }) => {
     const addToFavourive = (datas, image) => {
         setLoading(true)
         const { _id, images, ...rest } = datas
-        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image };
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, favourite : true };
 
         if (favouriteProducts.length >= 5) {
             toast.warn("You Can't Save  More Then 5 Product", {

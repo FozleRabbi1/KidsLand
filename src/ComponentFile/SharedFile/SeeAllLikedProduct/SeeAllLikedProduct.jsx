@@ -7,10 +7,10 @@ const SeeAllLikedProduct = () => {
 
     return (
         <div>
-            <h2> All liked product </h2>
+            <h2 className='text-center text-2xl font-bold text-color py-10'> All liked product </h2>
 
-            <div className='flex' >
-                <div className='flex-1'>
+            <div className='' >
+                <div className=''>
                     {
                         favouriteProducts?.map(favProduct =>
                             <SingleFavProduct
@@ -19,9 +19,6 @@ const SeeAllLikedProduct = () => {
                             ></SingleFavProduct>
                         )
                     }
-                </div>
-                <div className='w-3/12'>
-                    control
                 </div>
             </div>
 

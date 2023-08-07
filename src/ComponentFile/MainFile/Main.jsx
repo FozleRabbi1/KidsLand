@@ -99,12 +99,13 @@ const Main = () => {
                 }
 
                 <Outlet></Outlet>
+                {
+                    showNavAndFooter && <Footer></Footer>
+                }
             </div>
 
-            
-            {
-                showNavAndFooter && <Footer></Footer>
-            }
+
+
 
 
             <ToastContainer />
