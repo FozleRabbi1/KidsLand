@@ -32,7 +32,6 @@ const AuthContextProvider = ({ children }) => {
 
     const userLogin = (email, password) => {
         setLoading(true);
-        console.log(email, password)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -40,9 +39,10 @@ const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            // console.log(currentUser)
+            setLoading(false)
         });
         return () => {
+            setLoading(false)
             return unsubscribe();
         }
     }, [])

@@ -12,7 +12,8 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { AuthContext } from '../../../AuthProvider/AuthContextProvider';
 import Skeleton from 'react-loading-skeleton';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -23,6 +24,8 @@ const SpacialCategories = () => {
     const [imageError, setImageError] = useState(false);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const { user } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
 
     const handleOptionChange = (e) => {
@@ -62,6 +65,23 @@ const SpacialCategories = () => {
     const SaveOnFavouriteFun = (product, imageUrl) => {
         const { _id, images, ...rest } = product
         const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email }
+        if (!user) {
+            Swal.fire({
+                title: 'Login First',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Go to login page',
+            }).then((result) => {
+                // setLoading(false)
+                if (result.isConfirmed) {
+                    navigate("/login")
+                    // setLoading(false)
+                }
+            })
+            return
+        }
 
         if (favouriteProducts.length >= 5) {
             toast.warn("You Can't Save More Then 5 Product", {

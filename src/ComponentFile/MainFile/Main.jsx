@@ -81,9 +81,7 @@ const Main = () => {
 
                                 {
                                     user ?
-                                        // <Activelink>
                                         <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>
-                                        // </Activelink>
                                         :
                                         <Link className="nav-text" to={"login"}>
                                             Login

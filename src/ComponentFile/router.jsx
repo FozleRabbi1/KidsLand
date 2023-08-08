@@ -7,6 +7,7 @@ import Register from "./PagesFile/RegisterFile/Register";
 import 'react-loading-skeleton/dist/skeleton.css'
 import SeeAllLikedProduct from "./SharedFile/SeeAllLikedProduct/SeeAllLikedProduct";
 import SpacialCategoriesSingle from "./PagesFile/HomeFile/SpacialCategoriesSection/SpacialCategoriesRoute/SpacialCategoriesSingle";
+import PrivateRoute from "./PagesFile/PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +18,12 @@ export const router = createBrowserRouter([
             { path: "login", element: <Login></Login> },
             { path: "register", element: <Register></Register> },
             { path: "seeAll", element: <SeeAllLikedProduct></SeeAllLikedProduct> },
-            {path : "spacialDetails/:id", element : <SpacialCategoriesSingle></SpacialCategoriesSingle> }
+            {
+                path: "spacialDetails/:id", element:
+                    // <PrivateRoute>
+                        <SpacialCategoriesSingle></SpacialCategoriesSingle>
+                    // </PrivateRoute>
+            }
         ],
     },
 ])

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthContextProvider";
 import axios from "axios";
 
@@ -11,22 +11,14 @@ const VITE_image_upload_key = import.meta.env.VITE_image_upload_key
 const Register = () => {
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${VITE_image_upload_key}`;
     const { register, handleSubmit, watch, formState: { errors, touchedFields } } = useForm();
-
-    const { createUserr, user, updateUserProfile } = useContext(AuthContext);
+    const { createUserr, user, updateUserProfile, loading } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onSubmit = data => {
         const { name, email, photoUrl, password, confirmPassword } = data;
 
-        // createUserr(email, password)
-        //     .then((data) => {
-        //         console.log(data)
-        //         // console.log(user)
-
-        //     })
-
         const formData = new FormData();
         formData.append("image", data.image[0]);
-        console.log(data.image[0])
 
         fetch(image_hosting_url, {
             method: "POST",
@@ -34,16 +26,16 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(imageData => {
-                // console.log(imageData)
                 if (imageData.success) {
                     const photoUrl = imageData.data.display_url;
-                    const userInfo = { email, name, photoUrl };
+                    const userInfo = { email, name, photoUrl: photoUrl };
 
                     createUserr(email, password)
-                        .then((data) => {
+                        .then(data => {
                             axios.post("http://localhost:5000/users", userInfo)
                                 .then(data => {
                                     console.log(data.data)
+                                    navigate("/")
                                 })
 
                             updateUserProfile(name, email, photoUrl)
@@ -76,7 +68,13 @@ const Register = () => {
 
                     {errors.exampleRequired && <span>This field is required</span>}
 
-                    <input className="p-1 rounded-md border text-lg font-semibold" type="submit" />
+                    {
+                        loading ? <div className="border-2 border-white py-1 rounded-md">
+                            <span className="loading loading-spinner loading-md p-1 block mx-auto"></span>
+                        </div> :
+                            <input className="p-1 rounded-md border text-lg font-semibold" type="submit" value="Register" />
+                    }
+
                     <Link to={"/login"} >Login</Link>
 
                 </form>
