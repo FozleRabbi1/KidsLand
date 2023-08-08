@@ -5,28 +5,29 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthContextProvider";
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors, touchedFields } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors, touchedFields } } = useForm();
     const { userLogin, loading } = useContext(AuthContext);
-    const [isLoading, setInLoading] = useState(false)
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(" ");
 
     const onSubmit = data => {
-        setInLoading(true)
+        setIsLoading(true)
         const { email, password } = data;
         userLogin(email, password)
             .then(res => {
-                setInLoading(false)
+                setIsLoading(false)
                 const user = res.user;
                 if (user) {
                     navigate(from, { replace: true })
                 }
+                reset();
             })
             .catch(err => {
                 setError(err.message)
-                setInLoading(false)
+                setIsLoading(false)
             })
     }
 
@@ -38,6 +39,9 @@ const Login = () => {
 
                 <form className="bg-green-400 p-4 mx-auto flex flex-col justify-center" onSubmit={handleSubmit(onSubmit)} >
                     <h2 className="py-2 text-center text-2xl font-bold"> <Link to={"/"}>Kids Land</Link> </h2>
+                    {
+                        error && <p className="text-red-500 text-center">{error}</p>
+                    }
                     <p>login here</p>
                     <input className="p-1 px-3 rounded-md  mt-2 w-full" {...register("email", { required: true })} />
                     <br />
@@ -54,11 +58,6 @@ const Login = () => {
                         </div> :
                             <input className="p-1 rounded-md border text-lg font-semibold" type="submit" value="Login" />
                     }
-
-                    {
-                        error && <p className="text-red-500">{error}</p>
-                    }
-
                     <Link to={"/register"} >register</Link>
 
                 </form>

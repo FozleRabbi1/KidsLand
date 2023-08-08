@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthContextProvider";
 import axios from "axios";
+import { useState } from "react";
 
 const VITE_image_upload_key = import.meta.env.VITE_image_upload_key
 // console.log(VITE_image_upload_key)
@@ -10,9 +11,13 @@ const VITE_image_upload_key = import.meta.env.VITE_image_upload_key
 
 const Register = () => {
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${VITE_image_upload_key}`;
-    const { register, handleSubmit, watch, formState: { errors, touchedFields } } = useForm();
+    const { register, handleSubmit,reset, watch, formState: { errors, touchedFields } } = useForm();
     const { createUserr, user, updateUserProfile, loading } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(" ");
+
+    console.log(error)
 
     const onSubmit = data => {
         const { name, email, photoUrl, password, confirmPassword } = data;
@@ -26,6 +31,7 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(imageData => {
+                setIsLoading(true)
                 if (imageData.success) {
                     const photoUrl = imageData.data.display_url;
                     const userInfo = { email, name, photoUrl: photoUrl };
@@ -34,14 +40,17 @@ const Register = () => {
                         .then(data => {
                             axios.post("http://localhost:5000/users", userInfo)
                                 .then(data => {
-                                    console.log(data.data)
+                                    setIsLoading(false)
+                                    reset();
                                     navigate("/")
                                 })
-
                             updateUserProfile(name, email, photoUrl)
                                 .then(() => { })
                         })
-
+                        .catch(err => {
+                            setIsLoading(false)
+                            setError(err.message)
+                        })
                 }
             })
     }
@@ -53,6 +62,9 @@ const Register = () => {
             <div className="w-4/12">
                 <form className="bg-green-400 p-4 mx-auto flex flex-col justify-center" onSubmit={handleSubmit(onSubmit)} >
                     <h2 className="py-2 text-center text-2xl font-bold"> <Link to={"/"}>Kids Land</Link> </h2>
+                    {
+                        error && <p className="text-red-500 text-center">{error}</p>
+                    }
                     <p>Register here</p>
                     <input className="p-1 px-3 rounded-md  mt-2 w-full" {...register("name", { required: true })} />
                     <br />
@@ -69,11 +81,13 @@ const Register = () => {
                     {errors.exampleRequired && <span>This field is required</span>}
 
                     {
-                        loading ? <div className="border-2 border-white py-1 rounded-md">
+                        isLoading ? <div className="border-2 border-white py-1 rounded-md">
                             <span className="loading loading-spinner loading-md p-1 block mx-auto"></span>
                         </div> :
                             <input className="p-1 rounded-md border text-lg font-semibold" type="submit" value="Register" />
                     }
+
+
 
                     <Link to={"/login"} >Login</Link>
 
