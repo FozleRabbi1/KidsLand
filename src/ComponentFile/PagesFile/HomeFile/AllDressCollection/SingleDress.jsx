@@ -7,17 +7,38 @@ import { AuthContext } from "../../../AuthProvider/AuthContextProvider";
 import axios from "axios";
 import useFavouriteProduct from "../../../HooksFile/useFavouriteProduct";
 import { toast } from "react-toastify";
+import { Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SingleDress = ({ data, index, setProduct }) => {
     const [imageError, setImageError] = useState(false);
     const { user } = useContext(AuthContext)
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct()
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const addToFavourive = (datas, image) => {
         setLoading(true)
         const { _id, images, ...rest } = datas
-        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, favourite : true };
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, favourite: true };
+
+        if (!user) {
+            Swal.fire({
+                title: 'Login First',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Go to login page',
+            }).then((result) => {
+                setLoading(false)
+                if (result.isConfirmed) {
+                    navigate("/login")
+                    setLoading(false)
+                }
+            })
+            return
+        }
 
         if (favouriteProducts.length >= 5) {
             toast.warn("You Can't Save  More Then 5 Product", {
@@ -82,15 +103,15 @@ const SingleDress = ({ data, index, setProduct }) => {
                 <div>
                     {
                         imageError ? <p className="text-center">No data Found</p> :
-                            <div className="px-2 py-1"> 
-                                <h2 className=" font-bold">{data?.title}</h2>
+                            <div className="px-2 py-1 ">
+                                <h2 className="font-semibold ">{data?.title}</h2>
 
-                                <div className="">
-                                    <div className="text-sm font-semibold">
-                                        <p className="">Brand : {data?.brand}</p>
+                                <div className="text-sm font-medium">
+                                    <div className="">
+                                        <p className=" -my-1">Brand : {data?.brand}</p>
                                         <p className="">Quantity : {data?.quantity}</p>
                                         <span className="flex justify-between items-center">
-                                            <p className="-mt-1">Price : <span className="text-lg text-red-500">{data?.price}</span> $/=</p>
+                                            <p className="-mt-1">Price : <span className="text-lg text-red-500">{data?.price}</span> <span className="italic">$</span> </p>
                                             <small className="bg-green-300 rounded-xl px-1 font-bold"> {data?.upload_date} </small>
                                         </span>
                                     </div>

@@ -3,6 +3,8 @@ import React from 'react';
 import { GiSelfLove } from 'react-icons/gi';
 import useFavouriteProduct from '../../HooksFile/useFavouriteProduct';
 import { useState } from 'react';
+import { MdDeleteForever } from "react-icons/md";
+import { AiFillEye, AiOutlineShoppingCart } from 'react-icons/ai';
 
 const SingleFavProduct = ({ data }) => {
     const [, favaouriteRefatch] = useFavouriteProduct();
@@ -38,8 +40,8 @@ const SingleFavProduct = ({ data }) => {
 
                 <div>
 
-                    <li onClick={() => deleteFunction(data?._id)} className='list-none rounded flex justify-center bg-red-500 cursor-pointer px-2'>
-                        <button className=' text-center text-black'>
+                    <li onClick={() => deleteFunction(data?._id)} className='list-none rounded flex justify-center bg-slate-300 hover:bg-red-200 duration-500 cursor-pointer px-2'>
+                        <button className=' text-center text-black flex justify-center items-center px-2 py-1 '>
                             {loadingId === data?._id ? (
 
                                 <div className='flex'>
@@ -47,17 +49,17 @@ const SingleFavProduct = ({ data }) => {
                                 </div>
 
                             ) : (
-                                "Delete"
+                                <MdDeleteForever className='text-2xl text-red-500'></MdDeleteForever>
                             )}
                         </button>
                     </li>
 
-                    <li className='list-none rounded bg-green-500  cursor-pointer my-2 px-2'>
-                        <button>Add To Card</button>
+                    <li className='list-none rounded bg-slate-300  cursor-pointer my-2 px-2 hover:bg-cyan-200 duration-500 '>
+                        <button className='flex justify-center items-center px-2 py-1'> <AiOutlineShoppingCart className='text-2xl text-color'></AiOutlineShoppingCart> </button>
                     </li>
 
-                    <li className='list-none rounded bg-cyan-600 cursor-pointer px-2'>
-                        <button> View Details </button>
+                    <li className='list-none rounded bg-slate-300 cursor-pointer px-2 hover:bg-green-200 duration-500'>
+                        <button className='flex justify-center items-center px-2 py-1'> <AiFillEye className='text-2xl text-green-600'></AiFillEye> </button>
                     </li>
                 </div>
 

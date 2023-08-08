@@ -122,13 +122,13 @@ const SpacialCategories = () => {
 
                                 <div className="show-details absolute flex justify-center items-center">
                                     <div className='flex items-center'>
-                                        <button className="showMore"> Show <br /> More</button>
+                                        <button className="showMore text-center"> Show <br /> All</button>
                                         <span className=' w-10 flex justify-center'>
                                             <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-red-700 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
                                         </span>
 
                                         {/* <button  className="showMore"> show deatails </button> */}
-                                        <Link to={`/spacialDetails/${datas[activeIndexNo]?._id}`} className="showMore"> show deatails </Link>
+                                        <Link to={`/spacialDetails/${datas[activeIndexNo]?._id}`} className="showMore text-center"> show <br /> deatails </Link>
 
                                     </div>
                                 </div>
@@ -141,15 +141,15 @@ const SpacialCategories = () => {
                                 <div className=' flex justify-between items-center mb-2'>
 
                                     <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10`}>
-                                        <h2>{datas.length}/ {activeIndexNo + 1}</h2>
+                                        <h2 className='font-semibold'>{datas.length} / {activeIndexNo + 1}</h2>
                                         <select
                                             value={selectedOption}
                                             onChange={handleOptionChange}
-                                            className="px-4 ms-2 button rounded  text-gray-800"
+                                            className=" ms-2 button button2 rounded  text-gray-800"
                                         >
-                                            <option className='ms-2' value="All">All</option>
-                                            <option className='ms-2' value="Boy">Boy</option>
-                                            <option className='ms-2' value="Girl">Girl</option>
+                                            <option className='' value="All">All</option>
+                                            <option className='' value="Boy">Boy</option>
+                                            <option className='' value="Girl">Girl</option>
                                         </select>
 
                                     </div>

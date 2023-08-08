@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useSpacialCategoriesData from '../../../../HooksFile/useSpacialCategoriesData';
 import Marquee from 'react-fast-marquee';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const SpacialCategoriesSingle = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -109,12 +110,12 @@ const SpacialCategoriesSingle = () => {
                             </p>
                         </div>
 
-                        <div className="flex items-center mt-4 ">
+                        <div className="flex items-center mt-2 ">
 
                             <div className="flex w-4/12 justify-between">
-                                <div onClick={decrease} className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer">-</div>
-                                <div className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer"> {counetr} </div>
-                                <div onClick={Increase} className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer"> + </div>
+                                <div onClick={decrease} className="w-10 h-10 text-2xl bg-slate-200 flex items-center justify-center cursor-pointer">-</div>
+                                <div className="w-10 h-10 text-2xl bg-slate-200 flex items-center justify-center cursor-pointer"> {counetr} </div>
+                                <div onClick={Increase} className="w-10 h-10 text-2xl bg-slate-200 flex items-center justify-center cursor-pointer"> + </div>
                             </div>
 
                             <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{isNaN(totalPrice) ? data?.price : totalPrice} $</span> </h2>
@@ -123,6 +124,8 @@ const SpacialCategoriesSingle = () => {
                         {
                             warningText && <p className="bg-yellow-200 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
                         }
+
+                        <span className="flex items-center mt-4 border-dotted border-2 w-3/12 cursor-pointer justify-center border-sky-500 px-2 rounded bg-sky-100 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
 
 
                     </div>

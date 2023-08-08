@@ -10,16 +10,21 @@ const SeeAllLikedProduct = () => {
             <h2 className='text-center text-2xl font-bold text-color py-10'> All liked product </h2>
 
             <div className='' >
-                <div className=''>
-                    {
-                        favouriteProducts?.map(favProduct =>
-                            <SingleFavProduct
-                                key={favProduct._id}
-                                data={favProduct}
-                            ></SingleFavProduct>
-                        )
-                    }
-                </div>
+
+                {
+                    favouriteProducts != 0 ? <div className=''>
+                        {
+                            favouriteProducts?.map(favProduct =>
+                                <SingleFavProduct
+                                    key={favProduct._id}
+                                    data={favProduct}
+                                ></SingleFavProduct>
+                            )
+                        }
+                    </div>
+                        : <h2 className='text-center text-red-500 py-16 text-3xl font-bold italic'> Liked Data Not Available </h2>
+                }
+
             </div>
 
 

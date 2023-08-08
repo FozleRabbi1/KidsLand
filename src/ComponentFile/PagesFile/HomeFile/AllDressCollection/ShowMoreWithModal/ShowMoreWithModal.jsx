@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import './ShowMoreWithModal.css'
 import ReactImageMagnify from 'react-image-magnify';
 import { toast } from "react-toastify";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const ShowMoreWithModal = ({ product, setProduct }) => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -104,6 +105,8 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                             {
                                 warningText && <p className="bg-yellow-200 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
                             }
+
+                            <span className="flex items-center mt-3 border-dotted border-2 cursor-pointer w-4/12 justify-center border-sky-500 px-2 rounded bg-sky-100 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
 
 
                         </div>
