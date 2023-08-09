@@ -1,0 +1,18 @@
+.main-form-div{
+    height: 100vh;
+    background-image: url("https://i0.wp.com/i.pinimg.com/originals/5c/95/8c/5c958c1aa1c3d439a2b593b4e770707b.gif");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-position: center; */
+    /* background-size: cover; */
+}
+
+.main-form-div .register-form-div{
+    outline:  4px solid rgb(34, 119, 231);
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+}
+.main-form-div div form input{
+    border: 1px solid gray;
+}

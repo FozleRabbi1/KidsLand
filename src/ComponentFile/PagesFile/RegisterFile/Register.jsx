@@ -4,15 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthContextProvider";
 import axios from "axios";
 import { useState } from "react";
+import '../../../ComponentFile/LoginRegister.css'
+import SocialLogin from "../../SharedFile/SocialLogin/SocialLogin";
 
 const VITE_image_upload_key = import.meta.env.VITE_image_upload_key
 // console.log(VITE_image_upload_key)
-
-
 const Register = () => {
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${VITE_image_upload_key}`;
-    const { register, handleSubmit,reset, watch, formState: { errors, touchedFields } } = useForm();
-    const { createUserr, user, updateUserProfile, loading } = useContext(AuthContext);
+    const { register, handleSubmit, reset, watch, formState: { errors, touchedFields } } = useForm();
+    const { createUserr, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(" ");
@@ -20,7 +20,7 @@ const Register = () => {
     console.log(error)
 
     const onSubmit = data => {
-        const { name, email, photoUrl, password, confirmPassword } = data;
+        const { name, email,  password } = data;
 
         const formData = new FormData();
         formData.append("image", data.image[0]);
@@ -35,11 +35,10 @@ const Register = () => {
                 if (imageData.success) {
                     const photoUrl = imageData.data.display_url;
                     const userInfo = { email, name, photoUrl: photoUrl };
-
                     createUserr(email, password)
-                        .then(data => {
+                        .then(() => {
                             axios.post("http://localhost:5000/users", userInfo)
-                                .then(data => {
+                                .then(() => {
                                     setIsLoading(false)
                                     reset();
                                     navigate("/")
@@ -57,46 +56,32 @@ const Register = () => {
 
 
     return (
-        <div className="main-form-div bg-yellow-400">
-
-            <div className="w-4/12">
-                <form className="bg-green-400 p-4 mx-auto flex flex-col justify-center" onSubmit={handleSubmit(onSubmit)} >
-                    <h2 className="py-2 text-center text-2xl font-bold"> <Link to={"/"}>Kids Land</Link> </h2>
-                    {
-                        error && <p className="text-red-500 text-center">{error}</p>
-                    }
-                    <p>Register here</p>
-                    <input className="p-1 px-3 rounded-md  mt-2 w-full" {...register("name", { required: true })} />
-                    <br />
-                    <input className="p-1 px-3 rounded-md  mt-2 w-full" {...register("email", { required: true })} />
-                    <br />
-                    <input className="p-1 px-3 rounded-md  mt-2 w-full" {...register("password", { required: true })} />
-                    <br />
-                    <input className="p-1 px-3 rounded-md  mt-2 w-full" {...register("confirmPassword", { required: true })} />
-
-                    <br />
-                    <input type="file"  {...register("image", { required: true })} className="file-input file-input-bordered w-full max-w-xs text-black" />
-                    <br />
-
-                    {errors.exampleRequired && <span>This field is required</span>}
-
-                    {
-                        isLoading ? <div className="border-2 border-white py-1 rounded-md">
-                            <span className="loading loading-spinner loading-md p-1 block mx-auto"></span>
-                        </div> :
-                            <input className="p-1 rounded-md border text-lg font-semibold" type="submit" value="Register" />
-                    }
-
-
-
-                    <Link to={"/login"} >Login</Link>
-
-                </form>
+        <div className="main-form-div font-serif ">
+            <div className="w-7/12 rounded-sm -mt-20 register-form-div px-6 py-10">
+                <h2 className=" text-center"> Create A New Accout For <Link className=" text-2xl font-bold text-sky-400" to={"/"}>Kids Land!</Link> </h2>
+                <small className="-mt-3 mb-5 text-center block ">Come join the kids Land Community! Lets setup your Account. Already have One?  <Link to={"/login"} className="text-xl italic text-color font-bold" >Sign in here...</Link>  </small>
+                <div className="flex">
+                    <div className="w-4/12  ">
+                        <SocialLogin></SocialLogin>
+                    </div>
+                    <form className=" mx-auto flex flex-col justify-center flex-1 ps-6  border-l-2 border-indigo-500" onSubmit={handleSubmit(onSubmit)} >
+                        {
+                            error && <p className="text-red-500 text-center">{error}</p>
+                        }
+                        <input onMouseDown={() => setError(" ")} className="p-1 px-3 text-black rounded-md  mt-2 w-full" placeholder="Full Name" {...register("name", { required: true })} />
+                        <input onMouseDown={() => setError(" ")} className="p-1 px-3 text-black rounded-md  mt-2 w-full" placeholder="Email" {...register("email", { required: true })} />
+                        <input onMouseDown={() => setError(" ")} className="p-1 px-3 text-black rounded-md  mt-2 w-full" placeholder="Password" {...register("password", { required: true })} />
+                        <input type="file"  {...register("image", { required: true })} className="my-2 border-none rounded-md w-6/12 max-w-xs text-black" />
+                        {errors.exampleRequired && <span>This field is required</span>}
+                        {
+                            isLoading ? <div className="border-2 border-white py-1 rounded-md">
+                                <span className="loading loading-spinner loading-md p-1 block mx-auto"></span>
+                            </div> :
+                                <input className="p-1 rounded-md border text-lg font-semibold cursor-pointer hover:bg-green-300 hover:text-black duration-500" type="submit" value="Register" />
+                        }
+                    </form>
+                </div>
             </div>
-
-
-
-
         </div>
     );
 };
