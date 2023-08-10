@@ -7,10 +7,12 @@
     background-color: rgb(9,170,38);
 }
 .text-color{
-    color: rgb(50,150,250);
+    color: rgb(3, 122, 241);
+    /* color: rgb(50,150,250); */
 }
 .local-text{
-    color: rgb(20,50,100);
+    color: rgb(3, 17, 143);
+    /* color: rgb(20,50,100); */
     /* color: red; */
     /* font-size: 20px; */
 }

@@ -20,7 +20,7 @@ const SingleDress = ({ data, index, setProduct }) => {
     const addToFavourive = (datas, image) => {
         setLoading(true)
         const { _id, images, ...rest } = datas
-        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, favourite: true };
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image };
 
         if (!user) {
             Swal.fire({
@@ -86,8 +86,7 @@ const SingleDress = ({ data, index, setProduct }) => {
                                 loading ? <div className="bg-red-500"> <span className="loading style loading-infinity loading-md"></span></div>
                                     :
                                     <span onClick={() => addToFavourive(data, data.images[0])} className="flex justify-center items-center text-white hover:text-sky-600 duration-700">
-                                        <GiSelfLove
-                                            className="text-xl " ></GiSelfLove>
+                                        <GiSelfLove className="text-xl " ></GiSelfLove>
                                     </span>
                             }
 

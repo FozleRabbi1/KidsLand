@@ -64,7 +64,7 @@ const SpacialCategories = () => {
 
     const SaveOnFavouriteFun = (product, imageUrl) => {
         const { _id, images, ...rest } = product
-        const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email }
+        const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email, favourite: true }
         if (!user) {
             Swal.fire({
                 title: 'Login First',
@@ -111,6 +111,7 @@ const SpacialCategories = () => {
             <h2 className='text-center text-2xl font-bold text-color pb-10'>Spacial Cullection</h2>
             {
                 isLoading ?
+
                     <div className='flex gap-10 items-center' >
                         <div className='w-6/12'><Skeleton width={"82%"} height={550} ></Skeleton></div>
                         <div className='w-6/12 flex gap-10 justify-between'>
@@ -119,6 +120,7 @@ const SpacialCategories = () => {
                             <Skeleton width={190} height={250} ></Skeleton>
                         </div>
                     </div>
+
                     :
 
                     <div className='spacial-main-div '>
@@ -214,9 +216,6 @@ const SpacialCategories = () => {
                                 </Swiper>
                             </div>
                         </div>
-
-
-
                     </div>
             }
 

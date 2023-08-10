@@ -5,10 +5,13 @@ import useFavouriteProduct from '../../HooksFile/useFavouriteProduct';
 import { useState } from 'react';
 import { MdDeleteForever } from "react-icons/md";
 import { AiFillEye, AiOutlineShoppingCart } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const SingleFavProduct = ({ data }) => {
     const [, favaouriteRefatch] = useFavouriteProduct();
     const [loadingId, setLoadingId] = useState("");
+
+    console.log(data)
 
     const deleteFunction = (id) => {
         setLoadingId(id)
@@ -57,9 +60,9 @@ const SingleFavProduct = ({ data }) => {
                     <li className='list-none rounded bg-slate-300  cursor-pointer my-2 px-2 hover:bg-cyan-200 duration-500 '>
                         <button className='flex justify-center items-center px-2 py-1'> <AiOutlineShoppingCart className='text-2xl text-color'></AiOutlineShoppingCart> </button>
                     </li>
-
-                    <li className='list-none rounded bg-slate-300 cursor-pointer px-2 hover:bg-green-200 duration-500'>
-                        <button className='flex justify-center items-center px-2 py-1'> <AiFillEye className='text-2xl text-green-600'></AiFillEye> </button>
+                    {/* to={`/spacialDetails/${data.mainId}` */}
+                    <li  className='list-none rounded bg-slate-300 cursor-pointer px-2 hover:bg-green-200 duration-500'>
+                        <Link to={`/spacialDetails/${data.mainId}`} className='flex justify-center items-center px-2 py-1'> <AiFillEye className='text-2xl text-green-600'></AiFillEye> </Link>
                     </li>
                 </div>
 

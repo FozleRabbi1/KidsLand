@@ -1,10 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useSpacialCategoriesData from '../../../../HooksFile/useSpacialCategoriesData';
 import Marquee from 'react-fast-marquee';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import useFavouriteProduct from '../../../../HooksFile/useFavouriteProduct';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../../../AuthProvider/AuthContextProvider';
+import axios from 'axios';
+import { GiSelfLove } from 'react-icons/gi';
 
 const SpacialCategoriesSingle = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -15,6 +21,9 @@ const SpacialCategoriesSingle = () => {
     const [data, setdata] = useState({})
     const [datas] = useSpacialCategoriesData("All");
     const { id } = useParams();
+    const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
+    const { user } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
 
 
     const { data: datass = {}, refetch } = useQuery({
@@ -27,7 +36,6 @@ const SpacialCategoriesSingle = () => {
         },
     });
     const { images } = data
-
 
 
     useEffect(() => {
@@ -61,6 +69,66 @@ const SpacialCategoriesSingle = () => {
 
     const getMarqueValue = (data) => {
         setdata(data)
+    }
+
+    const addToFavourive = (datas, image) => {
+        setLoading(true)
+        const { _id, images, ...rest } = datas
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image };
+
+        if (!user) {
+            Swal.fire({
+                title: 'Login First',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Go to login page',
+            }).then((result) => {
+                setLoading(false)
+                if (result.isConfirmed) {
+                    navigate("/login")
+                    setLoading(false)
+                }
+            })
+            return
+        }
+
+        if (favouriteProducts.length >= 5) {
+            toast.warn("You Can't Save  More Then 5 Product", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            setLoading(false)
+            return
+        }
+        axios.post("http://localhost:5000/favouriteProducts", productData)
+            .then(data => {
+                console.log(data.data)
+                if(data.data.exist){
+                    setLoading(false)
+                    toast.warn(`${data.data.message}`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                }
+                if (data.data.acknowledged) {
+                    setLoading(false)
+                    favaouriteRefatch()
+                }
+            })
     }
 
 
@@ -125,7 +193,24 @@ const SpacialCategoriesSingle = () => {
                             warningText && <p className="bg-yellow-200 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
                         }
 
-                        <span className="flex items-center mt-4 border-dotted border-2 w-3/12 cursor-pointer justify-center border-sky-500 px-2 rounded bg-sky-100 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
+
+                        <div className='flex items-center mt-4'>
+                            <span className="flex items-center  border-dotted border-2 w-3/12 cursor-pointer justify-center border-sky-500 px-2 rounded bg-sky-100 hover:bg-sky-300 duration-500 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
+
+                            <Link className="w-3/12 px-3 block border-dotted border-2 text-center rounded bg-gray-400 hover:bg-gray-700 hover:text-white duration-500 font-semibold ms-5" to={"/seeAll"}>Go to Favourite</Link>
+
+                            <span className=' ms-5'>
+                                {
+                                    loading ? <div className=""> <span className="loading text-black loading-infinity loading-md"></span></div>
+                                        :
+                                        <span onClick={() => addToFavourive(data, data.images[imageIndex])} className="flex justify-center items-center text-white cursor-pointer">
+                                            <GiSelfLove className="text-2xl text-red-500 " ></GiSelfLove>
+                                        </span>
+                                }
+                            </span>
+                        </div>
+
+
 
 
                     </div>

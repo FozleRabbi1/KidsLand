@@ -62,32 +62,37 @@ const AllDressCollection = () => {
         <div className='mt-16'>
             <h2 className='text-center text-2xl font-bold text-color pb-10'>All Cullection</h2>
             <div className='flex'>
+
                 <div className="conterol-div w-2/12 pe-3">
                     <h2 className='text-center mb-4 text-color text-xl font-bold'>control panel</h2>
                     <div className='my-2'>
-                        <h2>Total Product = <span className='font-semibold' >{productNumber}</span> </h2>
-                        <h2>Find Product = <span className='font-semibold' >{productLength}</span> </h2>
-                        <h2>Show Product =
+                        <h2 className='flex border-b-2 mb-2'> <span>Total Product =</span> <span className='font-semibold ' >{productNumber}</span> </h2>
+                        <h2 className='flex border-b-2 mb-2'> <span>Find Product =</span> <span className='font-semibold ' >{productLength}</span> </h2>
+
+                        <h2  className='flex border-b-2 mb-4'>
+                            <span>Show Product =</span>
                             {datas?.length === 0 ?
                                 <span className='text-red-500 text-xl font-bold'>{datas?.length}</span>
                                 :
-                                <span className='font-semibold' >{datas?.length}</span>} / page</h2>
+                                <span className='font-semibold' >{datas?.length}</span>} / page
+                        </h2>
+
                     </div>
 
                     <div>
                         <RangeSlider min={0} max={150} step={5} onInput={setValue} />
-                        <div className='flex justify-between mt-2'>
+                        <div className='flex justify-between border-b-2'>
                             <span> {value[0]} $</span>
                             <span> --- </span>
                             <span>{value[1]} $</span>
                         </div>
                     </div>
 
-                    <div className='flex justify-between mt-2'>
+                    <div className='flex justify-between mt-2 border-b-2 pb-1'>
                         <select
                             value={selectedOption}
                             onChange={handleOptionChange}
-                            className="bg-green-400  mt-2 button rounded  text-gray-800"
+                            className="bg-sky-400  mt-2 button rounded  text-gray-800"
                         >
                             <option className='ms-2' value="All">All</option>
                             <option className='ms-2' value="Boy">Boy</option>
@@ -95,21 +100,23 @@ const AllDressCollection = () => {
                         </select>
 
                         <select
-                            // value={selectedOption2}
                             onChange={handleOptionChange2}
-                            className="bg-green-400  mt-2 button rounded  text-gray-800"
+                            className="bg-sky-400 mt-2 button rounded  text-gray-800"
                         >
                             <option className='ms-2' value="ascending ">Low to high</option>
                             <option className='ms-2' value="descending ">High to low</option>
                         </select>
                     </div>
-                    <div className='mt-2'>
+
+                    <div className='mt-2 border-b-2'>
                         <i className="flex items-center">Favourite : <span className='font-bold text-xl ms-2'>{favouriteProducts?.length || 0}</span>
                             <GiSelfLove className="text-xl text-red-600 ms-2 " ></GiSelfLove>
                             <Link className="border w-4/12 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
                         </i>
                     </div>
                 </div>
+
+
                 <div className=' w-10/12'>
                     {
                         isLoading ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
@@ -120,7 +127,7 @@ const AllDressCollection = () => {
                                             {
                                                 productLength === 0 ? <>
                                                     <p>No data Found, Please Send Valid Requist</p>
-                                                  <i className='flex justify-center'>  <AiOutlineCloseSquare className='text-6xl'></AiOutlineCloseSquare></i>
+                                                    <i className='flex justify-center'>  <AiOutlineCloseSquare className='text-6xl'></AiOutlineCloseSquare></i>
                                                 </> : <>
                                                     <p>No More Data Back to <span className='text-red-700 font-bold italic'>Previous</span> Page</p>
                                                     <i className='flex justify-center'> <FaRegHandPointLeft className='text-6xl '></FaRegHandPointLeft></i>
@@ -154,7 +161,7 @@ const AllDressCollection = () => {
             {
                 product && <ShowMoreWithModal product={product} setProduct={setProduct}></ShowMoreWithModal>
             }
-            
+
         </div>
     );
 };
