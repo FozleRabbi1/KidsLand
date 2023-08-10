@@ -110,8 +110,7 @@ const SpacialCategoriesSingle = () => {
         }
         axios.post("http://localhost:5000/favouriteProducts", productData)
             .then(data => {
-                console.log(data.data)
-                if(data.data.exist){
+                if (data.data.exist) {
                     setLoading(false)
                     toast.warn(`${data.data.message}`, {
                         position: "top-center",
@@ -123,6 +122,7 @@ const SpacialCategoriesSingle = () => {
                         progress: undefined,
                         theme: "dark",
                     });
+                    return
                 }
                 if (data.data.acknowledged) {
                     setLoading(false)

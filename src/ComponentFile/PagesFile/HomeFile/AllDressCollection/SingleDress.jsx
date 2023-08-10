@@ -56,6 +56,20 @@ const SingleDress = ({ data, index, setProduct }) => {
         }
         axios.post("http://localhost:5000/favouriteProducts", productData)
             .then(data => {
+                if (data.data.exist) {
+                    setLoading(false)
+                    toast.warn(`${data.data.message}`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                    return
+                }
                 if (data.data.acknowledged) {
                     setLoading(false)
                     favaouriteRefatch()
