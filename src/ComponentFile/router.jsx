@@ -8,6 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import SeeAllLikedProduct from "./SharedFile/SeeAllLikedProduct/SeeAllLikedProduct";
 import SpacialCategoriesSingle from "./PagesFile/HomeFile/SpacialCategoriesSection/SpacialCategoriesRoute/SpacialCategoriesSingle";
 import PrivateRoute from "./PagesFile/PrivateRoute/PrivateRoute";
+import ContactUs from "./PagesFile/ContactUsFile/ContactUs";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,9 @@ export const router = createBrowserRouter([
                     // <PrivateRoute>
                         <SpacialCategoriesSingle></SpacialCategoriesSingle>
                     // </PrivateRoute>
+            },
+            {
+                path : "contactUs", element : <ContactUs></ContactUs>
             }
         ],
     },

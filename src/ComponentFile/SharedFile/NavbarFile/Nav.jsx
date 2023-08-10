@@ -75,9 +75,10 @@ const Nav = () => {
                                         <Activelink to={"blog"}>
                                             Blog
                                         </Activelink>
-
-
-
+                                        
+                                        <Activelink to={"contactUs"}>
+                                            contact-Us
+                                        </Activelink>
 
 
                                         <div className="dropdown dropdown-hover">
@@ -101,36 +102,21 @@ const Nav = () => {
                                                                             loading ? "L.." :
                                                                                 <RiDeleteBin2Fill onClick={() => deleteFunction(products._id)} className="text-2xl cursor-pointer text-red-400 hover:text-red-700 duration-500"></RiDeleteBin2Fill>
                                                                         }
-
-
-
                                                                     </span>
                                                                 )
                                                             }
                                                         </>
                                                 }
-
-
-
                                             </ul>
-
                                         </div>
-
                                         {
                                             user ?
-                                                // <Activelink>
                                                 <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>
-                                                // </Activelink>
                                                 :
                                                 <Activelink to={"login"}>
                                                     Login
                                                 </Activelink>
                                         }
-
-
-
-
-
 
 
                                     </div>

@@ -26,16 +26,12 @@ const Main = () => {
 
     return (
         <div style={{ backgroundColor: "rgba(50,150,250,0.1)", height: "100%" }} className="local-text ">
-
             {
                 showNavAndFooter && <Nav></Nav>
             }
-
             <div className="Main-div">
-
                 {
                     showNavAndFooter &&
-
                     <>
                         <div>
                             <div className="flex justify-between items-center py-2">
@@ -55,18 +51,14 @@ const Main = () => {
                                         {
                                             user ? user?.email : "user@gmail.com"
                                         }
-
                                         {
-                                            user && <img className="w-12 h-12 rounded-full" src={user?.photoURL} alt="" />
-
+                                            user && <img className="w-12 h-12 rounded-full ms-2" src={user?.photoURL} alt="" />
                                         }
                                     </span>
                                     <small className="block md:hidden"> +001-111-222-333</small>
                                 </span>
-
                             </div>
                         </div>
-
                         <div style={{ backgroundColor: "rgba(50,140,250,0.8)" }} className=" flex justify-center py-4 px-2">
                             <div className=" flex items-baseline   space-x-6">
 
@@ -74,9 +66,12 @@ const Main = () => {
                                     Home
                                 </Link>
 
-
                                 <Link className="nav-text" to={"blog"}>
                                     Blog
+                                </Link>
+
+                                <Link className="nav-text" to={"contactUs"}>
+                                    contact-Us
                                 </Link>
 
                                 {
@@ -88,26 +83,16 @@ const Main = () => {
                                         </Link>
                                 }
 
-
-
-
                             </div>
                         </div>
                     </>
                 }
-
                 <Outlet></Outlet>
                 {
                     showNavAndFooter && <Footer></Footer>
                 }
             </div>
-
-
-
-
-
             <ToastContainer />
-
         </div>
     );
 };
