@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 const useFavouriteHook = (favouriteData) => {
+
+    //=========================>>>>> this function ont working ,,,, this is just testing purpose
    
     console.log(favouriteData)
     const { data: favouriteProducts = [], refetch: favaouriteRefatch, isLoading } = useQuery({

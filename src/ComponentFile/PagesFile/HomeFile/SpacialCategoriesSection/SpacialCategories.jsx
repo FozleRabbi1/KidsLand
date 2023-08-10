@@ -139,7 +139,7 @@ const SpacialCategories = () => {
                     :
 
                     <div className='spacial-main-div '>
-                        <div className="show-details-div w-9/12 overflow-hidden" >
+                        <div  data-aos="fade-right" className="show-details-div w-9/12 overflow-hidden" >
 
                             <div className=' relative h-full '>
                                 {imageError ? (
@@ -173,7 +173,7 @@ const SpacialCategories = () => {
 
                         </div>
 
-                        <div className="slider w-10/12 md:w-7/12">
+                        <div data-aos="fade-left" className="slider w-10/12 md:w-7/12">
                             <div>
                                 <div className=' flex justify-between items-center mb-2'>
 

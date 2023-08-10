@@ -79,7 +79,8 @@ const SingleDress = ({ data, index, setProduct }) => {
 
     return (
         <div>
-            <div className="single-main-div">
+            <div data-aos="fade-up"
+                data-aos-duration="2000" className="single-main-div">
 
                 <div className="image-icon-div">
                     <div className="imgDiv">

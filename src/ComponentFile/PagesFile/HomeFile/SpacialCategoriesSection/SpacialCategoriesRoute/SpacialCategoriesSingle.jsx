@@ -210,9 +210,6 @@ const SpacialCategoriesSingle = () => {
                             </span>
                         </div>
 
-
-
-
                     </div>
 
                 </div>

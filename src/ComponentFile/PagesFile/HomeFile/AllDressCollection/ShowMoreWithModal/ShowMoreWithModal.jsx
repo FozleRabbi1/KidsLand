@@ -3,6 +3,12 @@ import './ShowMoreWithModal.css'
 import ReactImageMagnify from 'react-image-magnify';
 import { toast } from "react-toastify";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useContext } from "react";
+import { AuthContext } from "../../../../AuthProvider/AuthContextProvider";
+import Swal from "sweetalert2";
+import useFavouriteProduct from "../../../../HooksFile/useFavouriteProduct";
+import axios from "axios";
+import { GiSelfLove } from "react-icons/gi";
 
 const ShowMoreWithModal = ({ product, setProduct }) => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -10,7 +16,16 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
     const [counetr, setCounter] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
     const [warningText, setWarningText] = useState("");
+    const { user } = useContext(AuthContext);
+    const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
+    const [loading, setLoading] = useState(false);
+    const [errorText, setErrorText] = useState("")
 
+    useEffect(() => {
+        setTimeout(() => {
+            setErrorText("")
+        }, 4000);
+    }, [errorText])
 
     useEffect(() => {
         const price = product?.price * counetr
@@ -23,8 +38,8 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
         setWarningText("");
         setCounter(1);
         setImageIndex(0);
+        setErrorText(" ")
     }
-
 
     const Increase = () => {
         if (counetr >= 10) {
@@ -48,6 +63,68 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
         setWarningText("")
     }
 
+
+    const addToFavourive = (product, imageUrl) => {
+        setLoading(true)
+        const { _id, images, ...rest } = product
+        const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email, favourite: true }
+        if (!user) {
+            Swal.fire({
+                title: 'Login First',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Go to login page',
+            }).then((result) => {
+                setLoading(false)
+                if (result.isConfirmed) {
+                    navigate("/login")
+                    setLoading(false)
+                }
+            })
+            return
+        }
+        if (favouriteProducts.length >= 5) {
+            toast.warn("You Can't Save More Then 5 Product", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            setLoading(false)
+            return
+        }
+        axios.post("http://localhost:5000/favouriteProducts", productData)
+            .then(data => {
+                if (data.data.exist) {
+                    setLoading(false)
+                    setErrorText(data.data.message)
+                    toast.warn(`${data.data.message}`, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                    return
+                }
+                if (data.data.acknowledged) {
+                    setLoading(false)
+                    favaouriteRefatch()
+                }
+            })
+
+    }
+
+
     return (
         <div>
             <dialog id="show_more_with_modal" className="modal">
@@ -56,7 +133,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                         <div className="image-div w-full md:w-10/12">
 
                             <img className="image w-full h-[400px] " src={product.images[imageIndex]} alt="" />
- 
+
                             <div className="img-div flex justify-center">
                                 {
                                     product?.images.map((image, index) =>
@@ -99,14 +176,29 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                                 </div>
 
                                 {/* <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice || product?.price} $</span> </h2> */}
-                                <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice === 0 ? product?.price : totalPrice } $</span> </h2>
+                                <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice === 0 ? product?.price : totalPrice} $</span> </h2>
 
                             </div>
                             {
                                 warningText && <p className="bg-yellow-200 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
                             }
 
-                            <span className="flex items-center mt-3 border-dotted border-2 cursor-pointer w-4/12 justify-center border-sky-500 px-2 rounded bg-sky-100 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
+                            <div className="flex items-center mt-3">
+                                <span className="flex items-center  border-dotted border-2 cursor-pointer w-4/12 justify-center border-sky-500 px-2 rounded bg-sky-100 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
+
+                                <span className=' ms-5'>
+                                    {
+                                        loading ? <div className=""> <span className="loading text-black loading-infinity loading-md"></span></div>
+                                            :
+                                            <span onClick={() => addToFavourive(product, product.images[imageIndex])} className="flex justify-center items-center text-white cursor-pointer">
+                                                <GiSelfLove className="text-2xl text-red-500 " ></GiSelfLove>
+                                            </span>
+                                    }
+                                </span>
+                            </div>
+                            {
+                                errorText && <small className="text-red-500">{errorText}</small>
+                            }
 
 
                         </div>

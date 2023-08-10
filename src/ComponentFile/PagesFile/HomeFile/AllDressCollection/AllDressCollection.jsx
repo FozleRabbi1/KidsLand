@@ -63,13 +63,13 @@ const AllDressCollection = () => {
             <h2 className='text-center text-2xl font-bold text-color pb-10'>All Cullection</h2>
             <div className='flex'>
 
-                <div className="conterol-div w-2/12 pe-3">
+                <div data-aos="fade-right" data-aos-delay="1000" className="conterol-div w-2/12 pe-3">
                     <h2 className='text-center mb-4 text-color text-xl font-bold'>control panel</h2>
                     <div className='my-2'>
                         <h2 className='flex border-b-2 mb-2'> <span>Total Product =</span> <span className='font-semibold ' >{productNumber}</span> </h2>
                         <h2 className='flex border-b-2 mb-2'> <span>Find Product =</span> <span className='font-semibold ' >{productLength}</span> </h2>
 
-                        <h2  className='flex border-b-2 mb-4'>
+                        <h2 className='flex border-b-2 mb-4'>
                             <span>Show Product =</span>
                             {datas?.length === 0 ?
                                 <span className='text-red-500 text-xl font-bold'>{datas?.length}</span>
@@ -148,7 +148,9 @@ const AllDressCollection = () => {
                                 }
                             </div>
                     }
-                    <ul className='flex gap-10 mx-auto w-6/12 justify-center my-10'>
+                    <ul data-aos="flip-left"
+                        data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000" className='flex gap-10 mx-auto w-6/12 justify-center my-10 '>
                         {
                             pageNumber && pageNumber?.map(pageNum =>
                                 <li onMouseUp={() => getDataFun(pageNum)} onClick={() => setCurrentPage(pageNum)} className={`${pageNum === currentPage ? "active-pagination " : ""} border cursor-pointer bg-gray-300 px-2`} key={pageNum}> {pageNum + 1} </li>

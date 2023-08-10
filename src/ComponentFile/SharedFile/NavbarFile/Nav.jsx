@@ -83,7 +83,7 @@ const Nav = () => {
                                         <div className="dropdown dropdown-hover">
                                             <label tabIndex={0} className="flex items-center m-1">
                                                 <GiSelfLove className="text-2xl text-red-700" ></GiSelfLove>
-                                                <i className="-mb-4 -ms-1 text-white">{favouriteProducts?.length || 0}</i>
+                                                <small className="-mb-4 -ms-1 text-white ">{favouriteProducts?.length || 0}</small>
                                             </label>
 
                                             <ul tabIndex={0} className="dropdown-content z-[1] -ms-10 menu p-2 shadow bg-base-100 rounded-box w-44">
