@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useContext, useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import useSpacialCategoriesData from '../../../../HooksFile/useSpacialCategoriesData';
 import Marquee from 'react-fast-marquee';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -24,6 +24,7 @@ const SpacialCategoriesSingle = () => {
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
 
     const { data: datass = {}, refetch } = useQuery({

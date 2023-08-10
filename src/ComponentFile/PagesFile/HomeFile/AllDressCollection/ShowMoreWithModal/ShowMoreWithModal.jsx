@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import useFavouriteProduct from "../../../../HooksFile/useFavouriteProduct";
 import axios from "axios";
 import { GiSelfLove } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 
 const ShowMoreWithModal = ({ product, setProduct }) => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -19,7 +20,8 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
     const { user } = useContext(AuthContext);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const [loading, setLoading] = useState(false);
-    const [errorText, setErrorText] = useState("")
+    const [errorText, setErrorText] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTimeout(() => {

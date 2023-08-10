@@ -7,7 +7,7 @@ import { AuthContext } from "../../../AuthProvider/AuthContextProvider";
 import axios from "axios";
 import useFavouriteProduct from "../../../HooksFile/useFavouriteProduct";
 import { toast } from "react-toastify";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SingleDress = ({ data, index, setProduct }) => {
