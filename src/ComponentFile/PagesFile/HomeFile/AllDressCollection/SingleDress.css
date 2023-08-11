@@ -65,10 +65,9 @@
     background-color: white !important;
 }
 
-.singleDress-text-div span small {
+.image-icon-div .small {
     border-radius: 20px;
-    background: #3e85f0;
-    box-shadow: 15px 15px 16px #b1b1b1,
-        -15px -15px 16px #ffffff;
-    color: white;
+    background: #71f151;
+    color: red;
+    margin: 2px;
 }

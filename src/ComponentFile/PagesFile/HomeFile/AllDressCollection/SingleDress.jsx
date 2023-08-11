@@ -82,7 +82,7 @@ const SingleDress = ({ data, index, setProduct }) => {
             <div data-aos="fade-up"
                 data-aos-duration="2000" className="single-main-div">
 
-                <div className="image-icon-div">
+                <div className="image-icon-div relative">
                     <div className="imgDiv">
                         {imageError ? (
                             <img className='img ' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
@@ -113,6 +113,7 @@ const SingleDress = ({ data, index, setProduct }) => {
 
                         </div>
                     </div>
+                    <small className="small rounded-xl px-1 font-semibold text-xs absolute top-0 right-0"> {data?.upload_date} </small>
                 </div>
                 <div>
                     {
@@ -123,10 +124,14 @@ const SingleDress = ({ data, index, setProduct }) => {
                                 <div className="singleDress-text-div text-sm font-medium">
                                     <div className="">
                                         <p className=" -my-1">Brand : {data?.brand}</p>
-                                        <p className="">Quantity : {data?.quantity}</p>
+                                        <span className="flex justify-between">
+                                            <p className="">Quantity : {data?.quantity}</p>
+                                            {/* <small>{data.material} </small> */}
+                                        </span>
                                         <span className="flex justify-between items-center">
                                             <p className="-mt-1">Price : <span className="text-lg text-red-500">{data?.price}</span> <span className="italic">$</span> </p>
-                                            <small className=" rounded-xl px-1 font-bold"> {data?.upload_date} </small>
+                                            {/* <small className="small rounded-xl px-1 font-bold"> {data?.upload_date} </small> */}
+                                            <small>{data.material} </small>
                                         </span>
                                     </div>
                                 </div>
