@@ -41,7 +41,7 @@ const ContactUs = () => {
     }
     return (
         <div>
-            <div className="contactUs-header-div text-center my-5">
+            <div data-aos="flip-up" className="contactUs-header-div text-center my-5">
                 <div className="image-div">
                     <img src="https://as1.ftcdn.net/v2/jpg/04/85/64/76/1000_F_485647675_Os2dXV7HlCeBepTrpDB4HdFUB8PMJ1Bs.jpg" alt="" />
                     <div className="overlay"></div>
@@ -55,25 +55,25 @@ const ContactUs = () => {
 
             </div>
 
-            <section className='bg-white grid grid-cols-2 justify-center p-10 gap-5'>
-                <div className='contact-details-div'>
+            <section className='bg-white grid md:grid-cols-2 justify-center p-10 gap-5'>
+                <div data-aos="fade-right" data-aos-delay="1000" className='contact-details-div me-2'>
                     <h2 className='text-4xl'>CONTACT DETAILS</h2>
 
                     <p className='py-5'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat.</p>
                     <h2 className='pb-5 font-semibold text-3xl text-gray-500'>Suspendisse sollicitudin velit sed leo. Ut phare nec augue.</h2>
 
                     <div>
-                        <p className='mb-2 flex items-center'> <MdLocationOn className='me-2 icon text-red-600'></MdLocationOn> 121 Wallstreet Street, New York , USA</p>
-                        <p className='mb-2 flex items-center'> <MdLocalPhone className='me-2 icon text-red-600'></MdLocalPhone> +800 1234 56 78 </p>
-                        <p className='mb-2 flex items-center'> <AiOutlineMail className='me-2 icon text-red-600'></AiOutlineMail> info@imperion.com</p>
-                        <p className='mb-2 flex items-center'> <BiSupport className='me-2 icon text-red-600'></BiSupport> Support Center</p>
+                        <p className='mb-2 flex items-center'> <MdLocationOn  data-aos="fade-right" data-aos-delay="2200" className='me-2 icon text-red-600'></MdLocationOn> 121 Wallstreet Street, New York , USA</p>
+                        <p className='mb-2 flex items-center'> <MdLocalPhone  data-aos="fade-right" data-aos-delay="2400" className='me-2 icon text-red-600'></MdLocalPhone> +800 1234 56 78 </p>
+                        <p className='mb-2 flex items-center'> <AiOutlineMail  data-aos="fade-right" data-aos-delay="2600" className='me-2 icon text-red-600'></AiOutlineMail> info@imperion.com</p>
+                        <p className='mb-2 flex items-center'> <BiSupport  data-aos="fade-right" data-aos-delay="2800" className='me-2 icon text-red-600'></BiSupport> Support Center</p>
                     </div>
                     <h2 className='text-2xl'>Stay Connected</h2>
                     <div className='flex mt-2'>
-                        <span className='me-4'> <AiFillFacebook className='text-2xl'></AiFillFacebook> </span>
-                        <span className='me-4'> <AiFillTwitterSquare className='text-2xl'></AiFillTwitterSquare> </span>
-                        <span className='me-4'> <BiLogoLinkedinSquare className='text-2xl'></BiLogoLinkedinSquare> </span>
-                        <span className='me-4'> <FaTumblr className='text-2xl'></FaTumblr> </span>
+                        <span data-aos="fade-right" data-aos-delay="200" className='me-4'> <AiFillFacebook className='text-2xl'></AiFillFacebook> </span>
+                        <span data-aos="fade-right" data-aos-delay="400" className='me-4'> <AiFillTwitterSquare className='text-2xl'></AiFillTwitterSquare> </span>
+                        <span data-aos="fade-right" data-aos-delay="600" className='me-4'> <BiLogoLinkedinSquare className='text-2xl'></BiLogoLinkedinSquare> </span>
+                        <span data-aos="fade-right" data-aos-delay="800" className='me-4'> <FaTumblr className='text-2xl'></FaTumblr> </span>
                     </div>
 
 
@@ -81,11 +81,11 @@ const ContactUs = () => {
 
 
 
-                <div className='contact-form-div'>
+                <div data-aos="fade-left" data-aos-delay="1000" className='contact-form-div ms-2 mt-4 md:mt-0'>
 
                     <h2 className='text-4xl'>CONTACT FORM</h2>
 
-                    <form ref={form} onSubmit={getFormValueFun} className='mt-10'>
+                    <form ref={form} onSubmit={getFormValueFun} className=' mt-4 md:mt-10'>
                         <input name='from_name' className='input mb-5' required placeholder='Name' type="text" />
                         <input name='from_email' className='input mb-5' required placeholder='Email' type="email" />
                         <input name='subject' className='input mb-5' required placeholder='Subject' type="text" />
