@@ -30,7 +30,7 @@
 
 }
 
-section .contact-details-div .icon {
+section .contact-details-div .iconn {
     width: 35px;
     height: 35px;
     border-radius: 101px;
@@ -42,7 +42,7 @@ section .contact-details-div .icon {
     transition: all 0.9s;
 }
 
-section .contact-details-div .icon:hover {
+section .contact-details-div .iconn:hover {
     box-shadow: 14px 14px 15px #e29595,
         -14px -14px 15px #ffffff;
 }
@@ -100,3 +100,4 @@ section .contact-details-div span:hover {
     font-style: italic;
     font-weight: 600;
 }
+

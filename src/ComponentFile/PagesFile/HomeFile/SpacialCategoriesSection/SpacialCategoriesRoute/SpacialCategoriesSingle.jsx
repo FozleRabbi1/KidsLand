@@ -217,7 +217,7 @@ const SpacialCategoriesSingle = () => {
             }
 
 
-            <h2 className='bg-green-800 text-white text-center rounded-full w-6 h-6'>{datas?.length}</h2>
+            <h2 className='bg-green-800 text-red-600 font-bold text-center rounded-full w-6 h-6'>{datas?.length}</h2>
 
             <div>
                 <Marquee pauseOnHover delay={2}>
@@ -225,7 +225,7 @@ const SpacialCategoriesSingle = () => {
                         datas?.map((data, index) =>
                             <div key={data} onClick={() => getMarqueValue(data)} className='m-2 relative'>
                                 <img className='h-44 w-44' src={data?.images[0]} alt="" />
-                                <p className='absolute top-0 right-1 bg-gray-800 text-white text-center rounded-full w-6 h-6'>{index + 1}</p>
+                                <p className='absolute top-0 right-1 bg-gray-800  text-center rounded-full w-6 h-6 text-red-500'>{index + 1}</p>
                             </div>
                         )
                     }

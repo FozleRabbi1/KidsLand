@@ -19,17 +19,18 @@ const AllDressCollection = () => {
     const [value, setValue] = useState([0, 150]);
     const [selectedOption, setSelectedOption] = useState("All")
     const [selectedOption2, setSelectedOption2] = useState("ascending ")
-    const [datas, productLength, refetch, isLoading] = useAllDressCollection(getData, selectedOption, value, selectedOption2);
+    const [text, setText] = useState("AllDress")
+    const [datas, productLength, refetch, isLoading] = useAllDressCollection(getData, selectedOption, value, selectedOption2, text);
     const [productNumber, setProductNumber] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const [product, setProduct] = useState(null);
 
-    // console.log(product)
+    console.log(isLoading, datas?.length)
 
-    useEffect(() => {
+    useEffect(() => {   
         refetch()
-    }, [getData, selectedOption, value, productLength, selectedOption2])
+    }, [getData, selectedOption, value, productLength, selectedOption2, text])
 
 
     const itemsPerPage = 12;
@@ -104,7 +105,7 @@ const AllDressCollection = () => {
                             className="bg-sky-400 mt-2 button rounded  text-gray-800"
                         >
                             <option className='ms-2' value="ascending ">Low to high</option>
-                            <option className='ms-2' value="descending ">High to low</option>
+                            <option className='ms-2' value="  descending">High to low</option>
                         </select>
                     </div>
 
@@ -113,6 +114,30 @@ const AllDressCollection = () => {
                             <GiSelfLove className="text-xl text-red-600 ms-2 " ></GiSelfLove>
                             <Link className="border w-4/12 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
                         </i>
+                    </div>
+
+                    <div className='mt-4'>
+                        <span className='flex justify-between my-2 border-b-2 pb-1'>
+                            <h2 className='font-bold italic'>Materials </h2>
+                            <span className='w-6/12 ps-2 border text-center'>{text}</span>
+                        </span>
+
+                        <ul>
+                            <li onClick={() => setText("AllDress")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>All</li>
+                            <li onClick={() => setText("Cotton")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Cotton</li>
+                            <li onClick={() => setText("Polyester")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Polyester</li>
+                            <li onClick={() => setText("Straw")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Straw</li>
+                            <li onClick={() => setText("Silk")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Silk</li>
+                            <li onClick={() => setText("Nylon")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Nylon</li>
+                            <li onClick={() => setText("Denim")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Denim</li>
+                            <li onClick={() => setText("Fleece")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Fleece</li>
+                            <li onClick={() => setText("Spandex")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
+                            <li onClick={() => setText("Tulle")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Tulle</li>
+                            <li onClick={() => setText("Rayon")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Rayon</li>
+                            <li onClick={() => setText("Spandex")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
+                            <li onClick={() => setText("Satin")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Satin</li>
+                            <li onClick={() => setText("Synthetic")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Synthetic</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -148,9 +173,7 @@ const AllDressCollection = () => {
                                 }
                             </div>
                     }
-                    <ul data-aos="flip-left"
-                        data-aos-easing="ease-out-cubic"
-                        data-aos-duration="2000" className='flex gap-10 mx-auto w-6/12 justify-center my-10 '>
+                    <ul className='flex gap-10 mx-auto w-6/12 justify-center my-10 '>
                         {
                             pageNumber && pageNumber?.map(pageNum =>
                                 <li onMouseUp={() => getDataFun(pageNum)} onClick={() => setCurrentPage(pageNum)} className={`${pageNum === currentPage ? "active-pagination " : ""} border cursor-pointer bg-gray-300 px-2`} key={pageNum}> {pageNum + 1} </li>

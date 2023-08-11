@@ -67,25 +67,15 @@
   .card_box img{
     width: 100%;
   }
-
-  /* .latest-product-main-div{
-    background-image: url("https://img.freepik.com/premium-vector/kids-jumping-happy-diverse-children-jump-summer-activities-kid-friendship-cartoon-school-child-playing-outdoor-decent-vector-characters_543062-1680.jpg?w=2000");
-    background-size: cover;
-    height: 95vh;
-    margin-bottom: 50px;
-  } */
-
   .latest-product-main-div {
-    /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url("https://img.freepik.com/premium-vector/kids-jumping-happy-diverse-children-jump-summer-activities-kid-friendship-cartoon-school-child-playing-outdoor-decent-vector-characters_543062-1680.jpg?w=2000"); */
     background-image: linear-gradient(to right, rgba(49, 100, 238, 0.9), rgba(121, 168, 207, 0.5)), url("https://img.freepik.com/premium-vector/kids-jumping-happy-diverse-children-jump-summer-activities-kid-friendship-cartoon-school-child-playing-outdoor-decent-vector-characters_543062-1680.jpg?w=2000");
     background-size: cover;
-    height: 80vh;
     margin-bottom: 50px;
     padding: 20px;
     color: white;
   }
   
-  .button {
+  .container .button {
     --width: 100px;
     --height: 35px;
     --tooltip-height: 35px;
@@ -103,7 +93,7 @@
     transition: background 0.3s;
   }
   
-  .button::before {
+  .container .button::before {
     position: absolute;
     content: attr(data-tooltip);
     width: var(--tooltip-width);
@@ -117,7 +107,7 @@
     left: calc(50% - var(--tooltip-width) / 2);
   }
   
-  .button::after {
+  .container .button::after {
     position: absolute;
     content: '';
     width: 0;
@@ -128,7 +118,7 @@
     bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
   }
   
-  .button::after,.button::before {
+  .container .button::after,.container .button::before {
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s;
@@ -140,7 +130,7 @@
     justify-content: center;
   }
   
-  .button-wrapper,.text,.icon {
+  .container .button-wrapper,.text,.icon {
     overflow: hidden;
     position: absolute;
     width: 100%;
@@ -170,28 +160,28 @@
     height: 24px;
   }
   
-  .button:hover {
+  .container .button:hover {
     background: #222;
   }
   
-  .button:hover .text {
+  .container .button:hover .text {
     top: -100%;
   }
   
-  .button:hover .icon {
+  .container .button:hover .icon {
     top: 0;
   }
   
-  .button:hover:before,.button:hover:after {
+  .container .button:hover:before,.container .button:hover:after {
     opacity: 1;
     visibility: visible;
   }
   
-  .button:hover:after {
+  .container .button:hover:after {
     bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
   }
   
-  .button:hover:before {
+  .container .button:hover:before {
     bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
   }
   
