@@ -7,7 +7,7 @@ const LatetsProduce = () => {
             <h2 className='text-4xl font-bold text-color  mt-5'>Latest Product <small className='text-sm'>(TODO)</small> </h2>
             <div className='latest-product-main-div py-10 grid md:grid-cols-2 justify-center gap-10 items-center'>
 
-                <div className="container  grid grid-cols-2">
+                <div  data-aos="flip-left" className="container  grid grid-cols-2">
 
                     <div className="card_box w-11/12 md:w-6/12">
                         <span></span>
@@ -32,7 +32,7 @@ const LatetsProduce = () => {
                     </div>
                 </div>
 
-                <div className="container  grid grid-cols-2">
+                <div  data-aos="flip-right" className="container  grid grid-cols-2">
                     <div className="card_box w-11/12 md:w-6/12">
                         <span></span>
                         <img className='' src="https://mayaar.store/wp-content/uploads/2022/05/10286_to_10296-a-600x600.webp" alt="" />
@@ -56,7 +56,7 @@ const LatetsProduce = () => {
                     </div>
                 </div>
 
-                <div className="container  grid grid-cols-2">
+                <div  data-aos="flip-left" className="container  grid grid-cols-2">
 
                     <div className="card_box w-11/12 md:w-6/12">
                         <span></span>
@@ -80,7 +80,7 @@ const LatetsProduce = () => {
                     </div>
                 </div>
 
-                <div className="container  grid grid-cols-2">
+                <div  data-aos="flip-right" className="container  grid grid-cols-2">
                     <div className="card_box w-11/12 md:w-6/12">
                         <span></span>
                         <img className='' src="https://saradresses.com/cdn/shop/articles/birthday-dress.jpg?v=1681879403" alt="" />

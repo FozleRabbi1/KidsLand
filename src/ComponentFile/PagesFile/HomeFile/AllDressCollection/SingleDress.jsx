@@ -120,17 +120,17 @@ const SingleDress = ({ data, index, setProduct }) => {
                             <div className="px-2 py-1 ">
                                 <h2 className="font-semibold ">{data?.title}</h2>
 
-                                <div className="text-sm font-medium">
+                                <div className="singleDress-text-div text-sm font-medium">
                                     <div className="">
                                         <p className=" -my-1">Brand : {data?.brand}</p>
                                         <p className="">Quantity : {data?.quantity}</p>
                                         <span className="flex justify-between items-center">
                                             <p className="-mt-1">Price : <span className="text-lg text-red-500">{data?.price}</span> <span className="italic">$</span> </p>
-                                            <small className="bg-green-300 rounded-xl px-1 font-bold"> {data?.upload_date} </small>
+                                            <small className=" rounded-xl px-1 font-bold"> {data?.upload_date} </small>
                                         </span>
-                                        <small>{data?.material}</small>
                                     </div>
                                 </div>
+
                             </div>
                     }
                 </div>

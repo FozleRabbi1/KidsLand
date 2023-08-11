@@ -1,58 +1,74 @@
-.single-main-div{
+.single-main-div {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     border-radius: 2px;
     overflow: hidden;
     padding: 1px;
 }
+
 .image-icon-div {
     height: 250px;
     overflow: hidden;
 }
-.image-icon-div .imgDiv{
+
+.image-icon-div .imgDiv {
     height: 100%;
     width: 100%;
     border-radius: 2px;
     overflow: hidden;
 }
-.image-icon-div .imgDiv .img{
+
+.image-icon-div .imgDiv .img {
     height: 100%;
     width: 100%;
     transition: all 1.5s;
     z-index: -99;
-    border-radius: 0px 0px 5px 5px ;
+    border-radius: 0px 0px 5px 5px;
 
 }
-.image-icon-div .icon-div{
+
+.image-icon-div .icon-div {
     height: 50px;
     transition: all 0.5s;
 }
 
-.single-main-div:hover .imgDiv img{
+.single-main-div:hover .imgDiv img {
     transform: scale(1.2);
     transition: all 1s;
     border-radius: 10px;
 }
+
 /* .image-icon-div:hover .icon-div{ */
-.single-main-div:hover .icon-div{
+.single-main-div:hover .icon-div {
     margin-top: -50px;
     z-index: 99;
     /* background-color: aqua; */
 }
+
 /* .image-icon-div:hover .icon-div .span{ */
-.single-main-div:hover .icon-div .span{
+.single-main-div:hover .icon-div .span {
     margin-top: -50px;
     /* background-color: aqua; */
     transition: all 0.5s;
     z-index: 99;
 }
-.image-icon-div .icon-div .span span{
-    background-color: rgba(0,0,0,0.9);
+
+.image-icon-div .icon-div .span span {
+    background-color: rgba(0, 0, 0, 0.9);
     z-index: 999;
-   width: 32px;
-   height: 32px;
-   border-radius: 50%;
-  
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
 }
+
 .style {
     background-color: white !important;
-  }
+}
+
+.singleDress-text-div span small {
+    border-radius: 20px;
+    background: #3e85f0;
+    box-shadow: 15px 15px 16px #b1b1b1,
+        -15px -15px 16px #ffffff;
+    color: white;
+}

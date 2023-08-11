@@ -1,0 +1,37 @@
+.contact-section-div .contact-section-childDiv {
+    /* border: 1px solid gray; */
+    padding: 0 10px;
+    text-align: center;
+    position: relative;
+    border-radius: 20px;
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #b1b1b1,
+        -15px -15px 30px #ffffff;
+        /* border: 1px solid gray; */
+}
+
+.contact-section-div div .contactSection-icon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    font-size: 3rem;
+    transform: translate(-50%);
+    margin-top: -25px;
+    background-color: #00ffff;
+    padding: 5px;
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: 23px 23px 23px #989898,
+        -23px -23px 23px #ffffff;
+    
+}
+
+.contact-section-div div h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.contact-section-div div:last-child {
+    /* margin-bottom: 5px; */
+}
