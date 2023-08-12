@@ -75,10 +75,16 @@ const Nav = () => {
                                         <Activelink to={"blog"}>
                                             Blog
                                         </Activelink>
-                                        
+
                                         <Activelink to={"contactUs"}>
                                             contact-Us
                                         </Activelink>
+
+                                        <Activelink to={"/seeAll"}>
+                                            Favourites
+                                        </Activelink>
+
+                                        {/* <Link className="border w-4/12 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link> */}
 
 
                                         <div className="dropdown dropdown-hover">

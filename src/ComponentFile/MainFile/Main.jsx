@@ -74,6 +74,10 @@ const Main = () => {
                                     contact-Us
                                 </Link>
 
+                                <Link className="nav-text" to={"/seeAll"}>
+                                    Favourites
+                                </Link>
+
                                 {
                                     user ?
                                         <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>

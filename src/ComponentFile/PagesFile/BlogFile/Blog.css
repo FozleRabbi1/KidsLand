@@ -1,23 +1,39 @@
-.blog-main-div{
-background-color: rgba(0,0,0,0.7);
+.blog-main-div {
+    background-color: rgba(0, 0, 0, 0.7);
 }
+
 .blog-main-div .image-div {
     position: relative;
+
 }
-.blog-main-div .image-div img{
-    position: fixed;   
+
+.blog-main-div .image-div img {
+    position: fixed;
     height: 450px;
-    width: 95%; 
+    width: 95%;
     z-index: -1;
     margin-top: -150px;
 
 }
-.blog-main-div .image-div .gradient{
-    position: absolute;
-    background-color: rgb(241, 14, 25);
-    z-index: 1;
-    top: 0;
-    left: 0;
 
+
+
+/* .all-blogs {
+    transition: all 0.8s;
 }
 
+.all-blogs .div {
+    background-color: aqua;
+    transition: all 0.8s;
+    border: 1px solid red;
+}
+
+.all-blogs div .imgDiv {
+    overflow: hidden;
+    transition: all 0.8s;
+}
+
+.all-blogs div:hover .imgDiv img {
+    transform: scale(1.2);
+    transition: all 0.8s;
+} */

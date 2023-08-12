@@ -26,8 +26,6 @@ const AllDressCollection = () => {
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const [product, setProduct] = useState(null);
 
-    console.log(isLoading, datas?.length)
-
     useEffect(() => {   
         refetch()
     }, [getData, selectedOption, value, productLength, selectedOption2, text])

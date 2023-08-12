@@ -22,7 +22,7 @@ const SingleFavProduct = ({ data }) => {
     }
 
     return (
-        <div className='my-2'>
+        <div className='my-4'>
 
             <div className='flex bg-gray-700 text-white justify-between px-4 items-center'>
                 <img className='w-32 h-32 p-1 rounded-lg' src={data.imageUrl} alt="" />
@@ -43,7 +43,7 @@ const SingleFavProduct = ({ data }) => {
 
                 <div>
 
-                    <li onClick={() => deleteFunction(data?._id)} className='list-none rounded flex justify-center bg-slate-300 hover:bg-red-200 duration-500 cursor-pointer px-2'>
+                    <li  onClick={() => deleteFunction(data?._id)} className='list-none rounded flex justify-center bg-slate-300 hover:bg-red-200 duration-500 cursor-pointer px-2'>
                         <button className=' text-center text-black flex justify-center items-center px-2 py-1 '>
                             {loadingId === data?._id ? (
 
@@ -60,24 +60,11 @@ const SingleFavProduct = ({ data }) => {
                     <li className='list-none rounded bg-slate-300  cursor-pointer my-2 px-2 hover:bg-cyan-200 duration-500 '>
                         <button className='flex justify-center items-center px-2 py-1'> <AiOutlineShoppingCart className='text-2xl text-color'></AiOutlineShoppingCart> </button>
                     </li>
-                    {/* to={`/spacialDetails/${data.mainId}` */}
+
                     <li  className='list-none rounded bg-slate-300 cursor-pointer px-2 hover:bg-green-200 duration-500'>
                         <Link to={`/spacialDetails/${data.mainId}`} className='flex justify-center items-center px-2 py-1'> <AiFillEye className='text-2xl text-green-600'></AiFillEye> </Link>
                     </li>
                 </div>
-
-                {/* <div>
-                    <li className='list-none'> <button>Add To Card</button> </li>
-                    <li onClick={() => deleteFunction(data?._id)} className='list-none'> <button>
-                        {`${loadingId === data?._id ?
-                            (
-                                <div>
-                                    <span className="loading loading-spinner text-info"></span>
-                                </div>
-                            )
-                            : "Delete"}`}
-                    </button> </li>
-                </div> */}
 
             </div>
 
