@@ -76,7 +76,7 @@ const Nav = () => {
                                         </Activelink>
 
                                         <Activelink to={"contactUs"}>
-                                            Contact-Us
+                                            ContactUs
                                         </Activelink>
 
                                         <Activelink to={"blog"}>

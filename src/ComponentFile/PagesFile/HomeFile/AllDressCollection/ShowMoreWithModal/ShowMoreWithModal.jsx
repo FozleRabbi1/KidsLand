@@ -10,6 +10,7 @@ import useFavouriteProduct from "../../../../HooksFile/useFavouriteProduct";
 import axios from "axios";
 import { GiSelfLove } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../../../HooksFile/useAxiosSecure";
 
 const ShowMoreWithModal = ({ product, setProduct }) => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -22,6 +23,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
     const [loading, setLoading] = useState(false);
     const [errorText, setErrorText] = useState("");
     const navigate = useNavigate();
+    const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
         setTimeout(() => {
@@ -101,7 +103,9 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
             setLoading(false)
             return
         }
-        axios.post("http://localhost:5000/favouriteProducts", productData)
+        // axios.post("http://localhost:5000/favouriteProducts", productData)
+        
+        axiosSecure.post(`http://localhost:5000/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
                     setLoading(false)

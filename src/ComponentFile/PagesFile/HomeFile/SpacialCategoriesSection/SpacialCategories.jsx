@@ -14,6 +14,7 @@ import Skeleton from 'react-loading-skeleton';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../HooksFile/useAxiosSecure';
 
 const SpacialCategories = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -26,6 +27,7 @@ const SpacialCategories = () => {
     const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [axiosSecure] = useAxiosSecure();
 
 
     const handleOptionChange = (e) => {
@@ -97,7 +99,8 @@ const SpacialCategories = () => {
             return
         }
 
-        axios.post("http://localhost:5000/favouriteProducts", productData)
+        // axios.post("http://localhost:5000/favouriteProducts", productData)
+        axiosSecure.post(`http://localhost:5000/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
                     setLoading(false)

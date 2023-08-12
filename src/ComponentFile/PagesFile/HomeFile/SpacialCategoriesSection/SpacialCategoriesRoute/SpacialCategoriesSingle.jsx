@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../../../AuthProvider/AuthContextProvider';
 import axios from 'axios';
 import { GiSelfLove } from 'react-icons/gi';
+import useAxiosSecure from '../../../../HooksFile/useAxiosSecure';
 
 const SpacialCategoriesSingle = () => {
     const [imageIndex, setImageIndex] = useState(0);
@@ -25,6 +26,7 @@ const SpacialCategoriesSingle = () => {
     const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [axiosSecure] = useAxiosSecure();
 
 
     const { data: datass = {}, refetch } = useQuery({
@@ -109,7 +111,8 @@ const SpacialCategoriesSingle = () => {
             setLoading(false)
             return
         }
-        axios.post("http://localhost:5000/favouriteProducts", productData)
+        // axios.post("http://localhost:5000/favouriteProducts", productData)
+        axiosSecure.post(`http://localhost:5000/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
                     setLoading(false)

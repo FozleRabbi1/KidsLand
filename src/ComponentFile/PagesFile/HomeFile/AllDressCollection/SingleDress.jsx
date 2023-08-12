@@ -9,6 +9,7 @@ import useFavouriteProduct from "../../../HooksFile/useFavouriteProduct";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../HooksFile/useAxiosSecure";
 
 const SingleDress = ({ data, index, setProduct }) => {
     const [imageError, setImageError] = useState(false);
@@ -16,6 +17,7 @@ const SingleDress = ({ data, index, setProduct }) => {
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct()
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [axiosSecure] = useAxiosSecure();
 
     const addToFavourive = (datas, image) => {
         setLoading(true)
@@ -53,8 +55,8 @@ const SingleDress = ({ data, index, setProduct }) => {
             });
             setLoading(false)
             return
-        }
-        axios.post("http://localhost:5000/favouriteProducts", productData)
+        } 
+        axiosSecure.post(`http://localhost:5000/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
                     setLoading(false)
