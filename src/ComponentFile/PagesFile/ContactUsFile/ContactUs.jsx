@@ -55,7 +55,7 @@ const ContactUs = () => {
 
             </div>
 
-            <section className='bg-white grid md:grid-cols-2 justify-center p-10 gap-5'>
+            <section className='bg-white grid md:grid-cols-2 justify-center p-10 gap-5 mt-16'>
                 <div data-aos="fade-right" data-aos-delay="1000" className='contact-details-div me-2'>
                     <h2 className='text-4xl'>CONTACT DETAILS</h2>
 
