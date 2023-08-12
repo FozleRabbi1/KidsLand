@@ -11,7 +11,6 @@ const SingleFavProduct = ({ data }) => {
     const [, favaouriteRefatch] = useFavouriteProduct();
     const [loadingId, setLoadingId] = useState("");
 
-    console.log(data)
 
     const deleteFunction = (id) => {
         setLoadingId(id)

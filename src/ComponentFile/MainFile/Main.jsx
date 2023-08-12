@@ -66,16 +66,16 @@ const Main = () => {
                                     Home
                                 </Link>
 
-                                <Link className="nav-text" to={"blog"}>
-                                    Blog
+                                <Link className="nav-text" to={"/seeAll"}>
+                                    Favourites
                                 </Link>
 
                                 <Link className="nav-text" to={"contactUs"}>
-                                    contact-Us
+                                    Contact-Us
                                 </Link>
 
-                                <Link className="nav-text" to={"/seeAll"}>
-                                    Favourites
+                                <Link className="nav-text" to={"blog"}>
+                                    Blog
                                 </Link>
 
                                 {

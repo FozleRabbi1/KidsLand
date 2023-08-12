@@ -21,12 +21,13 @@ export const router = createBrowserRouter([
             { path: "seeAll", element: <SeeAllLikedProduct></SeeAllLikedProduct> },
             {
                 path: "spacialDetails/:id", element:
-                    // <PrivateRoute>
-                        <SpacialCategoriesSingle></SpacialCategoriesSingle>
-                    // </PrivateRoute>
+                    <SpacialCategoriesSingle></SpacialCategoriesSingle>
             },
             {
-                path : "contactUs", element : <ContactUs></ContactUs>
+                path: "contactUs", element:
+                    <PrivateRoute>
+                        <ContactUs></ContactUs>
+                    </PrivateRoute>
             }
         ],
     },
