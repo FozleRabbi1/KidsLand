@@ -10,6 +10,9 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../HooksFile/useAxiosSecure";
+import useAddtoCard from "../../../HooksFile/useAddtoCard";
+import { useEffect } from "react";
+import useAddtoCardGetData from "../../../HooksFile/useAddtoCardGetData";
 
 const SingleDress = ({ data, index, setProduct }) => {
     const [imageError, setImageError] = useState(false);
@@ -18,12 +21,28 @@ const SingleDress = ({ data, index, setProduct }) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const [axiosSecure] = useAxiosSecure();
+    const [addtoCard, setAddToCard] = useState(null)
+    const [response] = useAddtoCard(addtoCard);
+    const [, refatch] = useAddtoCardGetData();
+
+
+    if (response?.acknowledged) {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Added Your Product',
+            showConfirmButton: false,
+            timer: 1500,
+        })
+        setAddToCard(null)
+        refatch()
+    }
+
 
     const addToFavourive = (datas, image) => {
         setLoading(true)
         const { _id, images, ...rest } = datas
         const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image };
-
         if (!user) {
             Swal.fire({
                 title: 'Login First',
@@ -55,7 +74,7 @@ const SingleDress = ({ data, index, setProduct }) => {
             });
             setLoading(false)
             return
-        } 
+        }
         axiosSecure.post(`/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
@@ -78,6 +97,14 @@ const SingleDress = ({ data, index, setProduct }) => {
                 }
             })
     }
+
+
+    const addtoCardFun = (data, image) => {
+        const { _id, images, ...rest } = data
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image };
+        setAddToCard(productData);
+    }
+
 
     return (
         <div>
@@ -107,7 +134,7 @@ const SingleDress = ({ data, index, setProduct }) => {
                                     </span>
                             }
 
-                            <span className="flex justify-center items-center text-white hover:text-sky-600 duration-700"> <AiOutlineShoppingCart className="text-xl "></AiOutlineShoppingCart> </span>
+                            <span onClick={() => addtoCardFun(data, data.images[0])} className="flex justify-center items-center text-white hover:text-sky-600 duration-700"> <AiOutlineShoppingCart className="text-xl "></AiOutlineShoppingCart> </span>
 
                             <span onClick={() => setProduct(data)} onMouseUp={() => window.show_more_with_modal.showModal()} className="flex justify-center items-center text-white hover:text-sky-600 duration-700 cursor-pointer">
                                 <button className="" > <BsSearchHeart className="text-xl "></BsSearchHeart></button>
@@ -119,7 +146,8 @@ const SingleDress = ({ data, index, setProduct }) => {
                 </div>
                 <div>
                     {
-                        imageError ? <p className="text-center">No data Found</p> :
+                        imageError ? <p className="text-center py-14">No data Found</p>
+                            :
                             <div className="px-2 py-1 ">
                                 <h2 className="font-semibold ">{data?.title}</h2>
 
@@ -128,16 +156,13 @@ const SingleDress = ({ data, index, setProduct }) => {
                                         <p className=" -my-1">Brand : {data?.brand}</p>
                                         <span className="flex justify-between">
                                             <p className="">Quantity : {data?.quantity}</p>
-                                            {/* <small>{data.material} </small> */}
                                         </span>
                                         <span className="flex justify-between items-center">
                                             <p className="-mt-1">Price : <span className="text-lg text-red-500">{data?.price}</span> <span className="italic">$</span> </p>
-                                            {/* <small className="small rounded-xl px-1 font-bold"> {data?.upload_date} </small> */}
                                             <small>{data.material} </small>
                                         </span>
                                     </div>
                                 </div>
-
                             </div>
                     }
                 </div>
