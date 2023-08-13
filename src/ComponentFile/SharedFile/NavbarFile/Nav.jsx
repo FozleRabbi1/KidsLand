@@ -75,12 +75,16 @@ const Nav = () => {
                                             Favourites
                                         </Activelink>
 
-                                        <Activelink to={"contactUs"}>
+                                        <Activelink to={"/contactUs"}>
                                             ContactUs
                                         </Activelink>
 
-                                        <Activelink to={"blog"}>
-                                            Blog
+                                        <Activelink to={"/dashboard"}>
+                                            Dashboard
+                                        </Activelink>
+
+                                        <Activelink to={"/blog"}>
+                                            Blogs
                                         </Activelink>
 
 
@@ -117,7 +121,7 @@ const Nav = () => {
                                             user ?
                                                 <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>
                                                 :
-                                                <Activelink to={"login"}>
+                                                <Activelink to={"/login"}>
                                                     Login
                                                 </Activelink>
                                         }

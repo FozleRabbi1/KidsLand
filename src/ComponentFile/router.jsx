@@ -9,6 +9,8 @@ import SeeAllLikedProduct from "./SharedFile/SeeAllLikedProduct/SeeAllLikedProdu
 import SpacialCategoriesSingle from "./PagesFile/HomeFile/SpacialCategoriesSection/SpacialCategoriesRoute/SpacialCategoriesSingle";
 import PrivateRoute from "./PagesFile/PrivateRoute/PrivateRoute";
 import ContactUs from "./PagesFile/ContactUsFile/ContactUs";
+import DashBoard from "./DashBoardFile/DashBoard";
+import AllLikedProduct from "./DashBoardFile/DashBoardAllPages/UserPages/AllLikedProduct/AllLikedProduct";
 
 export const router = createBrowserRouter([
     {
@@ -31,4 +33,13 @@ export const router = createBrowserRouter([
             }
         ],
     },
+    {
+        path: 'dashboard', element:
+            <PrivateRoute>
+                <DashBoard></DashBoard>
+            </PrivateRoute>,
+        children: [
+            { path: "seeLikedProduct", element: <AllLikedProduct></AllLikedProduct> }
+        ]
+    }
 ])

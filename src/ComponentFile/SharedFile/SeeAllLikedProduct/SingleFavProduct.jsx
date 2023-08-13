@@ -20,6 +20,7 @@ const SingleFavProduct = ({ data }) => {
             })
     }
 
+
     return (
         <div className='my-4'>
 
@@ -44,6 +45,7 @@ const SingleFavProduct = ({ data }) => {
 
                     <li  onClick={() => deleteFunction(data?._id)} className='list-none rounded flex justify-center bg-slate-300 hover:bg-red-200 duration-500 cursor-pointer px-2'>
                         <button className=' text-center text-black flex justify-center items-center px-2 py-1 '>
+
                             {loadingId === data?._id ? (
 
                                 <div className='flex'>
@@ -53,6 +55,7 @@ const SingleFavProduct = ({ data }) => {
                             ) : (
                                 <MdDeleteForever className='text-2xl text-red-500'></MdDeleteForever>
                             )}
+
                         </button>
                     </li>
 
@@ -63,6 +66,7 @@ const SingleFavProduct = ({ data }) => {
                     <li  className='list-none rounded bg-slate-300 cursor-pointer px-2 hover:bg-green-200 duration-500'>
                         <Link to={`/spacialDetails/${data.mainId}`} className='flex justify-center items-center px-2 py-1'> <AiFillEye className='text-2xl text-green-600'></AiFillEye> </Link>
                     </li>
+                    
                 </div>
 
             </div>
