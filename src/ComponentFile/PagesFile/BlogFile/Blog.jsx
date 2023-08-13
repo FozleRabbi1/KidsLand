@@ -1,8 +1,14 @@
 import { FcBusinessman, FcBusinesswoman } from 'react-icons/fc';
 import './Blog.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Blog = () => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return (
         <div className='blog-main-div'>
 

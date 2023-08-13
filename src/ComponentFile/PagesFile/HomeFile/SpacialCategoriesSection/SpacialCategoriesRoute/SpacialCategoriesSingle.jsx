@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useContext, useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import useSpacialCategoriesData from '../../../../HooksFile/useSpacialCategoriesData';
 import Marquee from 'react-fast-marquee';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -14,6 +14,11 @@ import { GiSelfLove } from 'react-icons/gi';
 import useAxiosSecure from '../../../../HooksFile/useAxiosSecure';
 
 const SpacialCategoriesSingle = () => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     const [imageIndex, setImageIndex] = useState(0);
     const [size, setSize] = useState("");
     const [counetr, setCounter] = useState(1);

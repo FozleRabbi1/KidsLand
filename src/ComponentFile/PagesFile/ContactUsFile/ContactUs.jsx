@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './ContactUs.css'
 import { AiFillFacebook, AiFillTwitterSquare, AiOutlineMail } from "react-icons/ai";
 import { BiLogoLinkedinSquare, BiSupport } from "react-icons/bi";
@@ -7,8 +7,13 @@ import { FaTumblr, } from "react-icons/fa";
 import { MdLocalPhone, MdLocationOn } from "react-icons/md";
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 const ContactUs = () => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
     const form = useRef();
     const [loading, setLoading] = useState(false)
 
@@ -63,10 +68,10 @@ const ContactUs = () => {
                     <h2 className='pb-5 font-semibold text-3xl text-gray-500'>Suspendisse sollicitudin velit sed leo. Ut phare nec augue.</h2>
 
                     <div>
-                        <p className='mb-2 flex items-center'> <MdLocationOn  data-aos="fade-right" data-aos-delay="2200" className='me-2 iconn text-red-600'></MdLocationOn> 121 Wallstreet Street, New York , USA</p>
-                        <p className='mb-2 flex items-center'> <MdLocalPhone  data-aos="fade-right" data-aos-delay="2400" className='me-2 iconn text-red-600'></MdLocalPhone> +800 1234 56 78 </p>
-                        <p className='mb-2 flex items-center'> <AiOutlineMail  data-aos="fade-right" data-aos-delay="2600" className='me-2 iconn text-red-600'></AiOutlineMail> info@imperion.com</p>
-                        <p className='mb-2 flex items-center'> <BiSupport  data-aos="fade-right" data-aos-delay="2800" className='me-2 iconn text-red-600'></BiSupport> Support Center</p>
+                        <p className='mb-2 flex items-center'> <MdLocationOn data-aos="fade-right" data-aos-delay="2200" className='me-2 iconn text-red-600'></MdLocationOn> 121 Wallstreet Street, New York , USA</p>
+                        <p className='mb-2 flex items-center'> <MdLocalPhone data-aos="fade-right" data-aos-delay="2400" className='me-2 iconn text-red-600'></MdLocalPhone> +800 1234 56 78 </p>
+                        <p className='mb-2 flex items-center'> <AiOutlineMail data-aos="fade-right" data-aos-delay="2600" className='me-2 iconn text-red-600'></AiOutlineMail> info@imperion.com</p>
+                        <p className='mb-2 flex items-center'> <BiSupport data-aos="fade-right" data-aos-delay="2800" className='me-2 iconn text-red-600'></BiSupport> Support Center</p>
                     </div>
                     <h2 className='text-2xl'>Stay Connected</h2>
                     <div className='flex mt-2'>

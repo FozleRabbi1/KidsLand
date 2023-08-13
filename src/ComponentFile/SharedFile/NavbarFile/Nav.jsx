@@ -8,6 +8,7 @@ import { RiDeleteBin2Fill } from "react-icons/ri";
 import axios from "axios";
 import { AuthContext } from "../../AuthProvider/AuthContextProvider";
 import { Link } from "react-router-dom";
+import useAddtoCardGetData from "../../HooksFile/useAddtoCardGetData";
 
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,7 @@ const Nav = () => {
     const [loading, setLoading] = useState(false)
     const { user, logInOut } = useContext(AuthContext);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
+    const [addToCardData] = useAddtoCardGetData();
 
     const logOutFun = () => {
         logInOut();
@@ -79,8 +81,8 @@ const Nav = () => {
                                             ContactUs
                                         </Activelink>
 
-                                        <Activelink to={"/dashboard"}>
-                                            Dashboard
+                                        <Activelink className="flex" to={"/dashboard"}>
+                                            Dashboard <sup>{addToCardData.length || 0}</sup>
                                         </Activelink>
 
                                         <Activelink to={"/blog"}>
@@ -119,9 +121,9 @@ const Nav = () => {
                                         </div>
                                         {
                                             user ?
-                                                <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>
+                                                <span className="text-white font-semibold cursor-pointer hover:text-red-500 duration-500 " onClick={logOutFun}> LogOut</span>
                                                 :
-                                                <Activelink to={"/login"}>
+                                                <Activelink className="" to={"/login"}>
                                                     Login
                                                 </Activelink>
                                         }

@@ -100,11 +100,29 @@ const SingleDress = ({ data, index, setProduct }) => {
 
 
     const addtoCardFun = (data, image) => {
+        if (!user) {
+            Swal.fire({
+                title: 'Login First',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Go to login page',
+            }).then((result) => {
+                setLoading(false)
+                if (result.isConfirmed) {
+                    navigate("/login")
+                    setLoading(false)
+                }
+            })
+            return
+        }
         const { _id, images, ...rest } = data
         const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image };
         setAddToCard(productData);
     }
 
+    
 
     return (
         <div>

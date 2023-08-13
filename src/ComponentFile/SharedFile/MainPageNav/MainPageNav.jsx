@@ -2,9 +2,11 @@ import React from 'react';
 import { AuthContext } from '../../AuthProvider/AuthContextProvider';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
+import useAddtoCardGetData from '../../HooksFile/useAddtoCardGetData';
 
 const MainPageNav = () => {
-    const { user, logInOut } = useContext(AuthContext)
+    const { user, logInOut } = useContext(AuthContext);
+    const [addToCardData] = useAddtoCardGetData();
 
     const logOutFun = () => {
         logInOut();
@@ -56,7 +58,7 @@ const MainPageNav = () => {
 
                         
                             <Link className="nav-text" to={"/dashboard"}>
-                                Dashboard
+                                Dashboard <sup>{addToCardData.length || 0}</sup>
                             </Link>
                        
 
@@ -66,7 +68,7 @@ const MainPageNav = () => {
 
                         {
                             user ?
-                                <span className="text-white font-semibold cursor-pointer" onClick={logOutFun}> LogOut</span>
+                                <span className="text-white font-semibold cursor-pointer nav-text" onClick={logOutFun}> LogOut</span>
                                 :
                                 <Link className="nav-text" to={"/login"}>
                                     Login

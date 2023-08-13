@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainPageNav from '../SharedFile/MainPageNav/MainPageNav';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import Nav from '../SharedFile/NavbarFile/Nav';
@@ -6,6 +6,11 @@ import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthContextProvider';
 
 const DashBoard = () => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     const { user } = useContext(AuthContext)
     const location = useLocation();
     const showNavAndFooter = location.pathname !== '/login' && location.pathname !== '/register';
@@ -14,9 +19,9 @@ const DashBoard = () => {
     const manager = false;
 
     const allRoutes = <>
-        <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full' to={"/"}> Home </Link></li>
-        <li className='' ><Link to={"/contactUs"} className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full'>Contact-Us</Link></li>
-        <li className='' ><Link to={"/blog"} className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full'>Blogs</Link></li>
+        <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500' to={"/"}> Home </Link></li>
+        <li className='' ><Link to={"/contactUs"} className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500'>Contact-Us</Link></li>
+        <li className='' ><Link to={"/blog"} className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500'>Blogs</Link></li>
     </>
 
 
@@ -110,8 +115,8 @@ const DashBoard = () => {
                                                 <div className="chat-bubble text-sky-500 font-bold">User</div>
                                             </div>
                                         </span>
-                                        <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full' to={"/dashboard/seeLikedProduct"}> All Liked Product </Link></li>
-                                        <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full'>Selected Product</Link></li>
+                                        <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500' to={"/dashboard/seeLikedProduct"}> All Liked Product </Link></li>
+                                        <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500'>Selected Product</Link></li>
                                         
                                         <div className="divider"></div>
 

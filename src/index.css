@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    scroll-behavior: smooth;
+}
 
 .bg-color{
     background-color: rgb(9,170,38);
@@ -20,4 +23,8 @@
     color: white;
     font-size: 17px;
     font-weight: 600;
+    transition: all 0.5s;
+}
+.nav-text:hover{
+    color: red;
 }

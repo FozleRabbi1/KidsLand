@@ -1,9 +1,15 @@
 import React from 'react';
 import useFavouriteProduct from '../../HooksFile/useFavouriteProduct';
 import SingleFavProduct from './SingleFavProduct';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const SeeAllLikedProduct = () => {
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     return (
         <div>
