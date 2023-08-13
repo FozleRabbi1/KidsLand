@@ -56,7 +56,7 @@ const SingleDress = ({ data, index, setProduct }) => {
             setLoading(false)
             return
         } 
-        axiosSecure.post(`http://localhost:5000/favouriteProducts?email=${user?.email}`, productData)
+        axiosSecure.post(`/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
                     setLoading(false)

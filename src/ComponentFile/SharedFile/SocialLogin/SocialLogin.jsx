@@ -19,7 +19,7 @@ const SocialLogin = () => {
                 if (res.user) {
                     axios.post("http://localhost:5000/users", userInfo)
                         .then(data => {
-                            setIsLoading(false)
+                            // setIsLoading(false)
                         })
                     navigate(from, { replace: true })
                 }

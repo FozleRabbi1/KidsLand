@@ -10,8 +10,9 @@ const useFavouriteProduct = () => {
 
     const { data: favouriteProducts = [], refetch: favaouriteRefatch, isLoading } = useQuery({
         queryKey: ['favouriteProducts', user?.email],
+        enabled: !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
-            const response = await axiosSecure(`http://localhost:5000/favouriteProducts?email=${user?.email}`);
+            const response = await axiosSecure(`/favouriteProducts?email=${user?.email}`);
             return response.data;
         }
     })

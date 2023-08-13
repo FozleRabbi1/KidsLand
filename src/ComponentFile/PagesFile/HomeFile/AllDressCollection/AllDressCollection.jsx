@@ -148,13 +148,13 @@ const AllDressCollection = () => {
                                     datas?.length === 0 ?
                                         <div className='text-red-500 text-center my-44 text-3xl font-semibold'>
                                             {
-                                                productLength === 0 ? <>
+                                                productLength === 0 ? <div className='pt-48 pb-56'>
                                                     <p>No data Found, Please Send Valid Requist</p>
                                                     <i className='flex justify-center'>  <AiOutlineCloseSquare className='text-6xl'></AiOutlineCloseSquare></i>
-                                                </> : <>
+                                                </div> : <div className='pt-48 pb-56'>
                                                     <p>No More Data Back to <span className='text-red-700 font-bold italic'>Previous</span> Page</p>
                                                     <i className='flex justify-center'> <FaRegHandPointLeft className='text-6xl '></FaRegHandPointLeft></i>
-                                                </>
+                                                </div>
                                             }
                                         </div> :
                                         <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 ">

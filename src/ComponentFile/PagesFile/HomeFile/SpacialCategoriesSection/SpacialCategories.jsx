@@ -100,7 +100,7 @@ const SpacialCategories = () => {
         }
 
         // axios.post("http://localhost:5000/favouriteProducts", productData)
-        axiosSecure.post(`http://localhost:5000/favouriteProducts?email=${user?.email}`, productData)
+        axiosSecure.post(`/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
                     setLoading(false)
