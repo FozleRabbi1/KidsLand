@@ -176,8 +176,8 @@ const SpacialCategoriesSingle = () => {
                             <p>Gender :: {data.gender}</p>
                         </div>
 
-                        <div>
-                            <p className="flex items-center">Size ::
+                        <div className='flex'>
+                            <p className="flex items-center"> <span className='font-bold'>Select size</span> ::
                                 <small onClick={() => setSize("XS")} className="mx-2 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >XS</small>
                                 <small onClick={() => setSize("S")} className="mx-1 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >S</small>
                                 <small onClick={() => setSize("MD")} className="mx-1 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >MD</small>
@@ -185,6 +185,11 @@ const SpacialCategoriesSingle = () => {
                                 <small onClick={() => setSize("XL")} className="mx-1 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >XL</small>
                                 <small onClick={() => setSize("2XL")} className="mx-1 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >2XL</small>
                             </p>
+
+                                {
+                                    size && <p className='bg-slate-300 ms-5 rounded-full px-1 w-8 h-8 text-center items-center pt-1 font-semibold'>{size}</p>
+                                }
+
                         </div>
 
                         <div className="flex items-center mt-2 ">

@@ -116,7 +116,7 @@ const DashBoard = () => {
                                             </div>
                                         </span>
                                         <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500' to={"/dashboard/seeLikedProduct"}> All Liked Product </Link></li>
-                                        <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500'>Selected Product</Link></li>
+                                        <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500' to={"/dashboard/selectedProduct"}>Selected Product</Link></li>
                                         
                                         <div className="divider"></div>
 

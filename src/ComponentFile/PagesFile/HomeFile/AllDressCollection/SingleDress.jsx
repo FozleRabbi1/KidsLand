@@ -21,22 +21,10 @@ const SingleDress = ({ data, index, setProduct }) => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const [axiosSecure] = useAxiosSecure();
-    const [addtoCard, setAddToCard] = useState(null)
-    const [response] = useAddtoCard(addtoCard);
+    // const [addtoCard, setAddToCard] = useState(null)
+    // const [] = useAddtoCard(addtoCard);
     const [, refatch] = useAddtoCardGetData();
 
-
-    if (response?.acknowledged) {
-        Swal.fire({
-            position: 'top-center',
-            icon: 'success',
-            title: 'Added Your Product',
-            showConfirmButton: false,
-            timer: 1500,
-        })
-        setAddToCard(null)
-        refatch()
-    }
 
 
     const addToFavourive = (datas, image) => {
@@ -119,10 +107,34 @@ const SingleDress = ({ data, index, setProduct }) => {
         }
         const { _id, images, ...rest } = data
         const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image };
-        setAddToCard(productData);
+        axios.post("http://localhost:5000/addToCard", productData)
+            .then((data) => {
+                if (data.data.exist) {
+                    toast.warn("Product Already Exist", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });                                     
+                }
+                if(data.data.acknowledged){
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Product Added',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                    refatch();
+                }
+            })
     }
 
-    
+
 
     return (
         <div>
@@ -167,18 +179,22 @@ const SingleDress = ({ data, index, setProduct }) => {
                         imageError ? <p className="text-center py-14">No data Found</p>
                             :
                             <div className="px-2 py-1 ">
-                                <h2 className="font-semibold ">{data?.title}</h2>
+                                {/* <h2 className="font-semibold ">{data?.title}</h2> */}
 
-                                <div className="singleDress-text-div text-sm font-medium">
-                                    <div className="">
+                                <div className="singleDress-text-div text-sm font-medium p-3">
+                                    <div className="text-center">
                                         <p className=" -my-1">Brand : {data?.brand}</p>
-                                        <span className="flex justify-between">
-                                            <p className="">Quantity : {data?.quantity}</p>
-                                        </span>
-                                        <span className="flex justify-between items-center">
+                                            {/* <p className="">Quantity : {data?.quantity}</p> */}
+                                        {/* <span className="flex justify-between">
+                                        </span> */}
+                                        <p className="">Price : <span className="text-md font-bold text-red-500">{data?.price}</span> <span className="italic">$</span> </p>
+                                        <p className="text-xs">{data.material} </p>
+
+                                        {/* <span className="flex justify-between items-center">
                                             <p className="-mt-1">Price : <span className="text-lg text-red-500">{data?.price}</span> <span className="italic">$</span> </p>
                                             <small>{data.material} </small>
-                                        </span>
+                                        </span> */}
+
                                     </div>
                                 </div>
                             </div>
