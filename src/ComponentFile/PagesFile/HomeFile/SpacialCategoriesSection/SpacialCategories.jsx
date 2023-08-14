@@ -126,7 +126,7 @@ const SpacialCategories = () => {
 
     return (
         <div>
-            <h2 className='text-center text-4xl font-bold text-color pb-10'>Spacial Cullection</h2>
+            <h2 className='text-center text-4xl font-bold text-color pb-10'>Special Collection</h2>
             {
                 isLoading ?
 

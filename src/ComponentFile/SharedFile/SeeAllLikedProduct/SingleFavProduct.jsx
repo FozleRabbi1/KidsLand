@@ -6,10 +6,17 @@ import { useState } from 'react';
 import { MdDeleteForever } from "react-icons/md";
 import { AiFillEye, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAddtoCardGetData from '../../HooksFile/useAddtoCardGetData';
+import { useContext } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthContextProvider';
+import { toast } from 'react-toastify';
 
 const SingleFavProduct = ({ data }) => {
     const [, favaouriteRefatch] = useFavouriteProduct();
     const [loadingId, setLoadingId] = useState("");
+    const [, refatch] = useAddtoCardGetData();
+    const {user} = useContext(AuthContext)
 
 
     const deleteFunction = (id) => {
@@ -17,6 +24,38 @@ const SingleFavProduct = ({ data }) => {
         axios.delete(`http://localhost:5000/favouriteProducts/${id}`)
             .then(data => {
                 favaouriteRefatch()
+            })
+    }
+
+    const addtoCardFun = (data) => {
+        const { _id, ...rest } = data
+        console.log(data);
+
+        const productData = { mainId: _id, ...rest, email: user?.email };
+        axios.post("http://localhost:5000/addToCard", productData)
+            .then((data) => {
+                if (data.data.exist) {
+                    toast.warn("Product Already Exist", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                }
+                if (data.data.acknowledged) {
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Product Added',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    refatch();
+                }
             })
     }
 
@@ -43,7 +82,7 @@ const SingleFavProduct = ({ data }) => {
 
                 <div>
 
-                    <li  onClick={() => deleteFunction(data?._id)} className='list-none rounded flex justify-center bg-slate-300 hover:bg-red-200 duration-500 cursor-pointer px-2'>
+                    <li onClick={() => deleteFunction(data?._id)} className='list-none rounded flex justify-center bg-slate-300 hover:bg-red-200 duration-500 cursor-pointer px-2'>
                         <button className=' text-center text-black flex justify-center items-center px-2 py-1 '>
 
                             {loadingId === data?._id ? (
@@ -59,14 +98,14 @@ const SingleFavProduct = ({ data }) => {
                         </button>
                     </li>
 
-                    <li className='list-none rounded bg-slate-300  cursor-pointer my-2 px-2 hover:bg-cyan-200 duration-500 '>
+                    <li onClick={() => addtoCardFun(data)} className='list-none rounded bg-slate-300  cursor-pointer my-2 px-2 hover:bg-cyan-200 duration-500 '>
                         <button className='flex justify-center items-center px-2 py-1'> <AiOutlineShoppingCart className='text-2xl text-color'></AiOutlineShoppingCart> </button>
                     </li>
 
-                    <li  className='list-none rounded bg-slate-300 cursor-pointer px-2 hover:bg-green-200 duration-500'>
+                    <li className='list-none rounded bg-slate-300 cursor-pointer px-2 hover:bg-green-200 duration-500'>
                         <Link to={`/spacialDetails/${data.mainId}`} className='flex justify-center items-center px-2 py-1'> <AiFillEye className='text-2xl text-green-600'></AiFillEye> </Link>
                     </li>
-                    
+
                 </div>
 
             </div>

@@ -26,8 +26,8 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
     const [errorText, setErrorText] = useState("");
     const navigate = useNavigate();
     const [axiosSecure] = useAxiosSecure();
-    const [addtoCard, setAddToCard] = useState(null)
-    const [] = useAddtoCard(addtoCard);
+    // const [addtoCard, setAddToCard] = useState(null)
+    // const [] = useAddtoCard(addtoCard);
     const [, refatch] = useAddtoCardGetData();
 
 
@@ -72,7 +72,6 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
         setCounter(counetr - 1)
         setWarningText("")
     }
-
 
     const addToFavourive = (product, imageUrl) => {
         setLoading(true)
@@ -136,6 +135,8 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
 
     }
 
+
+
     const addtoCardFun = (data, image) => {
         if (!size) {
             setWarningText("select the size")
@@ -162,11 +163,31 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
             })
             return
         }
-        const { _id, images,description, ...rest } = data;
+        const { _id, images, description, ...rest } = data;
 
-        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, size: size, selectedProductNum : counetr, totalPrice: totalPrice  };
-        setAddToCard(productData);
-        console.log(productData)
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, size: size, selectedProductNum: counetr, totalPrice: totalPrice, selectedSize : size };
+        axios.post("http://localhost:5000/addToCard", productData)
+            .then((data) => {
+                if (data.data.exist) {
+                    toast.warn("Product Already Exist", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                }
+                if (data.data.acknowledged) {
+                    setWarningText("Added Product ")
+                    refatch();
+                    setTimeout(() => {
+                        setWarningText("");
+                    }, 3000);
+                }
+            })
     }
 
 

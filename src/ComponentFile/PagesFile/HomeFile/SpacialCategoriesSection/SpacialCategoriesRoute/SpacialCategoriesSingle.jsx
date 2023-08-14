@@ -12,6 +12,7 @@ import { AuthContext } from '../../../../AuthProvider/AuthContextProvider';
 import axios from 'axios';
 import { GiSelfLove } from 'react-icons/gi';
 import useAxiosSecure from '../../../../HooksFile/useAxiosSecure';
+import useAddtoCardGetData from '../../../../HooksFile/useAddtoCardGetData';
 
 const SpacialCategoriesSingle = () => {
     const { pathname } = useLocation();
@@ -32,6 +33,8 @@ const SpacialCategoriesSingle = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const [axiosSecure] = useAxiosSecure();
+    const [, refatch] = useAddtoCardGetData();
+
 
 
     const { data: datass = {}, refetch } = useQuery({
@@ -141,11 +144,67 @@ const SpacialCategoriesSingle = () => {
     }
 
 
+    const addtoCardFun = (data, image) => {
+        if (!size) {
+            setWarningText("select the size")
+            setTimeout(() => {
+                setWarningText("");
+            }, 3000);
+            return
+        }
+        if (!user) {
+            Swal.fire({
+                title: 'Login First',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Go to login page',
+            }).then((result) => {
+                // setLoading(false)
+                if (result.isConfirmed) {
+                    navigate("/login")
+                    // setLoading(false)
+                }
+            })
+            return
+        }
+        const { _id, images, ...rest } = data
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, selectedSize : size };
+        axios.post("http://localhost:5000/addToCard", productData)
+            .then((data) => {
+                if (data.data.exist) {
+                    toast.warn("Product Already Exist", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                }
+                if (data.data.acknowledged) {
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Product Added',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    refatch();
+                }
+            })
+    }
+
+
+
 
     return (
         <div>
 
-            <h2 className='text-color text-center py-5 text-3xl font-bold'>Spacial Product</h2>
+            <h2 className='text-color text-center py-5 text-3xl font-bold'>Special Product</h2>
 
             {
                 data &&
@@ -186,9 +245,9 @@ const SpacialCategoriesSingle = () => {
                                 <small onClick={() => setSize("2XL")} className="mx-1 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >2XL</small>
                             </p>
 
-                                {
-                                    size && <p className='bg-slate-300 ms-5 rounded-full px-1 w-8 h-8 text-center items-center pt-1 font-semibold'>{size}</p>
-                                }
+                            {
+                                size && <p className='bg-slate-300 ms-5 rounded-full px-1 w-8 h-8 text-center items-center pt-1 font-semibold'>{size}</p>
+                            }
 
                         </div>
 
@@ -209,7 +268,7 @@ const SpacialCategoriesSingle = () => {
 
 
                         <div className='flex items-center mt-4'>
-                            <span className="flex items-center  border-dotted border-2 w-3/12 cursor-pointer justify-center border-sky-500 px-2 rounded bg-sky-100 hover:bg-sky-300 duration-500 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
+                            <span onClick={() => addtoCardFun(data, data.images[imageIndex])} className="flex items-center  border-dotted border-2 w-3/12 cursor-pointer justify-center border-sky-500 px-2 rounded bg-sky-100 hover:bg-sky-300 duration-500 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
 
                             <Link className="w-3/12 px-3 block border-dotted border-2 text-center rounded bg-gray-400 hover:bg-gray-700 hover:text-white duration-500 font-semibold ms-5" to={"/seeAll"}>Go to Favourite</Link>
 
