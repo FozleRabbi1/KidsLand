@@ -4,6 +4,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import Nav from '../SharedFile/NavbarFile/Nav';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthContextProvider';
+import { ToastContainer } from 'react-toastify';
 
 const DashBoard = () => {
     const { pathname } = useLocation();
@@ -131,7 +132,7 @@ const DashBoard = () => {
                 </div>
             </div>
 
-
+            <ToastContainer />
         </div>
     );
 };

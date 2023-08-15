@@ -9,14 +9,14 @@ import Swal from "sweetalert2";
 import useFavouriteProduct from "../../../../HooksFile/useFavouriteProduct";
 import axios from "axios";
 import { GiSelfLove } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../../HooksFile/useAxiosSecure";
 import useAddtoCard from "../../../../HooksFile/useAddtoCard";
 import useAddtoCardGetData from "../../../../HooksFile/useAddtoCardGetData";
 
 const ShowMoreWithModal = ({ product, setProduct }) => {
     const [imageIndex, setImageIndex] = useState(0);
-    const [size, setSize] = useState("");
+    // const [size, setSize] = useState("");
     const [counetr, setCounter] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
     const [warningText, setWarningText] = useState("");
@@ -76,7 +76,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
     const addToFavourive = (product, imageUrl) => {
         setLoading(true)
         const { _id, images, ...rest } = product
-        const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email, favourite: true }
+        const productData = { mainId: _id, ...rest, imageUrl: imageUrl, email: user?.email }
         if (!user) {
             Swal.fire({
                 title: 'Login First',
@@ -138,14 +138,6 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
 
 
     const addtoCardFun = (data, image) => {
-        if (!size) {
-            setWarningText("select the size")
-            setTimeout(() => {
-                setWarningText("");
-            }, 3000);
-            return
-
-        }
         if (!user) {
             Swal.fire({
                 title: 'Login First',
@@ -165,20 +157,15 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
         }
         const { _id, images, description, ...rest } = data;
 
-        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, size: size, selectedProductNum: counetr, totalPrice: totalPrice, selectedSize : size };
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image};
         axios.post("http://localhost:5000/addToCard", productData)
             .then((data) => {
                 if (data.data.exist) {
-                    toast.warn("Product Already Exist", {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    });
+                    setWarningText(`${data.data.message}`)
+                    refatch();
+                    setTimeout(() => {
+                        setWarningText("");
+                    }, 3000);
                 }
                 if (data.data.acknowledged) {
                     setWarningText("Added Product ")
@@ -195,7 +182,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
         <div>
             <dialog id="show_more_with_modal" className="modal">
                 <form method="dialog" className="modal-box w-11/12 max-w-5xl relative">
-                    <div className="grid md:grid-cols-2 justify-center ">
+                    <div className="grid md:grid-cols-2 justify-center items-center ">
                         <div className="image-div w-full md:w-10/12">
 
                             <img className="image w-full h-[400px] " src={product.images[imageIndex]} alt="" />
@@ -210,7 +197,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
 
                         </div>
 
-                        <div className="text-div">
+                        <div className="text-div -mt-14">
 
                             <h3 className="font-bold text-lg"> {product?.title} </h3>
                             <div className="mt-4">
@@ -222,7 +209,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                                 <p>material :: {product?.material}</p>
                             </div>
 
-                            <div className="flex">
+                            {/* <div className="flex">
                                 <p className="flex items-center"> <span className="font-semibold">Show Size</span> ::
                                     <small onClick={() => setSize("XS")} className="mx-2 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >XS</small>
                                     <small onClick={() => setSize("S")} className="mx-1 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >S</small>
@@ -235,28 +222,31 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                                 {
                                     size && <p className='bg-slate-300 ms-5 rounded-full px-1 w-8 h-8 text-center items-center pt-1 font-semibold'>{size}</p>
                                 }
-                            </div>
+                            </div> */}
 
-                            <div className="flex items-center mt-4 ">
+                            {/* <div className="flex items-center "> */}
 
-                                <div className="flex w-4/12 justify-between">
+                                {/* <div className="flex w-4/12 justify-between">
                                     <div onClick={decrease} className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer">-</div>
                                     <div className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer"> {counetr} </div>
                                     <div onClick={Increase} className="w-10 h-10 text-2xl bg-slate-100 flex items-center justify-center cursor-pointer"> + </div>
-                                </div>
+                                </div> */}
 
                                 {/* <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice || product?.price} $</span> </h2> */}
-                                <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice === 0 ? product?.price : totalPrice} $</span> </h2>
+                                {/* <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{totalPrice === 0 ? product?.price : totalPrice} $</span> </h2> */}
 
-                            </div>
+                            {/* </div> */}
                             {
-                                warningText && <p className="bg-yellow-200 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
+                                warningText && <p className="bg-yellow-200 py-1 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
                             }
 
                             <div className="flex items-center mt-3">
-                                <span onClick={() => addtoCardFun(product, product?.images[imageIndex])} className="flex items-center  border-dotted border-2 cursor-pointer w-4/12 justify-center border-sky-500 px-2 rounded bg-sky-100 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
 
-                                <span className=' ms-5'>
+                                <span onClick={() => addtoCardFun(product, product?.images[imageIndex])} className="flex me-5 items-center  border-dotted border-2 cursor-pointer  justify-center border-sky-500 px-2 rounded bg-sky-100 text-sky-900 font-semibold ">Add To Card <AiOutlineShoppingCart className="ms-2 text-green-500 font-bold text-xl"></AiOutlineShoppingCart> </span>
+
+                                <Link className=" px-3  me-5 block border-dotted border-2 text-center rounded bg-gray-400 hover:bg-gray-700 hover:text-white duration-500 font-semibold" to={"/seeAll"}>Go to Favourite</Link>
+
+                                <span className=''>
                                     {
                                         loading ? <div className=""> <span className="loading text-black loading-infinity loading-md"></span></div>
                                             :
@@ -272,14 +262,12 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
 
 
                         </div>
-
                     </div>
                     <div onClick={() => allCutFunction()} className=" absolute z-30 top-3 right-3  flex justify-center items-center">
                         <button className="bg-green-300 rounded-full w-10 h-10 font-bold hover:text-red-500 duration-500 text-xl">X</button>
                     </div>
                 </form>
             </dialog>
-
         </div>
     );
 };

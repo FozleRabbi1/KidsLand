@@ -145,13 +145,6 @@ const SpacialCategoriesSingle = () => {
 
 
     const addtoCardFun = (data, image) => {
-        if (!size) {
-            setWarningText("select the size")
-            setTimeout(() => {
-                setWarningText("");
-            }, 3000);
-            return
-        }
         if (!user) {
             Swal.fire({
                 title: 'Login First',
@@ -170,7 +163,7 @@ const SpacialCategoriesSingle = () => {
             return
         }
         const { _id, images, ...rest } = data
-        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image, selectedSize : size };
+        const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image};
         axios.post("http://localhost:5000/addToCard", productData)
             .then((data) => {
                 if (data.data.exist) {
@@ -208,7 +201,7 @@ const SpacialCategoriesSingle = () => {
 
             {
                 data &&
-                <div className="grid md:grid-cols-2 justify-center md:px-16 my-4">
+                <div className="grid md:grid-cols-2 justify-center md:px-16 my-4 items-center">
                     <div className="image-div w-full md:w-10/12 flex">
 
                         <div className="img-div flex items-center flex-col justify-center me-2">
@@ -235,7 +228,7 @@ const SpacialCategoriesSingle = () => {
                             <p>Gender :: {data.gender}</p>
                         </div>
 
-                        <div className='flex'>
+                        {/* <div className='flex'>
                             <p className="flex items-center"> <span className='font-bold'>Select size</span> ::
                                 <small onClick={() => setSize("XS")} className="mx-2 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >XS</small>
                                 <small onClick={() => setSize("S")} className="mx-1 cursor-pointer bg-green-200 rounded-2xl block w-6 h-6 text-center" >S</small>
@@ -249,9 +242,9 @@ const SpacialCategoriesSingle = () => {
                                 size && <p className='bg-slate-300 ms-5 rounded-full px-1 w-8 h-8 text-center items-center pt-1 font-semibold'>{size}</p>
                             }
 
-                        </div>
+                        </div> */}
 
-                        <div className="flex items-center mt-2 ">
+                        {/* <div className="flex items-center mt-2 ">
 
                             <div className="flex w-4/12 justify-between">
                                 <div onClick={decrease} className="w-10 h-10 text-2xl bg-slate-200 flex items-center justify-center cursor-pointer">-</div>
@@ -261,7 +254,7 @@ const SpacialCategoriesSingle = () => {
 
                             <h2 className=" ms-8"> Price :: <span className="text-red-600 text-xl font-bold">{isNaN(totalPrice) ? data?.price : totalPrice} $</span> </h2>
 
-                        </div>
+                        </div> */}
                         {
                             warningText && <p className="bg-yellow-200 text-red-500 w-5/12 text-center rounded-full mt-1 text-xs font-bold">{warningText}</p>
                         }

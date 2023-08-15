@@ -10,9 +10,9 @@ const SelectedProduct = () => {
             <h2 className='text-center text-3xl font-bold text-color pb-10'> All Selected Product Here </h2>
 
             <div className='mb-10'>
-                <div className="mainDiv w-11/12 p-2 flex justify-between">
+                <div className="mainDiv p-2 flex justify-between ">
 
-                    <div>
+                    <div className='flex-1'>
                         {
                             addToCardData?.map(data =>
                                 <SelectedSingleProduct
@@ -23,7 +23,7 @@ const SelectedProduct = () => {
                         }
                     </div>
 
-                    <div className="orderSummary bg-green-200">
+                    <div className="orderSummary bg-green-200 w-3/12">
                         <h2>Order Summary</h2>
                     </div>
 
