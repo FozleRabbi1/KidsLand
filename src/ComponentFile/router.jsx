@@ -12,6 +12,7 @@ import ContactUs from "./PagesFile/ContactUsFile/ContactUs";
 import DashBoard from "./DashBoardFile/DashBoard";
 import AllLikedProduct from "./DashBoardFile/DashBoardAllPages/UserPages/AllLikedProduct/AllLikedProduct";
 import SelectedProduct from "./DashBoardFile/DashBoardAllPages/UserPages/selectedProduct/SelectedProduct";
+import AllUsers from "./DashBoardFile/DashBoardAllPages/CEO/AllUsers/AllUsers";
 
 export const router = createBrowserRouter([
     {
@@ -41,7 +42,8 @@ export const router = createBrowserRouter([
             </PrivateRoute>,
         children: [
             { path: "seeLikedProduct", element: <AllLikedProduct></AllLikedProduct> },
-            {path : "selectedProduct", element : <SelectedProduct></SelectedProduct> }
+            {path : "selectedProduct", element : <SelectedProduct></SelectedProduct> },
+            {path : "allUsers", element : <AllUsers></AllUsers> },
         ]
     }
 ])

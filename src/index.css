@@ -7,7 +7,8 @@ html{
 }
 
 .bg-color{
-    background-color: rgb(9,170,38);
+    background-color: aqua;
+    /* background-color: rgb(9,170,38); */
 }
 .text-color{
     color: rgb(3, 122, 241);

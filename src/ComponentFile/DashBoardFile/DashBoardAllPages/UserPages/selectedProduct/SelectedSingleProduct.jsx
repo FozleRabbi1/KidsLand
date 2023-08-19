@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import './SelectedSingleProduct.css';
 import { useEffect } from 'react';
+import axios from 'axios';
+import useAddtoCardGetData from '../../../../HooksFile/useAddtoCardGetData';
 
 const SelectedSingleProduct = ({ data }) => {
     const [size, setSize] = useState("");
     const [presentAmount, setPersentAmount] = useState(0);
-    const [productCount, setProductCount] = useState(1)
-    // numVal1 *(numVal2/100);
+    const [productCount, setProductCount] = useState(1);
+    const [, refatch] = useAddtoCardGetData();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
 
@@ -15,11 +18,22 @@ const SelectedSingleProduct = ({ data }) => {
 
     }, [])
 
+    const selectedProductDeleteFun = (id) => {
+        setLoading(true)
+        axios.delete(`http://localhost:5000/addToCard/${id}`)
+            .then(() => {
+                refatch();
+                setLoading(false)
+            })
+    }
+
 
     return (
         <div>
 
             <div className='flex items-center justify-between p-5'>
+                <button onClick={() => selectedProductDeleteFun(data?._id)} className=' w-6 h-6 rounded-full font-bold hover:text-red-500 duration-500 flex justify-center items-center'> {loading ? <span className="loading loading-spinner loading-xs"></span> : "X"}</button>
+
                 <img className='w-32 h-32' src={data.imageUrl} alt="" />
 
                 <div className='flex flex-col'>
@@ -61,9 +75,7 @@ const SelectedSingleProduct = ({ data }) => {
                     <span className='w-6 h-6 bg-gray-200 flex justify-center items-center font-bold hover:bg-gray-300 duration-500 '>{productCount}</span>
                     <span className='w-6 h-6 bg-gray-200 flex justify-center items-center font-bold hover:bg-gray-400 hover:text-red-600 text-2xl duration-500 cursor-pointer '>+</span>
                 </div>
-
             </div>
-
         </div>
     );
 };

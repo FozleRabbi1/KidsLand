@@ -8,11 +8,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../AuthProvider/AuthContextProvider';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import useAddtoCardGetData from '../../../../HooksFile/useAddtoCardGetData';
 
 const AllLikedProduct = () => {
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const [loadingId, setLoadingId] = useState("");
     const {user} = useContext(AuthContext);
+    const [addToCardData, refatch] = useAddtoCardGetData()
 
 
     const deleteFunction = (id) => {
@@ -47,6 +49,7 @@ const AllLikedProduct = () => {
                     }
                 }
                 if (data.data.acknowledged) {
+                    refatch();
                     Swal.fire({
                         position: 'top-center',
                         icon: 'success',
@@ -54,7 +57,6 @@ const AllLikedProduct = () => {
                         showConfirmButton: false,
                         timer: 1500
                       })
-                    refatch();
                 }
             })
     }
