@@ -7,6 +7,8 @@ import { AuthContext } from '../AuthProvider/AuthContextProvider';
 import { ToastContainer } from 'react-toastify';
 import useFavouriteProduct from '../HooksFile/useFavouriteProduct';
 import useAddtoCardGetData from '../HooksFile/useAddtoCardGetData';
+import useAdmin from '../HooksFile/DashBoardHooks/useAdmin';
+import useManager from '../HooksFile/DashBoardHooks/useManager';
 
 const DashBoard = () => {
     const { pathname } = useLocation();
@@ -18,9 +20,14 @@ const DashBoard = () => {
     const { user } = useContext(AuthContext)
     const location = useLocation();
     const showNavAndFooter = location.pathname !== '/login' && location.pathname !== '/register';
+    const [isAdmin, adminLoading] = useAdmin();
+    const [isManager, managerLoading] = useManager()
+    console.log("admin", isAdmin?.admin)
+    console.log("manager", isManager?.manager)
 
+    // const admin = isAdmin?.admin;
     const admin = true;
-    const manager = false;
+    const manager = isManager?.manager;
 
     const allRoutes = <>
         <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500' to={"/"}> Home </Link></li>
@@ -67,7 +74,7 @@ const DashBoard = () => {
 
 
                 <div className="drawer lg:drawer-open">
-                {/* <div className="drawer drawer-open"> */}
+                    {/* <div className="drawer drawer-open"> */}
                     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content flex flex-col pt-3">
                         <Outlet></Outlet>
@@ -96,7 +103,7 @@ const DashBoard = () => {
                                         {/* <sup className='text-red-500 font-bold'>{favouriteProducts?.length || 0}</sup> */}
                                     </Link></li>
                                     <li className='' ><Link className=' w-full block text-center font-semibold text-black mb-3 p-2 rounded-full hover:text-red-500 duration-500' to={"/dashboard/"}>Managers
-                                     {/* <sup className='text-red-500 font-bold'>{addToCardData?.length || 0}</sup>  */}
+                                        {/* <sup className='text-red-500 font-bold'>{addToCardData?.length || 0}</sup>  */}
                                     </Link></li>
 
                                     <div className="divider"></div>
@@ -112,7 +119,7 @@ const DashBoard = () => {
                                     <ul className="">
                                         <span className='flex items-center flex-col-reverse my-3'>
                                             <small className='font-semibold'>{user?.email}</small>
-                                            <div className="chat chat-start bg-green-400">
+                                            <div className="chat chat-start ">
                                                 <div className="chat-image avatar">
                                                     <div className="w-12 rounded-full">
                                                         <img src={user?.photoURL} />
