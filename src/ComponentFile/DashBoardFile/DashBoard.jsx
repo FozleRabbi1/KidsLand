@@ -25,8 +25,8 @@ const DashBoard = () => {
     console.log("admin", isAdmin?.admin)
     console.log("manager", isManager?.manager)
 
-    // const admin = isAdmin?.admin;
-    const admin = true;
+    const admin = isAdmin?.admin;
+    // const admin = true;
     const manager = isManager?.manager;
 
     const allRoutes = <>
