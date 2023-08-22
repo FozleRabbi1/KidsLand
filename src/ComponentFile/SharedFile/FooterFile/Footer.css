@@ -1,0 +1,16 @@
+footer .main-heading{
+    color: aqua;
+}
+footer .footer-headline{
+    position: relative;  
+}
+footer .footer-headline::after{
+    position: absolute;
+    content: '';
+    width: 70%;
+    height: 3px;
+    background-color: aqua;  
+    bottom: 0;
+    left: 0; 
+    margin-bottom: -2px;
+}

@@ -23,7 +23,7 @@ const AllDressCollection = () => {
     const [text, setText] = useState("AllDress")
     const [datas, productLength, refetch, isLoading] = useAllDressCollection(getData, selectedOption, value, selectedOption2, text);
     const [productNumber, setProductNumber] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(0);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const [product, setProduct] = useState(null);
     const [addToCardData] = useAddtoCardGetData();

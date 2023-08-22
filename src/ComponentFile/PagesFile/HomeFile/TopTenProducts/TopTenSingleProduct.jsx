@@ -8,7 +8,7 @@ const TopTenSingleProduct = ({ data }) => {
                 <img id="prompt" src={data.images[2]} alt="" />
             </div> */}
 
-            <div class="card">
+            <div data-aos="zoom-in" class="card">
 
                 <div class="first-content">
                     <img src={data.images[2]} alt="" />
