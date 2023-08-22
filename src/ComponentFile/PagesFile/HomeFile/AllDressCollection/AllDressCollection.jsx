@@ -23,17 +23,21 @@ const AllDressCollection = () => {
     const [text, setText] = useState("AllDress")
     const [datas, productLength, refetch, isLoading] = useAllDressCollection(getData, selectedOption, value, selectedOption2, text);
     const [productNumber, setProductNumber] = useState(0);
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const [product, setProduct] = useState(null);
     const [addToCardData] = useAddtoCardGetData();
-
-    useEffect(() => {   
+    useEffect(() => {
         refetch()
     }, [getData, selectedOption, value, productLength, selectedOption2, text])
 
 
     const itemsPerPage = 12;
+    // let pageNumber;
+    // if (productLength) {
+    //     const pageCount = Math.ceil(productNumber / itemsPerPage);
+    //     pageNumber = [...Array(pageCount).keys()]
+    // }
     const pageCount = Math.ceil(productNumber / itemsPerPage);
     const pageNumber = [...Array(pageCount).keys()]
 
@@ -66,7 +70,7 @@ const AllDressCollection = () => {
 
                 <div data-aos="fade-right" data-aos-delay="1000" className="conterol-div w-2/12 pe-3">
                     <h2 className='text-center mb-4 text-color text-xl font-bold'>control panel</h2>
-                    <h2>{addToCardData?.length || 0}</h2>
+                    {/* <h2>{addToCardData?.length || 0}</h2> */}
                     <div className='my-2'>
                         <h2 className='flex border-b-2 mb-2'> <span>Total Product =</span> <span className='font-semibold ' >{productNumber}</span> </h2>
                         <h2 className='flex border-b-2 mb-2'> <span>Find Product =</span> <span className='font-semibold ' >{productLength}</span> </h2>

@@ -4,7 +4,7 @@ import './Latest.css'
 const LatetsProduce = () => {
     return (
         <div>
-            <h2 className='text-4xl font-bold text-color  mt-5'>Latest Product <small className='text-sm'>(TODO)</small> </h2>
+            <h2 className='text-center text-4xl font-bold text-color pb-10'>Latest Product <small className='text-sm'>(TODO)</small> </h2>
             <div className='latest-product-main-div py-10 grid md:grid-cols-2 justify-center gap-10 items-center'>
 
                 <div  data-aos="flip-left" className="container  grid grid-cols-2">
@@ -60,11 +60,11 @@ const LatetsProduce = () => {
 
                     <div className="card_box w-11/12 md:w-6/12">
                         <span></span>
-                        <img className='' src="https://ae01.alicdn.com/kf/H21365e49dd95402e85ef5f566fc86420g/Vgiee-Kids-Dresses-For-Girls-Princess-Dress-Girl-For-Party-Dress-Mesh-Sleeveless-Baby-Clothes-Dress.jpg" alt="" />
+                        <img className='' src="https://www.monsoon.co.uk/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-monsoon-master-catalog/default/dwdd4a7a52/images/large/51_51219611.jpg?sw=594&sh=761&sm=cut" alt="" />
                     </div>
 
                     <div className='5/12 p-1 mt-10 ps-3'>
-                        <h2 >Lorem ipsum, dolor sit </h2>
+                        <h2 >Lorem ipsum, dolor sittt </h2>
                         <p  className='text-justify pe-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam hic corporis  amet maiores.</p>
 
                         <div data-tooltip="Price:-$65" className="button mt-3">

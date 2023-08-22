@@ -22,11 +22,8 @@ const DashBoard = () => {
     const showNavAndFooter = location.pathname !== '/login' && location.pathname !== '/register';
     const [isAdmin, adminLoading] = useAdmin();
     const [isManager, managerLoading] = useManager()
-    console.log("admin", isAdmin?.admin)
-    console.log("manager", isManager?.manager)
 
     const admin = isAdmin?.admin;
-    // const admin = true;
     const manager = isManager?.manager;
 
     const allRoutes = <>
@@ -78,6 +75,7 @@ const DashBoard = () => {
                     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content flex flex-col pt-3">
                         <Outlet></Outlet>
+                        <h2 className='text-center mt-10 text-2xl'>welcome <span className='text-color italic font-bold'>{user?.displayName} </span> on your Dashboard <sub>( todo )</sub> </h2>
                         <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                     </div>

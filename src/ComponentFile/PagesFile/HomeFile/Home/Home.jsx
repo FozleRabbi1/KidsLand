@@ -7,6 +7,7 @@ import InformationSection from "../InformationSection/InformationSection";
 import LatetsProduce from "../LatestProduce/LatetsProduce";
 import SpacialCategories from "../SpacialCategoriesSection/SpacialCategories";
 import { useEffect } from "react";
+import TopTenProducts from "../TopTenProducts/TopTenProducts";
 
 const Home = () => {
     const { pathname } = useLocation();
@@ -17,6 +18,9 @@ const Home = () => {
     return (
         <div>
 
+            <div className="mt-3">
+                <marquee className="italic" behavior="" direction="" height="25px"> Kidsland Delight : Grab <span className="text-red-500 font-semibold">10% Off</span> on All Your Favorite Children's Products!</marquee>
+            </div>
             <Banner></Banner>
             <InformationSection></InformationSection>
             <SpacialCategories></SpacialCategories>
@@ -24,6 +28,8 @@ const Home = () => {
             <BrandSection></BrandSection>
             <LatetsProduce></LatetsProduce>
             <ContactSection></ContactSection>
+            <TopTenProducts></TopTenProducts>
+
 
 
         </div>

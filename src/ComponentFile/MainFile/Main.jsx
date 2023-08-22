@@ -19,6 +19,7 @@ const Main = () => {
 
     return (
         <div style={{ backgroundColor: "rgba(50,150,250,0.1)", height: "100%" }} className="local-text ">
+        {/* // <div style={{ backgroundColor: "rgba(50,150,250,0.9)", height: "100%" }} className="local-text "> */}
             {
                 showNavAndFooter && <Nav></Nav>
             }
