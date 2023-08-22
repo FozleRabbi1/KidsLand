@@ -13,6 +13,7 @@ import DashBoard from "./DashBoardFile/DashBoard";
 import AllLikedProduct from "./DashBoardFile/DashBoardAllPages/UserPages/AllLikedProduct/AllLikedProduct";
 import SelectedProduct from "./DashBoardFile/DashBoardAllPages/UserPages/selectedProduct/SelectedProduct";
 import AllUsers from "./DashBoardFile/DashBoardAllPages/CEO/AllUsers/AllUsers";
+import DashWelcome from "./DashBoardFile/DashBoardAllPages/DashWelcome/DashWelcome";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,7 @@ export const router = createBrowserRouter([
                 <DashBoard></DashBoard>
             </PrivateRoute>,
         children: [
+            { path: "welcomePage", element: <DashWelcome></DashWelcome> },
             { path: "seeLikedProduct", element: <AllLikedProduct></AllLikedProduct> },
             {path : "selectedProduct", element : <SelectedProduct></SelectedProduct> },
             {path : "allUsers", element : <AllUsers></AllUsers> },

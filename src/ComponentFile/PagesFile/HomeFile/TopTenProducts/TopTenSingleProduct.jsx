@@ -4,10 +4,6 @@ const TopTenSingleProduct = ({ data }) => {
     return (
         <div>
 
-            {/* <div class=" ">
-                <img id="prompt" src={data.images[2]} alt="" />
-            </div> */}
-
             <div data-aos="zoom-in" class="card">
 
                 <div class="first-content">

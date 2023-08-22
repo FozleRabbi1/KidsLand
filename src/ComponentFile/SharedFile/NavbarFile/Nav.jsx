@@ -82,7 +82,7 @@ const Nav = () => {
                                         </Activelink>
                                         {/* dashboard/selectedProduct/selectedProduct */}
                                         {/* <Activelink className="flex" to={"/dashboard/selectedProduct/selectedProduct"}> */}
-                                        <Activelink className="flex" to={"/dashboard"}>
+                                        <Activelink className="flex" to={"/dashboard/welcomePage"}>
                                             Dashboard <sup>{addToCardData.length || 0}</sup>
                                         </Activelink>
 
