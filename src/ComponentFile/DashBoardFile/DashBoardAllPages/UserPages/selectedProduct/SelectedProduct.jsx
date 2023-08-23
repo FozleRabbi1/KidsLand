@@ -7,7 +7,7 @@ const SelectedProduct = () => {
     return (
         <div>
 
-            <h2 className='text-center text-3xl font-bold text-color pb-10'> All Selected Product Here </h2>
+            <h2 className='text-center text-3xl font-bold text-color pb-10'> All Selected Product Here <sub>(todo)</sub> </h2>
 
             <div className='mb-10'>
                 <div className="mainDiv p-2 flex justify-between ">

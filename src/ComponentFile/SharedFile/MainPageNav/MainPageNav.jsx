@@ -57,7 +57,7 @@ const MainPageNav = () => {
                         </Link>
 
                         
-                            <Link className="nav-text" to={"/dashboard"}>
+                            <Link className="nav-text" to={"/dashboard/welcomePage"}>
                                 Dashboard <sup>{addToCardData.length || 0}</sup>
                             </Link>
                        

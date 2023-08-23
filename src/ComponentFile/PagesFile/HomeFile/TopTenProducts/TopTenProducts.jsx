@@ -15,7 +15,7 @@ const TopTenProducts = () => {
 
     return (
         <div>
-            <h2 className='text-center text-4xl font-bold text-color pb-10'>Top 10 Product's  <small className='text-sm'>(TODO)</small> </h2>
+            <h2 className='text-center text-4xl font-bold text-color pb-10'>Top 10 Selling Products  <small className='text-sm'>(TODO)</small> </h2>
 
 
             <div className="grid grid-cols-4 gap-10 -z-10 pb-10">
