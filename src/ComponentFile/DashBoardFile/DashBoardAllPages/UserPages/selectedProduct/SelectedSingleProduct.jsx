@@ -20,7 +20,7 @@ const SelectedSingleProduct = ({ data }) => {
 
     const selectedProductDeleteFun = (id) => {
         setLoading(true)
-        axios.delete(`http://localhost:5000/addToCard/${id}`)
+        axios.delete(`https://kids-land-server-two.vercel.app/addToCard/${id}`)
             .then(() => {
                 refatch();
                 setLoading(false)

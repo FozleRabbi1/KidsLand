@@ -37,7 +37,7 @@ const Register = () => {
                     const userInfo = { email, name, photoUrl: photoUrl };
                     createUserr(email, password)
                         .then(() => {
-                            axios.post("http://localhost:5000/users", userInfo)
+                            axios.post("https://kids-land-server-two.vercel.app/users", userInfo)
                                 .then(() => {
                                     setIsLoading(false)
                                     reset();

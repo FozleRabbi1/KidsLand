@@ -46,7 +46,7 @@ const Nav = () => {
 
     const deleteFunction = (id) => {
         setLoading(true)
-        axios.delete(`http://localhost:5000/favouriteProducts/${id}`)
+        axios.delete(`https://kids-land-server-two.vercel.app/favouriteProducts/${id}`)
             .then(data => {
                 favaouriteRefatch()
                 setLoading(false)
@@ -64,7 +64,7 @@ const Nav = () => {
                         <div className="flex items-center justify-between h-16">
                             <div className="flex w-full justify-between items-center">
                                 <div className="flex-shrink-0">
-                                    <h2>Logo</h2>
+                                    <img className="w-12 h-12 rounded-2xl" src="https://i.ibb.co/3fGFGP9/istockphoto-1029895828-612x612.jpg" alt="" />
                                 </div>
                                 <div className="hidden md:block  ">
                                     <div className="ml-10 flex  items-center space-x-6">

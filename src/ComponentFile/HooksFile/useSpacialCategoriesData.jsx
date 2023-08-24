@@ -5,7 +5,7 @@ const useSpacialCategoriesData = (selectedOption) => {
     const { data: datas = [], refetch, isLoading } = useQuery({
         queryKey: ['specialDats', selectedOption],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/specialDats/${selectedOption.toLowerCase()}`)
+            const res = await fetch(`https://kids-land-server-two.vercel.app/specialDats/${selectedOption.toLowerCase()}`)
             return res.json();
         },
     })

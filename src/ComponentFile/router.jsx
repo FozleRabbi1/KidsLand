@@ -14,6 +14,9 @@ import AllLikedProduct from "./DashBoardFile/DashBoardAllPages/UserPages/AllLike
 import SelectedProduct from "./DashBoardFile/DashBoardAllPages/UserPages/selectedProduct/SelectedProduct";
 import AllUsers from "./DashBoardFile/DashBoardAllPages/CEO/AllUsers/AllUsers";
 import DashWelcome from "./DashBoardFile/DashBoardAllPages/DashWelcome/DashWelcome";
+import SpecialCollectionAll from "./PagesFile/SpecialCollectionAllFile/SpecialCollectionAll";
+
+// https://kids-land-server-two.vercel.app/
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +27,7 @@ export const router = createBrowserRouter([
             { path: "login", element: <Login></Login> },
             { path: "register", element: <Register></Register> },
             { path: "seeAll", element: <SeeAllLikedProduct></SeeAllLikedProduct> },
+            { path: "specialCollectionAll", element: <SpecialCollectionAll></SpecialCollectionAll> },
             {
                 path: "spacialDetails/:id", element:
                     <SpacialCategoriesSingle></SpacialCategoriesSingle>

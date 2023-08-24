@@ -7,7 +7,7 @@ const TopTenProducts = () => {
     const [topDatas, setTopTenDatas] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/topTenProducts")
+        fetch("https://kids-land-server-two.vercel.app/topTenProducts")
             .then(res => res.json())
             .then(data => setTopTenDatas(data))
     }, [])

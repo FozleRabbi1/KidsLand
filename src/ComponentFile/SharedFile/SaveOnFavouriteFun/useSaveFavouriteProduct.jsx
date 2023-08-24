@@ -52,7 +52,7 @@ const useSaveFavouriteProduct = ({ product, imageUrl, click }) => {
     //     return
     // }
 
-    // axios.post("http://localhost:5000/favouriteProducts", productData)
+    // axios.post("https://kids-land-server-two.vercel.app/favouriteProducts", productData)
     //     .then(data => {
     //         if (data.data.exist) {
     //             setLoading(false)

@@ -40,7 +40,7 @@ const SpacialCategoriesSingle = () => {
     const { data: datass = {}, refetch } = useQuery({
         queryKey: ["SpacialCategoriesSingle", id],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/SpacialCategoriesSingle/${id}`);
+            const res = await fetch(`https://kids-land-server-two.vercel.app/SpacialCategoriesSingle/${id}`);
             const data = await res.json();
             setdata(data)
             // return data;
@@ -119,7 +119,7 @@ const SpacialCategoriesSingle = () => {
             setLoading(false)
             return
         }
-        // axios.post("http://localhost:5000/favouriteProducts", productData)
+        // axios.post("https://kids-land-server-two.vercel.app/favouriteProducts", productData)
         axiosSecure.post(`/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
@@ -164,7 +164,7 @@ const SpacialCategoriesSingle = () => {
         }
         const { _id, images, ...rest } = data
         const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image};
-        axios.post("http://localhost:5000/addToCard", productData)
+        axios.post("https://kids-land-server-two.vercel.app/addToCard", productData)
             .then((data) => {
                 if (data.data.exist) {
                     toast.warn("Product Already Exist", {

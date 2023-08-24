@@ -21,7 +21,7 @@ const SingleFavProduct = ({ data }) => {
 
     const deleteFunction = (id) => {
         setLoadingId(id)
-        axios.delete(`http://localhost:5000/favouriteProducts/${id}`)
+        axios.delete(`https://kids-land-server-two.vercel.app/favouriteProducts/${id}`)
             .then(data => {
                 favaouriteRefatch()
             })
@@ -32,7 +32,7 @@ const SingleFavProduct = ({ data }) => {
         console.log(data);
 
         const productData = { mainId: _id, ...rest, email: user?.email };
-        axios.post("http://localhost:5000/addToCard", productData)
+        axios.post("https://kids-land-server-two.vercel.app/addToCard", productData)
             .then((data) => {
                 if (data.data.exist) {
                     toast.warn("Product Already Exist", {

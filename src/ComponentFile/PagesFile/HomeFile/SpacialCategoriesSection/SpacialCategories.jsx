@@ -99,7 +99,7 @@ const SpacialCategories = () => {
             return
         }
 
-        // axios.post("http://localhost:5000/favouriteProducts", productData)
+        // axios.post("https://kids-land-server-two.vercel.app/favouriteProducts", productData)
         axiosSecure.post(`/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
                 if (data.data.exist) {
@@ -146,9 +146,9 @@ const SpacialCategories = () => {
 
                             <div className=' relative h-full '>
                                 {imageError ? (
-                                    <p onMouseOver={() => setImageError(false)} >
+                                    <div onMouseOver={() => setImageError(false)} >
                                         <img className='img' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
-                                    </p>
+                                    </div>
                                 ) : (
                                     <img
                                         className=''
@@ -162,7 +162,7 @@ const SpacialCategories = () => {
 
                                 <div className="show-details absolute flex justify-center items-center">
                                     <div className='flex items-center'>
-                                        <button className="showMore text-center"> Show <br /> All</button>
+                                        <Link to={"/specialCollectionAll"} className="showMore text-center"> Show <br /> All</Link>
                                         <span className=' w-10 flex justify-center'>
                                             <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-red-700 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
                                         </span>

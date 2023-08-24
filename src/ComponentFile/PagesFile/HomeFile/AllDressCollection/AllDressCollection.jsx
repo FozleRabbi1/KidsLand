@@ -42,7 +42,7 @@ const AllDressCollection = () => {
     const pageNumber = [...Array(pageCount).keys()]
 
     useEffect(() => {
-        fetch("http://localhost:5000/allProductNumber")
+        fetch("https://kids-land-server-two.vercel.app/allProductNumber")
             .then(res => res.json())
             .then(data => setProductNumber(data))
     }, [])

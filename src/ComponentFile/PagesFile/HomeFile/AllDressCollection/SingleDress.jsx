@@ -107,7 +107,7 @@ const SingleDress = ({ data, index, setProduct }) => {
         }
         const { _id, images, ...rest } = data
         const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image };
-        axios.post("http://localhost:5000/addToCard", productData)
+        axios.post("https://kids-land-server-two.vercel.app/addToCard", productData)
             .then((data) => {
                 if (data.data.exist) {
                     toast.warn("Product Already Exist", {

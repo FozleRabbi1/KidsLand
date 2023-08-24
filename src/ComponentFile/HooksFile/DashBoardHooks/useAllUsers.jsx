@@ -11,7 +11,7 @@ const useAllUsers = () => {
         queryKey : [user?.email],
         enabled : !!user?.email && !!localStorage.getItem("access-token"),
         queryFn : async ()=> {
-            const response = await axiosSecure("http://localhost:5000/allUsers");
+            const response = await axiosSecure("https://kids-land-server-two.vercel.app/allUsers");
             return response.data
 
         }

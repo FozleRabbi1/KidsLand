@@ -17,7 +17,7 @@ const SocialLogin = () => {
             .then(res => {
                 const userInfo = { name: res.user.displayName, email: res.user.email }
                 if (res.user) {
-                    axios.post("http://localhost:5000/users", userInfo)
+                    axios.post("https://kids-land-server-two.vercel.app/users", userInfo)
                         .then(data => {
                             // setIsLoading(false)
                         })

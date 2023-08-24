@@ -108,7 +108,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
             setLoading(false)
             return
         }
-        // axios.post("http://localhost:5000/favouriteProducts", productData)
+        // axios.post("https://kids-land-server-two.vercel.app/favouriteProducts", productData)
 
         axiosSecure.post(`/favouriteProducts?email=${user?.email}`, productData)
             .then(data => {
@@ -158,7 +158,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
         const { _id, images, description, ...rest } = data;
 
         const productData = { mainId: _id, ...rest, email: user?.email, imageUrl: image};
-        axios.post("http://localhost:5000/addToCard", productData)
+        axios.post("https://kids-land-server-two.vercel.app/addToCard", productData)
             .then((data) => {
                 if (data.data.exist) {
                     setWarningText(`${data.data.message}`)

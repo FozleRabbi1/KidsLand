@@ -1,0 +1,16 @@
+.main-Single-specialDiv .img{
+    transition: all 0.5s;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    box-shadow: 2px 2px 5px gray;
+    border-radius: 5px;
+}
+.activee{
+    border: 1px solid red;
+    transition: all 0.5s;
+    transform: scale(1.1);
+}
+.diActivee{
+    border: 1px solid transparent;
+    transition: all 0.5s;
+}

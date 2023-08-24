@@ -13,14 +13,14 @@ const useFavouriteHook = (favouriteData) => {
     const { data: favouriteProducts = [], refetch: favaouriteRefatch, isLoading } = useQuery({
         queryKey: ['favouriteProducts', favouriteData, user?.email],
         queryFn: async () => {
-            const response = await axios.post(`http://localhost:5000/favouriteProducts?email=${user?.email}`, favouriteData);
+            const response = await axios.post(`https://kids-land-server-two.vercel.app/favouriteProducts?email=${user?.email}`, favouriteData);
             return response.data;
         }
     })
 
     return [favouriteProducts, favaouriteRefatch, isLoading]
-    // http://localhost:5000/favouriteProducts
-    // axios.post("http://localhost:5000/favouriteProducts", favProduct)
+    // https://kids-land-server-two.vercel.app/favouriteProducts
+    // axios.post("https://kids-land-server-two.vercel.app/favouriteProducts", favProduct)
     //     .then(data => {
     //         console.log(data)
     //         if (data.data.acknowledged) {
