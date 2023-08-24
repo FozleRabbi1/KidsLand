@@ -2,3 +2,55 @@
     width: 95%;
     margin: 0 auto;
 }
+.up-style{
+    background-color: rgba(0,0,0,0.9);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 888;
+    margin: 20px;
+    padding: 10px 5px;
+    color: lightgreen;
+    border-radius: 50% 0 50% 0;  
+    font-style: italic;
+}
+
+.addStyle{
+    margin-right: 10px;
+    transition: all 1s;
+
+}
+.removeStyle{
+    margin-right: -100px;
+    transition: all 1s;
+}
+
+
+.main-section .upDown-style {
+    animation-name: updownAnimation;
+    animation-duration: 3s;
+
+}
+
+.main-section .upDown-style {
+    animation-name: updownAnimation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    transition: all 0.3s;
+
+}
+
+@keyframes updownAnimation {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

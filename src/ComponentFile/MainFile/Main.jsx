@@ -13,10 +13,24 @@ import Loading from "../AnimationJson/loadinDot.json"
 
 const Main = () => {
     const [loading, setLoading] = useState(false);
+    const [scrollValue, setScrollValue] = useState(0)
 
     const location = useLocation();
     useEffect(() => {
         AOS.init({ duration: 1500 });
+    }, [])
+
+    useEffect(() => {
+
+        const updateScrollValue = () => {
+            const newValue = window.scrollY;
+            setScrollValue(newValue);
+        };
+        window.addEventListener('scroll', updateScrollValue);
+        return () => {
+            window.removeEventListener('scroll', updateScrollValue);
+        };
+
     }, [])
 
 
@@ -33,13 +47,19 @@ const Main = () => {
     return (
         <div style={{ backgroundColor: "rgba(50,150,250,0.1)", height: "100%" }} className="local-text ">
 
-            { loading ? <div className="w-full h-screen flex items-center justify-center ">
+            {loading ? <div className="w-full h-screen flex items-center justify-center ">
 
-                    <Lottie className="h-36" animationData={Loading}></Lottie>
+                <Lottie className="h-36" animationData={Loading}></Lottie>
 
             </div> :
 
-                <div>
+                <div className="main-section">
+
+                    {/* <a href="#top" className={`up-style ${scrollValue >= 300 ? "block  duration-500" : "hidden"}`}> */}
+                    <a href="#top" className={`up-style upDown-style ${scrollValue >= 300 ? "addStyle" : "removeStyle"}`}>
+                       <div className=""> up </div>
+                    </a>
+
                     {
                         showNavAndFooter && <Nav></Nav>
                     }
@@ -53,6 +73,7 @@ const Main = () => {
                             showNavAndFooter && <Footer></Footer>
                         }
                     </div>
+
                 </div>
             }
 

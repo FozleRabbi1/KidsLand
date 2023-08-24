@@ -15,7 +15,7 @@ const MainPageNav = () => {
     return (
         <div>
             <>
-                <div>
+                <div id='top'>
                     <div className="flex justify-between items-center py-2">
 
                         <span className="hidden md:block">
