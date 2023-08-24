@@ -31,7 +31,7 @@ const SelectedSingleProduct = ({ data }) => {
     return (
         <div>
 
-            <div className='flex items-center justify-between p-5'>
+            <div className='flex items-center justify-between p-5 border-2 mx-5 mb-5'>
                 <button onClick={() => selectedProductDeleteFun(data?._id)} className=' w-6 h-6 rounded-full font-bold hover:text-red-500 duration-500 flex justify-center items-center'> {loading ? <span className="loading loading-spinner loading-xs"></span> : "X"}</button>
 
                 <img className='w-32 h-32' src={data.imageUrl} alt="" />

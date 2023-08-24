@@ -176,7 +176,7 @@ const SingleDress = ({ data, index, setProduct }) => {
                 </div>
                 <div>
                     {
-                        imageError ? <p className="text-center py-14">No data Found</p>
+                        imageError ? <p className="text-center py-8">No data Found</p>
                             :
                             <div className="px-2 py-1 ">
                                 {/* <h2 className="font-semibold ">{data?.title}</h2> */}

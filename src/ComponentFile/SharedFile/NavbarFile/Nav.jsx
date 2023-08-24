@@ -14,10 +14,11 @@ const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrollingDown, setIsScrollingDown] = useState(false);
     const [prevScrollY, setPrevScrollY] = useState(0);
-    const [loading, setLoading] = useState(false)
+    // const [loading, setLoading] = useState(false)
     const { user, logInOut } = useContext(AuthContext);
     const [favouriteProducts, favaouriteRefatch] = useFavouriteProduct();
     const [addToCardData] = useAddtoCardGetData();
+    const [loadingId, setLoadingId] = useState("")
 
     const logOutFun = () => {
         logInOut();
@@ -45,11 +46,12 @@ const Nav = () => {
     }, [prevScrollY]);
 
     const deleteFunction = (id) => {
-        setLoading(true)
+        setLoadingId(id)
+        // setLoading(true)
         axios.delete(`https://kids-land-server-two.vercel.app/favouriteProducts/${id}`)
             .then(data => {
                 favaouriteRefatch()
-                setLoading(false)
+                // setLoading(false)
             })
         // setLoading(false)
     }
@@ -109,8 +111,15 @@ const Nav = () => {
 
                                                                         <img className="w-16 h-16 rounded-full bg-green-400 p-1" src={products.imageUrl} alt="" />
 
+                                                                        {/* <div className='flex'>
+                                                                            <span className="loading loading-spinner text-info"></span>
+                                                                        </div> */}
+
                                                                         {
-                                                                            loading ? "L.." :
+                                                                            loadingId === products._id ? 
+                                                                            <div className='flex'>
+                                                                                <span className="loading loading-spinner text-info"></span>
+                                                                            </div> :
                                                                                 <RiDeleteBin2Fill onClick={() => deleteFunction(products._id)} className="text-2xl cursor-pointer text-red-400 hover:text-red-700 duration-500"></RiDeleteBin2Fill>
                                                                         }
                                                                     </span>
