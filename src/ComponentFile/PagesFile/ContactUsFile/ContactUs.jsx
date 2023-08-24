@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './ContactUs.css'
 import { AiFillFacebook, AiFillTwitterSquare, AiOutlineMail } from "react-icons/ai";
@@ -8,8 +8,10 @@ import { MdLocalPhone, MdLocationOn } from "react-icons/md";
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthContextProvider';
 
 const ContactUs = () => {
+    const {user} = useContext(AuthContext)
     const { pathname } = useLocation();
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -91,8 +93,8 @@ const ContactUs = () => {
                     <h2 className='text-4xl'>CONTACT FORM</h2>
 
                     <form ref={form} onSubmit={getFormValueFun} className=' mt-4 md:mt-10'>
-                        <input name='from_name' className='input mb-5' required placeholder='Name' type="text" />
-                        <input name='from_email' className='input mb-5' required placeholder='Email' type="email" />
+                        <input name='from_name' className='input mb-5' required placeholder='Name' value={user?.displayName} type="text" />
+                        <input name='from_email' className='input mb-5' required placeholder='Email' value={user?.email} type="email" />
                         <input name='subject' className='input mb-5' required placeholder='Subject' type="text" />
                         <textarea name="message" className='textarea mb-5 h-32' required placeholder='Message' id="" cols="30" rows="10"></textarea>
 

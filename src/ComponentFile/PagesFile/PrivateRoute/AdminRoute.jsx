@@ -1,21 +1,22 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthContextProvider";
-// import useAdmin from "../../HooksFile/DashBoardHooks/useAdmin";
+import useAdmin from "../../HooksFile/DashBoardHooks/useAdmin";
+
 // https://kids-land-server-two.vercel.app/
-const PrivateRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
     const location = useLocation();
     const { user, loading } = useContext(AuthContext);
-    // const [isAdmin, adminLoading] = useAdmin();
+    const [isAdmin, adminLoading] = useAdmin();
 
     console.log(user)
     // console.log(isAdmin)
 
-    if (loading) {
+    if (loading || adminLoading) {
         <p className="">loading...................</p>
         return
     }
-    else if (!user) {
+    else if (!user || !isAdmin.admin) {
         return <Navigate to="/login" state={{ from: location }} replace ></Navigate>
     }
     else {
@@ -23,5 +24,5 @@ const PrivateRoute = ({ children }) => {
     }
 };
 
-export default PrivateRoute;
+export default AdminRoute;
 

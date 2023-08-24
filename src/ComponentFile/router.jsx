@@ -15,6 +15,7 @@ import SelectedProduct from "./DashBoardFile/DashBoardAllPages/UserPages/selecte
 import AllUsers from "./DashBoardFile/DashBoardAllPages/CEO/AllUsers/AllUsers";
 import DashWelcome from "./DashBoardFile/DashBoardAllPages/DashWelcome/DashWelcome";
 import SpecialCollectionAll from "./PagesFile/SpecialCollectionAllFile/SpecialCollectionAll";
+import AdminRoute from "./PagesFile/PrivateRoute/AdminRoute";
 
 // https://kids-land-server-two.vercel.app/
 
@@ -46,10 +47,20 @@ export const router = createBrowserRouter([
                 <DashBoard></DashBoard>
             </PrivateRoute>,
         children: [
-            { path: "welcomePage", element: <DashWelcome></DashWelcome> },
+            {
+                path: "welcomePage", element:
+                    <PrivateRoute>
+                        <DashWelcome></DashWelcome>
+                    </PrivateRoute>
+            },
             { path: "seeLikedProduct", element: <AllLikedProduct></AllLikedProduct> },
-            {path : "selectedProduct", element : <SelectedProduct></SelectedProduct> },
-            {path : "allUsers", element : <AllUsers></AllUsers> },
+            { path: "selectedProduct", element: <SelectedProduct></SelectedProduct> },
+            {
+                path: "allUsers", element:
+                 <AdminRoute>
+                    <AllUsers></AllUsers>
+                </AdminRoute>
+            },
         ]
     }
 ])

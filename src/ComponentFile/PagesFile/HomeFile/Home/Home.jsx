@@ -15,12 +15,14 @@ const Home = () => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
+
     return (
         <div>
 
             <div className="mt-3">
                 <marquee className="italic" behavior="" direction="" height="25px"> Kidsland Delight : Grab <span className="text-red-500 font-semibold">10% Off</span> on All Your Favorite Children's Products!</marquee>
             </div>
+
             <Banner></Banner>
             <InformationSection></InformationSection>
             <SpacialCategories></SpacialCategories>

@@ -3,38 +3,60 @@ import Nav from "../SharedFile/NavbarFile/Nav";
 import './Main.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import {  useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import Footer from "../SharedFile/FooterFile/Footer";
 import MainPageNav from "../SharedFile/MainPageNav/MainPageNav";
+import Lottie from "lottie-react";
+import Loading from "../AnimationJson/loadinDot.json"
 
 const Main = () => {
+    const [loading, setLoading] = useState(false);
+
     const location = useLocation();
     useEffect(() => {
         AOS.init({ duration: 1500 });
+    }, [])
+
+
+
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000);
     }, [])
 
     const showNavAndFooter = location.pathname !== '/login' && location.pathname !== '/register';
 
     return (
         <div style={{ backgroundColor: "rgba(50,150,250,0.1)", height: "100%" }} className="local-text ">
-        {/* // <div style={{ backgroundColor: "rgba(50,150,250,0.9)", height: "100%" }} className="local-text "> */}
-            {
-                showNavAndFooter && <Nav></Nav>
+
+            { loading ? <div className="w-full h-screen flex items-center justify-center ">
+
+                    <Lottie className="h-36" animationData={Loading}></Lottie>
+
+            </div> :
+
+                <div>
+                    {
+                        showNavAndFooter && <Nav></Nav>
+                    }
+                    <div className="Main-div">
+                        {
+                            showNavAndFooter &&
+                            <MainPageNav></MainPageNav>
+                        }
+                        <Outlet></Outlet>
+                        {
+                            showNavAndFooter && <Footer></Footer>
+                        }
+                    </div>
+                </div>
             }
-            <div className="Main-div">
-                {
-                    showNavAndFooter &&
 
-                    <MainPageNav></MainPageNav>
 
-                }
-                <Outlet></Outlet>
-                {
-                    showNavAndFooter && <Footer></Footer>
-                }
-            </div>
             <ToastContainer />
         </div>
     );
