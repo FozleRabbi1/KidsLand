@@ -13,14 +13,15 @@
     color: lightgreen;
     border-radius: 50% 0 50% 0;  
     font-style: italic;
+    border: 1px solid red;
 }
 
-.addStyle{
+.addStylee{
     margin-right: 10px;
     transition: all 1s;
 
 }
-.removeStyle{
+.removeStylee{
     margin-right: -100px;
     transition: all 1s;
 }
