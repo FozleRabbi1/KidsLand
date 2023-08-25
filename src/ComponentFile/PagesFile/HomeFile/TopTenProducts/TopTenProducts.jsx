@@ -18,7 +18,7 @@ const TopTenProducts = () => {
             <h2 className='text-center text-4xl font-bold text-color pb-10'>Top 10 Selling Products  <small className='text-sm'>(TODO)</small> </h2>
 
 
-            <div className="grid grid-cols-4 gap-10 -z-10 pb-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-10 justify-center -z-10 pb-10">
                 {
                     topDatas?.map(data =>
                         <TopTenSingleProduct key={data._id} data={data}></TopTenSingleProduct>

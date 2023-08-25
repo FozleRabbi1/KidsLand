@@ -2,30 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-.bg-color{
+.bg-color {
     background-color: aqua;
     /* background-color: rgb(9,170,38); */
 }
-.text-color{
+
+.text-color {
     color: rgb(3, 122, 241);
     /* color: rgb(50,150,250); */
 }
-.local-text{
+
+.local-text {
     color: rgb(3, 17, 143);
     /* color: rgb(20,50,100); */
     /* color: red; */
     /* font-size: 20px; */
 }
-.nav-text{
+
+.nav-text {
     color: white;
     font-size: 17px;
     font-weight: 600;
     transition: all 0.5s;
 }
-.nav-text:hover{
+
+@media (max-width : 767px) {
+    .nav-text {
+        font-size: 12px;
+        font-weight: 700;
+    }
+}
+
+.nav-text:hover {
     color: red;
 }

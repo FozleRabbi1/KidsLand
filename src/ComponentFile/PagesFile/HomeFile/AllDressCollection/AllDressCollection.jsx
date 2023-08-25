@@ -33,11 +33,6 @@ const AllDressCollection = () => {
 
 
     const itemsPerPage = 12;
-    // let pageNumber;
-    // if (productLength) {
-    //     const pageCount = Math.ceil(productNumber / itemsPerPage);
-    //     pageNumber = [...Array(pageCount).keys()]
-    // }
     const pageCount = Math.ceil(productNumber / itemsPerPage);
     const pageNumber = [...Array(pageCount).keys()]
 
@@ -66,11 +61,10 @@ const AllDressCollection = () => {
     return (
         <div className='mt-16'>
             <h2 className='text-center text-4xl font-bold text-color pb-10'>All Collection</h2>
-            <div className='flex'>
+            <div className='flex flex-col md:flex-row'>
 
                 <div data-aos="fade-right" data-aos-delay="1000" className="conterol-div w-2/12 pe-3">
                     <h2 className='text-center mb-4 text-color text-xl font-bold'>control panel</h2>
-                    {/* <h2>{addToCardData?.length || 0}</h2> */}
                     <div className='my-2'>
                         <h2 className='flex border-b-2 mb-2'> <span>Total Product =</span> <span className='font-semibold ' >{productNumber}</span> </h2>
                         <h2 className='flex border-b-2 mb-2'> <span>Find Product =</span> <span className='font-semibold ' >{productLength}</span> </h2>
@@ -147,9 +141,9 @@ const AllDressCollection = () => {
                 </div>
 
 
-                <div className=' w-10/12'>
+                <div className=' w-full md:w-10/12 mx-auto '>
                     {
-                        isLoading ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
+                        isLoading ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
                             <div>
                                 {
                                     datas?.length === 0 ?
@@ -164,7 +158,7 @@ const AllDressCollection = () => {
                                                 </div>
                                             }
                                         </div> :
-                                        <div className="all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
+                                        <div className="all-dress-mainDiv grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6  ">
                                             {
                                                 datas?.map(data =>
                                                     <SingleDress

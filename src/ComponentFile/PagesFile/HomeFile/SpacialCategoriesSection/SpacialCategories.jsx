@@ -142,7 +142,7 @@ const SpacialCategories = () => {
                     :
 
                     <div className='spacial-main-div '>
-                        <div className="show-details-div w-9/12 overflow-hidden" >
+                        <div className="show-details-div md:w-9/12 overflow-hidden" >
 
                             <div className=' relative h-full '>
                                 {imageError ? (
@@ -226,7 +226,7 @@ const SpacialCategories = () => {
                                                         boxShadow: `${isActive ? "3px 5px 10px white" : "none"}`,
                                                     }}
                                                 >
-                                                    <img className="w-60 h-60" src={d.images[0]} alt="" />
+                                                    <img className="w-64 h-52 md:w-60 md:h-60" src={d.images[0]} alt="" />
                                                 </div>
                                             )}
                                         </SwiperSlide>

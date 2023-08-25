@@ -55,7 +55,6 @@ const Main = () => {
 
                 <div className="main-section">
 
-                    {/* <a href="#top" className={`up-style ${scrollValue >= 300 ? "block  duration-500" : "hidden"}`}> */}
                     <a href="#top" className={`up-style upDown-style ${scrollValue >= 300 ? "addStylee" : "removeStylee"}`}>
                        <div className=""> up </div>
                     </a>
