@@ -60,90 +60,100 @@ const AllDressCollection = () => {
 
     return (
         <div className='mt-16'>
-            <h2 className='text-center text-4xl font-bold text-color pb-10'>All Collection</h2>
+            <h2 className='main-headline-bg-style text-center text-3xl font-bold '>All Collection</h2>
             <div className='flex flex-col md:flex-row'>
 
-                <div data-aos="fade-right" data-aos-delay="1000" className="conterol-div w-2/12 pe-3">
-                    <h2 className='text-center mb-4 text-color text-xl font-bold'>control panel</h2>
-                    <div className='my-2'>
-                        <h2 className='flex border-b-2 mb-2'> <span>Total Product =</span> <span className='font-semibold ' >{productNumber}</span> </h2>
-                        <h2 className='flex border-b-2 mb-2'> <span>Find Product =</span> <span className='font-semibold ' >{productLength}</span> </h2>
+                <div data-aos="fade-right" data-aos-delay="1000" className="conterol-div w-3/12 h-5/6 pb-5">
 
-                        <h2 className='flex border-b-2 mb-4'>
-                            <span>Show Product =</span>
-                            {datas?.length === 0 ?
-                                <span className='text-red-500 text-xl font-bold'>{datas?.length}</span>
-                                :
-                                <span className='font-semibold' >{datas?.length}</span>} / page
-                        </h2>
+                    <h2 className='controlPanel-headline-bg-style text-center mb-4 text-xl font-bold'>Control Panel</h2>
 
-                    </div>
+                    <div className='px-2'>
+                        <div className='my-2'>
+                            <h2 className='flex border-b-2 mb-2'> <span>Total Product =</span> <span className='font-semibold ' >{productNumber}</span> </h2>
+                            <h2 className='flex border-b-2 mb-2'> <span>Find Product =</span> <span className='font-semibold ' >{productLength}</span> </h2>
 
-                    <div>
-                        <RangeSlider min={0} max={150} step={5} onInput={setValue} />
-                        <div className='flex justify-between border-b-2'>
-                            <span> {value[0]} $</span>
-                            <span> --- </span>
-                            <span>{value[1]} $</span>
+                            <h2 className='flex border-b-2 mb-4'>
+                                <span>Show Product =</span>
+                                {datas?.length === 0 ?
+                                    <span className='text-red-500 text-xl font-bold'>{datas?.length}</span>
+                                    :
+                                    <span className='font-semibold' >{datas?.length}</span>} / page
+                            </h2>
+
                         </div>
+
+                        <div>
+                            <RangeSlider min={0} max={150} step={5} onInput={setValue} />
+                            <div className='flex justify-between border-b-2'>
+                                <span> {value[0]} $</span>
+                                <span> --- </span>
+                                <span>{value[1]} $</span>
+                            </div>
+                        </div>
+
+                        <div className='flex justify-between mt-2 border-b-2 pb-1'>
+                            <select
+                                value={selectedOption}
+                                onChange={handleOptionChange}
+                                className="bg-sky-400  mt-2 button rounded  text-gray-800"
+                            >
+                                <option className='ms-2' value="All">All</option>
+                                <option className='ms-2' value="Boy">Boy</option>
+                                <option className='ms-2' value="Girl">Girl</option>
+                            </select>
+
+                            <select
+                                onChange={handleOptionChange2}
+                                className="bg-sky-400 mt-2 button rounded  text-gray-800"
+                            >
+                                <option className='ms-2' value="ascending ">Low to high</option>
+                                <option className='ms-2' value="  descending">High to low</option>
+                            </select>
+                        </div>
+
+                        <div className='mt-2 border-b-2'>
+
+                            <i className="flex items-center justify-between pb-1 font-semibold italic">Favourite :: 
+
+                            <span className='font-bold text-xl ms-2 flex items-center'>{favouriteProducts?.length || 0}  <GiSelfLove className="text-xl text-red-600 ms-2 " ></GiSelfLove></span>                               
+
+                                <Link className="border block w-4/12 text-center rounded  hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
+                            </i>
+
+                        </div>
+
+                        <div className='mt-4'>
+                            <span className='flex justify-between my-2 border-b-2 pb-1 font-semibold italic'>
+                                <h2 className=''>Materials :: </h2>
+                                <span className='w-6/12 ps-2 border text-center'>{text}</span>
+                            </span>
+
+                            <ul>
+                                <li onClick={() => setText("AllDress")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>All</li>
+                                <li onClick={() => setText("Cotton")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Cotton</li>
+                                <li onClick={() => setText("Polyester")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Polyester</li>
+                                <li onClick={() => setText("Straw")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Straw</li>
+                                <li onClick={() => setText("Silk")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Silk</li>
+                                <li onClick={() => setText("Nylon")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Nylon</li>
+                                <li onClick={() => setText("Denim")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Denim</li>
+                                <li onClick={() => setText("Fleece")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Fleece</li>
+                                <li onClick={() => setText("Spandex")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
+                                <li onClick={() => setText("Tulle")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Tulle</li>
+                                <li onClick={() => setText("Rayon")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Rayon</li>
+                                <li onClick={() => setText("Spandex")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
+                                <li onClick={() => setText("Satin")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Satin</li>
+                                <li onClick={() => setText("Synthetic")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Synthetic</li>
+                            </ul>
+                        </div>
+
                     </div>
 
-                    <div className='flex justify-between mt-2 border-b-2 pb-1'>
-                        <select
-                            value={selectedOption}
-                            onChange={handleOptionChange}
-                            className="bg-sky-400  mt-2 button rounded  text-gray-800"
-                        >
-                            <option className='ms-2' value="All">All</option>
-                            <option className='ms-2' value="Boy">Boy</option>
-                            <option className='ms-2' value="Girl">Girl</option>
-                        </select>
-
-                        <select
-                            onChange={handleOptionChange2}
-                            className="bg-sky-400 mt-2 button rounded  text-gray-800"
-                        >
-                            <option className='ms-2' value="ascending ">Low to high</option>
-                            <option className='ms-2' value="  descending">High to low</option>
-                        </select>
-                    </div>
-
-                    <div className='mt-2 border-b-2'>
-                        <i className="flex items-center">Favourite : <span className='font-bold text-xl ms-2'>{favouriteProducts?.length || 0}</span>
-                            <GiSelfLove className="text-xl text-red-600 ms-2 " ></GiSelfLove>
-                            <Link className="border w-4/12 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
-                        </i>
-                    </div>
-
-                    <div className='mt-4'>
-                        <span className='flex justify-between my-2 border-b-2 pb-1'>
-                            <h2 className='font-bold italic'>Materials </h2>
-                            <span className='w-6/12 ps-2 border text-center'>{text}</span>
-                        </span>
-
-                        <ul>
-                            <li onClick={() => setText("AllDress")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>All</li>
-                            <li onClick={() => setText("Cotton")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Cotton</li>
-                            <li onClick={() => setText("Polyester")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Polyester</li>
-                            <li onClick={() => setText("Straw")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Straw</li>
-                            <li onClick={() => setText("Silk")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Silk</li>
-                            <li onClick={() => setText("Nylon")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Nylon</li>
-                            <li onClick={() => setText("Denim")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Denim</li>
-                            <li onClick={() => setText("Fleece")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Fleece</li>
-                            <li onClick={() => setText("Spandex")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
-                            <li onClick={() => setText("Tulle")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Tulle</li>
-                            <li onClick={() => setText("Rayon")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Rayon</li>
-                            <li onClick={() => setText("Spandex")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
-                            <li onClick={() => setText("Satin")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Satin</li>
-                            <li onClick={() => setText("Synthetic")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Synthetic</li>
-                        </ul>
-                    </div>
                 </div>
 
 
                 <div className=' w-full md:w-10/12 mx-auto '>
                     {
-                        isLoading ? <div className='all-dress-mainDiv grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
+                        isLoading ? <div className='all-dress-mainDiv md:ps-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 md:gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
                             <div>
                                 {
                                     datas?.length === 0 ?
@@ -158,7 +168,7 @@ const AllDressCollection = () => {
                                                 </div>
                                             }
                                         </div> :
-                                        <div className="all-dress-mainDiv grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6  ">
+                                        <div className="all-dress-mainDiv grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-8 md:ps-10 ">
                                             {
                                                 datas?.map(data =>
                                                     <SingleDress
@@ -180,6 +190,7 @@ const AllDressCollection = () => {
                         }
                     </ul>
                 </div>
+
             </div>
 
             {

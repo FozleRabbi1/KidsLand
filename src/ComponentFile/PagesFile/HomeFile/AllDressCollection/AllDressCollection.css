@@ -1,3 +1,10 @@
+.conterol-div{
+    border: 1px solid  rgba(250,113,1,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+
+}
 .pagination{
     list-style: none;
     display: flex;

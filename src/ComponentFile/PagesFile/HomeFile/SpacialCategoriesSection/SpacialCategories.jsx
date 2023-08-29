@@ -125,8 +125,8 @@ const SpacialCategories = () => {
     }
 
     return (
-        <div>
-            <h2 className='text-center text-4xl font-bold text-color pb-10'>Special Collection</h2>
+        <div className='spacialCatagories-main-div md:px-20 md:py-8'>
+            <h2 className='main-headline-bg-style text-center text-3xl font-bold '>Special Collection</h2>
             {
                 isLoading ?
 
@@ -222,8 +222,8 @@ const SpacialCategories = () => {
                                                 <div
                                                     className=""
                                                     style={{
-                                                        border: `${isActive ? "1px solid red" : "none"}`,
-                                                        boxShadow: `${isActive ? "3px 5px 10px white" : "none"}`,
+                                                        border: `${isActive ? "2px solid orange" : "2px solid white"}`,
+                                                        // boxShadow: `${isActive ? "1px 2px 1px orange" : "none"}`,
                                                     }}
                                                 >
                                                     <img className="w-64 h-52 md:w-60 md:h-60" src={d.images[0]} alt="" />

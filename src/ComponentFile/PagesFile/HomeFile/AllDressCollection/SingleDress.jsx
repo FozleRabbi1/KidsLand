@@ -142,18 +142,20 @@ const SingleDress = ({ data, index, setProduct }) => {
                 data-aos-duration="2000" className="single-main-div">
 
                 <div className="image-icon-div relative">
+
                     <div className="imgDiv">
                         {imageError ? (
                             <img className='img ' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
                         ) : (
                             <img
-                                className='img h-72'
+                                className='img'
                                 src={data?.images[0]}
                                 alt="Image"
                                 onError={() => setImageError(true)}
                             />
                         )}
                     </div>
+
                     <div className="icon-div ">
                         <div className="w-7/12 bg-red-600 mx-auto span flex justify-between p-2">
                             {
@@ -178,10 +180,10 @@ const SingleDress = ({ data, index, setProduct }) => {
                     {
                         imageError ? <p className="text-center py-8">No data Found</p>
                             :
-                            <div className="px-2 py-1 ">
+                            <div className="singleDress-text-div">
                                 {/* <h2 className="font-semibold ">{data?.title}</h2> */}
 
-                                <div className="singleDress-text-div text-sm font-medium p-3">
+                                <div className=" text-sm font-medium px-3 py-1">
                                     <div className="text-center">
                                         <p className=" -my-1">Brand : {data?.brand}</p>
                                             {/* <p className="">Quantity : {data?.quantity}</p> */}

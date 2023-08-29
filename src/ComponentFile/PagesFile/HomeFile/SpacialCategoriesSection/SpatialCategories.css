@@ -1,3 +1,11 @@
+.spacialCatagories-main-div{
+    background-color: rgba(245, 146, 65, 0.1);
+    /* padding: 50px; */
+    /* color: white; */
+    border: 1px solid rgba(250, 113, 1,0.1);
+    border-radius: 10px;
+
+}
 .spacial-main-div {
     display: flex;
     gap: 30px;
@@ -18,7 +26,7 @@
 }
 
 .show-details-div {
-    height: 520px;
+    height: 450px;
 }
 
 .show-details-div img {
@@ -40,7 +48,7 @@
 }
 
 .show-details-div {
-    box-shadow: 2px 3px 10px black;
+    border: 1px solid rgba(250, 113, 1,0.5);
     border-radius: 5px;
 }
 
@@ -131,5 +139,5 @@
 }
 .slider .activeStyle{
     transform: scale(1.2);
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }

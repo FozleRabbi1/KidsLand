@@ -12,7 +12,6 @@ import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 import { useState } from 'react';
 const Banner = () => {
     const [activeIndexNo, setactiveIndexNo] = useState(0);
-    // console.log
 
     const sliderData = [
         {
@@ -51,16 +50,13 @@ const Banner = () => {
     return (
         <div className="pt-4">
 
-
-
-
             <div className='hidden md:block'>
                 <div className='main-div grid md:grid-cols-2 bg-white justify-between'>
 
                     <div className="dunamic-text-div">
 
                         <div>
-                            <h2  style={{color : "#1479EA"}} className='duration-700 text-xl font-medium'>
+                            <h2 className='headline-bg-style text-color duration-700 text-2xl ps-1 font-bold'>
                                 {sliderData[activeIndexNo].title}
                             </h2>
                             <h2 className='text-2xl font-semibold my-1'>

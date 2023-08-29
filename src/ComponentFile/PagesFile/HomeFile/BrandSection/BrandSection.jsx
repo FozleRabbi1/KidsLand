@@ -4,10 +4,10 @@ import './BrandSection.css'
 
 const BrandSection = () => {
     return (
-        <div className='py-10'>
-            <h2 className='text-center text-4xl font-bold text-color pb-10'>Our Brand</h2>
+        <div className='brand-main-div mt-10 pt-10 pb-36'>
+            <h2 className='main-headline-bg-style text-center text-3xl font-bold pb-10'>Our Brand</h2>
 
-            <div className="brand-logo-div">
+            <div className="brand-logo-div mt-5 ">
                 <Marquee >
 
                     <img  data-aos="zoom-in" className=' rounded-full m-5 h-44' src="https://images-platform.99static.com//k6Z_q1rN2rA2k66I70OHIfMyfpI=/452x0:1055x603/fit-in/590x590/99designs-contests-attachments/57/57886/attachment_57886318" alt="" />

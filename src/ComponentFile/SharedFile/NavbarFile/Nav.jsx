@@ -60,7 +60,7 @@ const Nav = () => {
     return (
         <div className="nav-style bg-color">
 
-            <div className={`${isScrollingDown ? "down" : "up"} fixed w-full z-50 `} >
+            <div className={`${isScrollingDown ? "down" : "up"} nav-bg-color fixed w-full z-50 `} >
                 <nav className="px-10">
                     <div className=" ">
                         <div className="flex items-center justify-between h-16">

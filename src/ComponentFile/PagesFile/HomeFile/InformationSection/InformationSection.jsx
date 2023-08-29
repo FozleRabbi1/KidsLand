@@ -35,7 +35,7 @@ const InformationSection = () => {
 
 
     return (
-        <div className="px-1 overflow-hidden py-16 main-info-div grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-10 z-10">
+        <div className="px-1 overflow-hidden py-36 main-info-div grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-10 z-10">
 
             {/* data-aos="fade-right"  */}
             <div data-aos={isMediumScreen ? 'fade-right' : 'fade-right'} className='flex flex-col justify-center items-center duration-700'>

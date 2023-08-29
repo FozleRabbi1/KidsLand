@@ -8,19 +8,19 @@ html {
 
 .bg-color {
     background-color: aqua;
-    /* background-color: rgb(9,170,38); */
 }
 
 .text-color {
-    color: rgb(3, 122, 241);
-    /* color: rgb(50,150,250); */
+    /* color: rgb(3, 122, 241); */
+    color: rgb(207, 98, 8);
 }
-
+.nav-bg-color{
+    /* background-color: rgb(50,140,250); */
+    background-color: rgb(235,125,35);
+}
 .local-text {
     color: rgb(3, 17, 143);
-    /* color: rgb(20,50,100); */
-    /* color: red; */
-    /* font-size: 20px; */
+    /* color: rgb(235,125,35); */
 }
 
 .nav-text {
@@ -39,4 +39,35 @@ html {
 
 .nav-text:hover {
     color: red;
+}
+
+.headline-bg-style{
+    width: 50%;
+    background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1));
+    color: white;
+}
+.headline-bg-style-control-panel{
+    width: 100%;
+    background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1));
+    color: white;
+}
+
+.main-headline-bg-style{
+    /* background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1)); */
+    background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1), rgba(207, 98, 8,0.6) );
+    width: 40%;
+    margin: 0 auto 50px;
+    padding: 2px 0 6px 0;
+    /* color: rgb(207, 98, 9); */
+    color: white;
+    /* border-radius: 5px; */
+    text-shadow: 1px 1px 2px rgb(3, 17, 143);
+    font-style: oblique;
+    /* text-shadow: 1px 1px 1px gainsboro; */
+}
+.controlPanel-headline-bg-style{
+    background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1), rgba(207, 98, 8,0.6) );
+    color: white;
+    padding-bottom: 5px;
+    text-shadow: 1px 1px 2px rgb(3, 17, 143);
 }

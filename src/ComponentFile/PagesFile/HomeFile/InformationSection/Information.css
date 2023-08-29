@@ -1,11 +1,13 @@
 .main-info-div div{
     height: 120px;
     /* width: 25%; */
-    box-shadow: 0 0 3px 1px #1818183d, 2px 2px 3px #18181865, inset 2px 2px 2px #ffffff;
+    box-shadow: 0 0 3px 1px #f7a1023d, 2px 2px 3px #18181865, inset 2px 2px 2px #ffffff;
     border-radius: 5px;
     transition: all 0.5s;
 }
 .main-info-div div:hover{
     box-shadow: 0 0 3px 3px #1818183d, 2px 2px 25px #18181865, inset 2px 1px 1px #ffffff;
-    background-color: rgba(50,150,250,0.4);
+    /* background-color: rgba(50,150,250,0.4); */
+    background-color: rgba(250, 113, 1,0.3);
+    transition: all 0.5s;
 }

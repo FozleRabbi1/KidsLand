@@ -8,6 +8,7 @@ import LatetsProduce from "../LatestProduce/LatetsProduce";
 import SpacialCategories from "../SpacialCategoriesSection/SpacialCategories";
 import { useEffect } from "react";
 import TopTenProducts from "../TopTenProducts/TopTenProducts";
+import Count from "../CounterSection/Count";
 
 const Home = () => {
     const { pathname } = useLocation();
@@ -31,7 +32,7 @@ const Home = () => {
             <LatetsProduce></LatetsProduce>
             <ContactSection></ContactSection>
             <TopTenProducts></TopTenProducts>
-
+            <Count></Count>
 
 
         </div>

@@ -41,7 +41,7 @@ const MainPageNav = () => {
                                 }
                                 <div className='w-10 h-10'>
                                     {
-                                        user && <img className=" rounded-full ms-1" src={user?.photoURL} alt="" />
+                                        user && <img className=" rounded-full ms-1 h-10 w-10 " src={user?.photoURL} alt="" />
                                     }
                                 </div>
                             </span>
@@ -49,7 +49,7 @@ const MainPageNav = () => {
 
                     </div>
                 </div>
-                <div style={{ backgroundColor: "rgba(50,140,250,0.8)" }} className=" flex justify-center py-4 px-2">
+                <div className="nav-bg-color flex justify-center py-4 px-2">
                     <div className=" flex items-baseline  space-x-3  md:space-x-6">
 
                         <Link className="nav-text" to={"/"}>
