@@ -10,7 +10,7 @@ const SpecialCollectionAll = () => {
     return (
         <div>
 
-            <h2 className='text-color text-center py-5 text-3xl font-bold'> All Special Collection <sub>(todo)</sub> </h2>
+            <h2 className='text-color text-center py-5 text-3xl font-bold'> All Special Collection <sub className='local-text'>(todo)</sub> </h2>
 
             <div className='grid grid-cols-2 gap-10 my-10 justify-center'>
                 {

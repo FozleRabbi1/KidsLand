@@ -98,7 +98,7 @@ const AllLikedProduct = () => {
                                     <th>
                                         <li onClick={()=>addtoCardFun(data)} className='list-none rounded bg-slate-300 w-6/12 mx-auto  cursor-pointer my-2 px-2 hover:bg-cyan-200 duration-500 '>
                                             <button className='flex justify-center items-center px-2 py-1 '> 
-                                            <AiOutlineShoppingCart className='text-2xl text-color ms-1'></AiOutlineShoppingCart> 
+                                            <AiOutlineShoppingCart className='text-2xl text-sky-500 ms-1'></AiOutlineShoppingCart> 
                                             </button>
                                         </li>
                                     </th>

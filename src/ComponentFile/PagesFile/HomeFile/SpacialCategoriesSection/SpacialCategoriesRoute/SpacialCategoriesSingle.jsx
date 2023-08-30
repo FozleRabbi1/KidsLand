@@ -195,7 +195,7 @@ const SpacialCategoriesSingle = () => {
 
 
     return (
-        <div>
+        <div className='pt-10'>
 
             <h2 className='text-color text-center py-5 text-3xl font-bold'>Special Product</h2>
 
@@ -217,7 +217,7 @@ const SpacialCategoriesSingle = () => {
 
                     <div className="text-div">
 
-                        <h3 className="font-bold text-lg"> {data?.title} </h3>
+                        <h3 className="font-bold text-lg headline-bg-style"> {data?.title} </h3>
                         <div className="mt-4">
                             <p className="text-justify">description :: {data?.description}</p>
                             <p className="mt-2">price :: <span className="text-red-600 font-semibold">{data?.price}</span> $/=</p>

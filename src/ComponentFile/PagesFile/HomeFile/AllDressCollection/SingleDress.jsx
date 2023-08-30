@@ -174,28 +174,19 @@ const SingleDress = ({ data, index, setProduct }) => {
 
                         </div>
                     </div>
-                    <small className="small rounded-xl px-1 font-semibold text-xs absolute top-0 right-0"> {data?.upload_date} </small>
+                    <small data-aos="zoom-in"  data-aos-delay="1000" className="small rounded-xl px-1 font-semibold text-xs absolute top-0 right-0"> {data?.upload_date} </small>
                 </div>
                 <div>
                     {
                         imageError ? <p className="text-center py-8">No data Found</p>
                             :
                             <div className="singleDress-text-div">
-                                {/* <h2 className="font-semibold ">{data?.title}</h2> */}
 
-                                <div className=" text-sm font-medium px-3 py-1">
+                                <div className=" text-sm font-medium px-3 py-2">
                                     <div className="text-center">
                                         <p className=" -my-1">Brand : {data?.brand}</p>
-                                            {/* <p className="">Quantity : {data?.quantity}</p> */}
-                                        {/* <span className="flex justify-between">
-                                        </span> */}
-                                        <p className="">Price : <span className="text-md font-bold text-red-500">{data?.price}</span> <span className="italic">$</span> </p>
+                                        <p className="dollar-text-color">Price : <span className="text-lg font-bold  italic">{data?.price}</span> <span className="italic">$</span> </p>
                                         <p className="text-xs">{data.material} </p>
-
-                                        {/* <span className="flex justify-between items-center">
-                                            <p className="-mt-1">Price : <span className="text-lg text-red-500">{data?.price}</span> <span className="italic">$</span> </p>
-                                            <small>{data.material} </small>
-                                        </span> */}
 
                                     </div>
                                 </div>

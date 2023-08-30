@@ -199,7 +199,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
 
                         <div className="text-div -mt-14">
 
-                            <h3 className="font-bold text-lg"> {product?.title} </h3>
+                            <h3 className="font-bold text-lg headline-bg-style "> {product?.title} </h3>
                             <div className="mt-4">
                                 <p className="text-justify">description :: {product?.description}</p>
                                 <p className="mt-2">price :: <span className="text-red-600 font-semibold">{product?.price}</span> $/=</p>

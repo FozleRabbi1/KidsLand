@@ -13,7 +13,7 @@ const SeeAllLikedProduct = () => {
 
     return (
         <div>
-            <h2 className='text-center text-2xl font-bold text-color py-10'> All liked product <sub><small className=''>{favouriteProducts?.length}</small></sub> </h2>
+            <h2 className='text-center text-2xl font-bold text-color py-10'> All liked product <sub><small className='text-red-600'>{favouriteProducts?.length}</small></sub> </h2>
 
             <div className='pb-10' >
 

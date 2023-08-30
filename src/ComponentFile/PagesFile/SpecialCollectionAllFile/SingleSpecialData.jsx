@@ -33,7 +33,7 @@ const SingleSpecialData = ({ data }) => {
             </div>
 
             <div className="">
-                <h3 className="font-bold text-lg"> {data?.title} </h3>
+                <h3 className="font-bold text-color text-lg special-data-headline-bg-style"> {data?.title} </h3>
                 <div className="mt-4">
                     <p className="text-justify">description :: {data?.description}</p>
                     <p className="mt-2">price :: <span className="text-red-600 font-semibold">{data?.price}</span> $/=</p>
@@ -44,7 +44,7 @@ const SingleSpecialData = ({ data }) => {
                     <p>Gender :: {data.gender}</p>
                 </div>
 
-                <Link to={`/spacialDetails/${data?._id}`} className="text-center bg-gray-400 px-2 py-1 block mt-1 w-5/12 rounded-3xl shadow-lg font-semibold italic"> show deatails </Link>
+                <Link to={`/spacialDetails/${data?._id}`} className="text-center text-color px-2 py-1 block mt-1 w-5/12 rounded-3xl shadow-xl font-semibold italic"> show deatails </Link>
             </div>
         </div>
     );
