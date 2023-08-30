@@ -75,8 +75,8 @@ section .contact-details-div span:hover {
     height: 35px;
     border-radius: 4px;
     background: linear-gradient(145deg, #cacaca, #f0f0f0);
-    box-shadow:  5px 5px 10px #969696,
-                 -5px -5px 18px #ffffff;
+    box-shadow: 5px 5px 10px #969696,
+        -5px -5px 18px #ffffff;
 }
 
 .contact-form-div form .textarea {
@@ -101,3 +101,8 @@ section .contact-details-div span:hover {
     font-weight: 600;
 }
 
+section .contact-us-headline {
+    width: 100%;
+    background: linear-gradient(to left, rgba(250, 118, 9, 0.6),rgb(248, 115, 7));
+    color: white;
+}

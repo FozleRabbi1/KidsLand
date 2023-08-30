@@ -64,7 +64,7 @@ const ContactUs = () => {
 
             <section className='bg-white grid md:grid-cols-2 justify-center p-10 gap-5 mt-16'>
                 <div data-aos="fade-right" data-aos-delay="1000" className='contact-details-div me-2'>
-                    <h2 className='text-4xl'>CONTACT DETAILS</h2>
+                    <h2 className='text-3xl contact-us-headline'>CONTACT DETAILS</h2>
 
                     <p className='py-5'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat.</p>
                     <h2 className='pb-5 font-semibold text-3xl text-gray-500'>Suspendisse sollicitudin velit sed leo. Ut phare nec augue.</h2>
@@ -90,9 +90,9 @@ const ContactUs = () => {
 
                 <div data-aos="fade-left" data-aos-delay="1000" className='contact-form-div ms-2 mt-4 md:mt-0'>
 
-                    <h2 className='text-4xl'>CONTACT FORM</h2>
+                    <h2 className='text-3xl contact-us-headline'>CONTACT FORM</h2>
 
-                    <form ref={form} onSubmit={getFormValueFun} className=' mt-4 md:mt-10'>
+                    <form ref={form} onSubmit={getFormValueFun} className=' mt-2 md:mt-5'>
                         <input name='from_name' className='input mb-5' required placeholder='Name' value={user?.displayName} type="text" />
                         <input name='from_email' className='input mb-5' required placeholder='Email' value={user?.email} type="email" />
                         <input name='subject' className='input mb-5' required placeholder='Subject' type="text" />

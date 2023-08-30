@@ -164,7 +164,7 @@ const SpacialCategories = () => {
                                     <div className='flex items-center'>
                                         <Link to={"/specialCollectionAll"} className="showMore text-center"> Show <br /> All</Link>
                                         <span className=' w-10 flex justify-center'>
-                                            <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-red-700 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
+                                            <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-sky-500 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
                                         </span>
 
                                         {/* <button  className="showMore"> show deatails </button> */}

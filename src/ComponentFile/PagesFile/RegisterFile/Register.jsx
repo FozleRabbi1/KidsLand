@@ -20,7 +20,7 @@ const Register = () => {
     console.log(error)
 
     const onSubmit = data => {
-        const { name, email,  password } = data;
+        const { name, email, password } = data;
 
         const formData = new FormData();
         formData.append("image", data.image[0]);
@@ -59,7 +59,7 @@ const Register = () => {
         <div className="main-form-div font-serif ">
             <div className="w-7/12 rounded-sm -mt-20 register-form-div px-6 py-10">
                 <h2 className=" text-center"> Create A New Accout For <Link className=" text-2xl font-bold text-sky-400" to={"/"}>Kids Land!</Link> </h2>
-                <small className="-mt-3 mb-5 text-center block ">Come join the kids Land Community! Lets setup your Account. Already have One?  <Link to={"/login"} className="text-xl italic text-color font-bold" >Sign in here...</Link>  </small>
+                <small className="-mt-3 mb-5 text-center block ">Come join the kids Land Community! Lets setup your Account. Already have One?  <Link to={"/login"} className="text-xl italic text-sky-500 font-bold" >Sign in here...</Link>  </small>
                 <div className="flex">
                     <div className="w-4/12  ">
                         <SocialLogin></SocialLogin>
@@ -71,14 +71,16 @@ const Register = () => {
                         <input onMouseDown={() => setError(" ")} className="p-1 px-3 text-black rounded-md  mt-2 w-full" placeholder="Full Name" {...register("name", { required: true })} />
                         <input onMouseDown={() => setError(" ")} className="p-1 px-3 text-black rounded-md  mt-2 w-full" placeholder="Email" {...register("email", { required: true })} />
                         <input onMouseDown={() => setError(" ")} className="p-1 px-3 text-black rounded-md  mt-2 w-full" placeholder="Password" {...register("password", { required: true })} />
-                        <input type="file"  {...register("image", { required: true })} className="my-2 border-none rounded-md w-6/12 max-w-xs text-black" />
+                        <input type="file"  {...register("image", { required: true })} className="my-2 border-none rounded-md w-6/12 max-w-xs text-sky-200" />
                         {errors.exampleRequired && <span>This field is required</span>}
-                        {
-                            isLoading ? <div className="border-2 border-white py-1 rounded-md">
-                                <span className="loading loading-spinner loading-md p-1 block mx-auto"></span>
-                            </div> :
-                                <input className="p-1 rounded-md border text-lg font-semibold cursor-pointer hover:bg-green-300 hover:text-black duration-500" type="submit" value="Register" />
-                        }
+                        {/* <div className="mt-2 w-full"> */}
+                            {
+                                isLoading ? <div className="border-2 border-white py-1 mt-2 rounded-md">
+                                    <span className="loading loading-spinner loading-md p-1 block mx-auto"></span>
+                                </div> :
+                                    <input className="p-1 mt-2 rounded-md border text-lg font-semibold cursor-pointer hover:bg-green-300 hover:text-black duration-500" type="submit" value="Register" />
+                            }
+                        {/* </div> */}
                     </form>
                 </div>
             </div>

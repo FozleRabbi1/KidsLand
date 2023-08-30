@@ -85,7 +85,7 @@
 } */
 
 .singleDress-text-div {
-    background: linear-gradient(to left, rgb(235, 125, 35), rgba(207, 98, 8, 1), rgb(235, 125, 35));
+    background: linear-gradient(to left, rgb(235, 125, 35), rgb(153, 70, 9), rgb(235, 125, 35));
     border-radius: 0 0 5px 5px;
 }
 
