@@ -4,6 +4,7 @@ import { RiCustomerService2Line } from "react-icons/ri";
 import { TbTruckDelivery } from "react-icons/tb";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { useEffect, useState } from 'react';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const InformationSection = () => {
 
@@ -39,22 +40,22 @@ const InformationSection = () => {
 
             {/* data-aos="fade-right"  */}
             <div data-aos={isMediumScreen ? 'fade-right' : 'fade-right'} className='flex flex-col justify-center items-center duration-700'>
-                <i> <BsFillCartCheckFill className='text-color text-4xl' ></BsFillCartCheckFill> </i>
+                <p className=''> <AiOutlineShoppingCart className=' text-4xl text-orange-600 ' ></AiOutlineShoppingCart> </p>
                 <h2 className='text-lg font-bold'>Heading</h2>
                 <p>Lorem ipsum dolor sit amet</p>
             </div>
             <div data-aos={isMediumScreen ? 'fade-up' : 'fade-left'} className='flex flex-col justify-center items-center'>
-                <i> <TbTruckDelivery className='text-color text-4xl' ></TbTruckDelivery> </i>
+                <i> <TbTruckDelivery className=' text-4xl text-orange-600 ' ></TbTruckDelivery> </i>
                 <h2 className='text-lg font-bold'>Heading</h2>
                 <p>Lorem ipsum dolor sit amet</p>
             </div>
             <div data-aos={isMediumScreen ? 'fade-up' : 'fade-right'} className='flex flex-col justify-center items-center'>
-                <i> <BiMoneyWithdraw className='text-color text-4xl' ></BiMoneyWithdraw> </i>
+                <i> <BiMoneyWithdraw className=' text-4xl text-orange-600 ' ></BiMoneyWithdraw> </i>
                 <h2 className='text-lg font-bold'>Heading</h2>
                 <p>Lorem ipsum dolor sit amet</p>
             </div>
             <div data-aos={isMediumScreen ? 'fade-left' : 'fade-left'} className='flex flex-col justify-center items-center'>
-                <i> <RiCustomerService2Line className='text-color text-4xl' ></RiCustomerService2Line> </i>
+                <i> <RiCustomerService2Line className=' text-4xl text-orange-600 ' ></RiCustomerService2Line> </i>
                 <h2 className='text-lg font-bold'>Heading</h2>
                 <p>Lorem ipsum dolor sit amet</p>
             </div>

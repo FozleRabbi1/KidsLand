@@ -68,7 +68,7 @@ const Banner = () => {
 
 
                             <button>
-                                Hover me
+                                Show More
                             </button>
 
                         </div>

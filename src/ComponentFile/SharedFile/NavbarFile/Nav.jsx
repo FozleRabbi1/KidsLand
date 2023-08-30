@@ -66,7 +66,9 @@ const Nav = () => {
                         <div className="flex items-center justify-between h-16">
                             <div className="flex w-full justify-between items-center">
                                 <div className="flex-shrink-0">
-                                    <img className="w-12 h-12 rounded-2xl" src="https://i.ibb.co/3fGFGP9/istockphoto-1029895828-612x612.jpg" alt="" />
+                                    <Link to={"/"}>
+                                        <img className="w-12 h-12 rounded-2xl" src="https://i.ibb.co/3fGFGP9/istockphoto-1029895828-612x612.jpg" alt="" />
+                                    </Link>
                                 </div>
                                 <div className="hidden md:block  ">
                                     <div className="ml-10 flex  items-center space-x-6">
@@ -116,10 +118,10 @@ const Nav = () => {
                                                                         </div> */}
 
                                                                         {
-                                                                            loadingId === products._id ? 
-                                                                            <div className='flex'>
-                                                                                <span className="loading loading-spinner text-info"></span>
-                                                                            </div> :
+                                                                            loadingId === products._id ?
+                                                                                <div className='flex'>
+                                                                                    <span className="loading loading-spinner text-info"></span>
+                                                                                </div> :
                                                                                 <RiDeleteBin2Fill onClick={() => deleteFunction(products._id)} className="text-2xl cursor-pointer text-red-400 hover:text-red-700 duration-500"></RiDeleteBin2Fill>
                                                                         }
                                                                     </span>

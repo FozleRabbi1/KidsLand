@@ -56,7 +56,6 @@
     outline: none;
     background-color: transparent;
     color: black;
-    transition: 1s;
     border-radius: 0.3em;
     font-size: 16px;
     font-weight: bold;
@@ -71,7 +70,6 @@
     height: 40%;
     /* background-color: #212121; */
     background-color: white;
-    transition: 0.5s;
     transform-origin: center;
 }
 
@@ -85,14 +83,28 @@
     height: 40%;
     /* background-color: #212121; */
     background-color: white;
-    transition: 0.5s;
     
 }
 
-.main-div .dunamic-text-div div button:hover::before, button:hover::after {
+.main-div .dunamic-text-div div button::before, button::after {
+    transform: scale(0)
+}
+
+.main-div .dunamic-text-div div button {
+    box-shadow: inset 0px 0px 25px #1479EA;
+    color: rgba(209, 95, 2,0.8);
+    transition: all 0.5s;
+}
+.main-div .dunamic-text-div div button:hover {
+    color: orangered;
+    font-style: italic;
+    transition: all 0.5s;
+    /* font-size: 17px; */
+}
+/* .main-div .dunamic-text-div div button:hover::before, button:hover::after {
     transform: scale(0)
 }
 
 .main-div .dunamic-text-div div button:hover {
     box-shadow: inset 0px 0px 25px #1479EA;
-}
+} */
