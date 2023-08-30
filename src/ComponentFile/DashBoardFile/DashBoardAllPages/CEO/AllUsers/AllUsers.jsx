@@ -4,6 +4,7 @@ import SingleUser from './SingleUser';
 
 const AllUsers = () => {
     const { userData, userRefetch } = useAllUsers();
+    console.log(userData)
 
     return (
         <div>
@@ -13,7 +14,7 @@ const AllUsers = () => {
                     userData?.map(user =>
                         <SingleUser
                             key={user._id}
-                            user={user}
+                            users={user}
                         ></SingleUser>
                     )
                 }

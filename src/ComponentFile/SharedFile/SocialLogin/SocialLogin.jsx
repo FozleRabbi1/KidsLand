@@ -15,7 +15,8 @@ const SocialLogin = () => {
     const googleLoginFun = () => {
         googleLogin()
             .then(res => {
-                const userInfo = { name: res.user.displayName, email: res.user.email }
+                console.log(res.user)
+                const userInfo = { name: res.user.displayName, email: res.user.email, photoURL: res.user.photoUrl }
                 if (res.user) {
                     axios.post("https://kids-land-server-two.vercel.app/users", userInfo)
                         .then(data => {
