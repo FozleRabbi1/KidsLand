@@ -61,9 +61,9 @@ const AllDressCollection = () => {
     return (
         <div className='mt-16'>
             <h2 className='main-headline-bg-style text-center text-xl md:3xl font-bold '>All Collection</h2>
-            <div className='flex flex-col md:flex-row'>
+            <div className='flex flex-col lg:flex-row'>
 
-                <div data-aos="fade-right" data-aos-delay="1000" className="conterol-div w-3/12 h-5/6 pb-5">
+                <div data-aos="fade-right"  className="conterol-div w-full lg:w-3/12 h-5/6 pb-5">
 
                     <h2 className='controlPanel-headline-bg-style text-center mb-4 text-xl font-bold'>Control Panel</h2>
 
@@ -128,21 +128,22 @@ const AllDressCollection = () => {
                                 <span className='w-6/12 ps-2 border text-center'>{text}</span>
                             </span>
 
-                            <ul>
-                                <li onClick={() => setText("AllDress")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>All</li>
-                                <li onClick={() => setText("Cotton")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Cotton</li>
-                                <li onClick={() => setText("Polyester")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Polyester</li>
-                                <li onClick={() => setText("Straw")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Straw</li>
-                                <li onClick={() => setText("Silk")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Silk</li>
-                                <li onClick={() => setText("Nylon")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Nylon</li>
-                                <li onClick={() => setText("Denim")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Denim</li>
-                                <li onClick={() => setText("Fleece")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Fleece</li>
-                                <li onClick={() => setText("Spandex")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
-                                <li onClick={() => setText("Tulle")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Tulle</li>
-                                <li onClick={() => setText("Rayon")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Rayon</li>
-                                <li onClick={() => setText("Spandex")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
-                                <li onClick={() => setText("Satin")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Satin</li>
-                                <li onClick={() => setText("Synthetic")} className='border w-6/12 mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Synthetic</li>
+                            <ul className='grid grid-cols-4 gap-x-5 lg:grid-cols-1'>
+                            {/* <ul className=''> */}
+                                <li onClick={() => setText("AllDress")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>All</li>
+                                <li onClick={() => setText("Cotton")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Cotton</li>
+                                <li onClick={() => setText("Polyester")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Polyester</li>
+                                <li onClick={() => setText("Straw")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Straw</li>
+                                <li onClick={() => setText("Silk")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Silk</li>
+                                <li onClick={() => setText("Nylon")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Nylon</li>
+                                <li onClick={() => setText("Denim")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Denim</li>
+                                <li onClick={() => setText("Fleece")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Fleece</li>
+                                <li onClick={() => setText("Spandex")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
+                                <li onClick={() => setText("Tulle")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Tulle</li>
+                                <li onClick={() => setText("Rayon")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Rayon</li>
+                                <li onClick={() => setText("Spandex")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Spandex</li>
+                                <li onClick={() => setText("Satin")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Satin</li>
+                                <li onClick={() => setText("Synthetic")} className='border mb-1 text-center cursor-pointer hover:bg-gray-300 duration-500'>Synthetic</li>
                             </ul>
                         </div>
 
@@ -151,7 +152,7 @@ const AllDressCollection = () => {
                 </div>
 
 
-                <div className=' w-full md:w-10/12 mx-auto '>
+                <div className=' w-full lg:w-10/12 mx-auto '>
                     {
                         isLoading ? <div className='all-dress-mainDiv md:ps-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 md:gap-10 '><SkeletonCard cards={itemsPerPage}></SkeletonCard></div> :
                             <div>
@@ -168,7 +169,7 @@ const AllDressCollection = () => {
                                                 </div>
                                             }
                                         </div> :
-                                        <div className="all-dress-mainDiv grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-8 md:ps-10 ">
+                                        <div className="all-dress-mainDiv grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-8 lg:ps-10 mt-5 lg:mt-0 ">
                                             {
                                                 datas?.map(data =>
                                                     <SingleDress

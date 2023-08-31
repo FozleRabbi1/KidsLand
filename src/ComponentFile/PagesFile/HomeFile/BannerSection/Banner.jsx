@@ -39,12 +39,6 @@ const Banner = () => {
             image: "https://i.pinimg.com/736x/6b/06/27/6b0627f99145e0bfa4a745cc443a2ee4.jpg",
             description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, et omnis, rerum maiores laborum voluptatibus placeat  dignissimos modi fugiat?"
         },
-        // {
-        //     title: "Title Four",
-        //     heading: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-        //     image: "https://ae01.alicdn.com/kf/H69fe2b8c9aa24dafbb7613150a21e203s/2020-New-Boys-Clothes-Suits-4-5-6-7-8-9-10-11-12-13-Years.jpg",
-        //     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, et omnis, rerum maiores laborum  eos placeat quaerat aliquid dignissimos modi fugiat?"
-        // },
 
     ]
 

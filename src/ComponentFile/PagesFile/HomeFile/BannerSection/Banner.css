@@ -95,7 +95,7 @@
     .main-div .slider .mySwiper .img {
         height: 100%;
         width: 80%;
-        background: linear-gradient(to left, rgb(235,125,35), rgba(207, 98, 8,1) , rgb(235,125,35));
+        /* background: linear-gradient(to left, rgb(235,125,35), rgba(207, 98, 8,1) , rgb(235,125,35)); */
         display: block;
         padding: 10px;
     }

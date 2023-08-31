@@ -177,9 +177,9 @@ const SpacialCategories = () => {
 
                         <div className="slider w-full md:w-10/12 lg:w-7/12">
                             <div>
-                                <div className=' flex justify-between items-center mb-2'>
+                                <div className=' flex flex-col-reverse md:flex-row justify-between items-center mb-2'>
 
-                                    <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10 `}>
+                                    <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10 mt-2 md:mt-0 `}>
                                         <h2 className='font-semibold'>{datas.length} / {activeIndexNo + 1}</h2>
                                         <select
                                             value={selectedOption}
