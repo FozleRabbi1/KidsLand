@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const SingleUser = ({  users }) => {
     const [axiosSecure] = useAxiosSecure();
     const { userData, userRefetch } = useAllUsers();
-    console.log(users.photoUrl)
+    console.log(users)
 
     const roleChangeFun = (id, role) => {
         axiosSecure.patch(`/roleChangeApi?id=${id}&role=${role}`)

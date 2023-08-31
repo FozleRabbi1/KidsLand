@@ -16,7 +16,7 @@ const SocialLogin = () => {
         googleLogin()
             .then(res => {
                 console.log(res.user)
-                const userInfo = { name: res.user.displayName, email: res.user.email, photoURL: res.user.photoUrl }
+                const userInfo = { name: res.user.displayName, email: res.user.email, photoUrl: res.user.photoURL }
                 if (res.user) {
                     axios.post("https://kids-land-server-two.vercel.app/users", userInfo)
                         .then(data => {
@@ -36,26 +36,26 @@ const SocialLogin = () => {
 
             <div >
 
-                <span className="flex bg-blue-300 w-7/12 rounded-sm duration-500 cursor-pointer hover:bg-blue-400  mt-2 items-center py-1 justify-center">
+                <button   className="cursor-not-allowed flex bg-blue-300 w-7/12 rounded-sm duration-500  hover:bg-blue-400  mt-2 items-center py-1 justify-center">
                     <AiFillFacebook className="text-4xl border-r-2 text-blue-600 "></AiFillFacebook>
                     <span className=" flex-1">
                         <p className="text-center text-black "> FaceBook</p>
                     </span>
-                </span>
+                </button>
 
-                <span onClick={googleLoginFun} className="flex my-2 bg-red-300 w-7/12 rounded-sm duration-500 cursor-pointer hover:bg-red-400  items-center py-1 justify-center">
+                <button onClick={googleLoginFun} className="flex my-2 bg-red-300 w-7/12 rounded-sm duration-500 cursor-pointer hover:bg-red-400  items-center py-1 justify-center">
                     <FcGoogle className="text-4xl border-r-2"></FcGoogle>
                     <span className=" flex-1">
                         <p className="text-center text-black "> Google</p>
                     </span>
-                </span>
+                </button>
 
-                <span className="flex bg-gray-300 w-7/12 rounded-sm duration-500 cursor-pointer hover:bg-gray-400   items-center py-1 justify-center">
+                <button className="cursor-not-allowed flex bg-gray-300 w-7/12 rounded-sm duration-500 hover:bg-gray-400   items-center py-1 justify-center">
                     <AiFillGithub className="text-4xl border-r-2 text-black"></AiFillGithub>
                     <span className=" flex-1">
                         <p className="text-center text-black "> GitHub</p>
                     </span>
-                </span>
+                </button>
 
             </div>
         </div>

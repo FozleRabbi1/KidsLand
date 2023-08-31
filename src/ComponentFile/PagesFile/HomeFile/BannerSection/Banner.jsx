@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import Lottie from "lottie-react";
+import BirdAnimation from "../../../AnimationJson/bardAnimation2.json"
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-fade';
@@ -50,27 +51,28 @@ const Banner = () => {
     return (
         <div className="pt-4">
 
-            <div className='hidden md:block'>
-                <div className='main-div grid md:grid-cols-2 bg-white justify-between'>
+                <div className='main-div  bg-white '>
 
                     <div className="dunamic-text-div">
 
-                        <div>
-                            <h2 className='headline-bg-style text-color duration-700 text-2xl ps-1 font-bold'>
+                        <div className='px-2 md:px-5 lg:px-20'>
+                            <h2 className='headline-bg-style lg:-mt-10 text-color duration-700 text-lg md:text-2xl ps-1 font-bold'>
                                 {sliderData[activeIndexNo].title}
                             </h2>
-                            <h2 className='text-2xl font-semibold my-1'>
+                            <h2 className='md:text-lg lg:text-2xl font-semibold my-1'>
                                 {sliderData[activeIndexNo].heading}
                             </h2>
                             <p className='text-justify'>
                                 {sliderData[activeIndexNo].description}
                             </p>
-
-
                             <button>
                                 Show More
                             </button>
+                        </div>
 
+                        <div className='bird-animation-div overflow-hidden -z-10'>
+                            <Lottie animationData={BirdAnimation} ></Lottie>
+                            <Lottie animationData={BirdAnimation} ></Lottie>
                         </div>
 
                     </div>
@@ -100,23 +102,16 @@ const Banner = () => {
 
                         </Swiper>
 
-
-                    </div>
-
-                    <div>
-
-
                     </div>
 
                 </div>
-            </div>
 
-            <div className='block md:hidden '>
+            {/* <div className='block md:hidden '>
 
-               <img className='w-full' src="https://i.pinimg.com/736x/6b/06/27/6b0627f99145e0bfa4a745cc443a2ee4.jpg" alt="" />
+                <img className='w-full' src="https://i.pinimg.com/736x/6b/06/27/6b0627f99145e0bfa4a745cc443a2ee4.jpg" alt="" />
 
 
-            </div>
+            </div> */}
 
         </div>
     );

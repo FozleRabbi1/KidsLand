@@ -4,48 +4,38 @@
     margin: 0 auto;
     border-radius: 10px;
     box-sizing: border-box;
-}
-
-.main-div .slider {
-    border-radius: 10px;
-    margin: 5px;
-    box-sizing: border-box;
     display: flex;
-    justify-items: center;
-    justify-content: center;
-}
-
-.main-div .slider .img img {
-    height: 83vh;
+    justify-content: space-between;
     width: 100%;
-    display: block;
-    border-radius: 10px;
-    margin-top: 2px;
 }
 
 .main-div .dunamic-text-div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* justify-items: center; */
-
 }
 
-.main-div .dunamic-text-div div {
-    /* background-color: aqua; */
-    width: 80%;
+.main-div .dunamic-text-div .bird-animation-div {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -40%);
+    height: 100%;
 }
 
-/* .main-div .dunamic-text-div div button {
-    border-radius: 50px;
-    background: #e0e0e0;
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
-} */
+.main-div .slider {
+    height: 100%;
+    width: 50%;
+}
+
+.main-div .mySwiper {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.main-div .slider .img {
+    /* height: 100%; */
+    border-radius: 10px;
+}
 
 .main-div .dunamic-text-div div button {
     width: 10em;
@@ -68,7 +58,6 @@
     left: 3%;
     width: 95%;
     height: 40%;
-    /* background-color: #212121; */
     background-color: white;
     transform-origin: center;
 }
@@ -81,9 +70,133 @@
     left: 3%;
     width: 95%;
     height: 40%;
-    /* background-color: #212121; */
     background-color: white;
+}
+
+.main-div .dunamic-text-div div button::before, button::after {
+    transform: scale(0)
+}
+
+.main-div .dunamic-text-div div button {
+    box-shadow: inset 0px 0px 25px #1479EA;
+    color: rgba(209, 95, 2, 0.8);
+    transition: all 0.5s;
+    z-index: 1;
+}
+
+.main-div .dunamic-text-div div button:hover {
+    color: orangered;
+    font-style: italic;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+@media (max-width:768px) {
+    .main-div .slider .mySwiper .img {
+        height: 100%;
+        width: 80%;
+        background: linear-gradient(to left, rgb(235,125,35), rgba(207, 98, 8,1) , rgb(235,125,35));
+        display: block;
+        padding: 10px;
+    }
+}
+
+
+@media (max-width:425px) {
+    .main-div {
+        height: 100vh;
+        flex-direction: column;
+        padding: 10px 0;
+        margin-bottom: 50px;
+    }
+
+    .main-div .dunamic-text-div {
+        width: 100%;
+    }
+
+    .main-div .dunamic-text-div h2 {
+        height: 50px;
+    }
+
+    .main-div .slider {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .main-div .dunamic-text-div div button {
+        width: 7em;
+        height: 2em;
+    }
     
+    .main-div .slider .mySwiper .img {
+        padding: 0;
+    }
+}
+
+/* .main-div .slider {
+    border-radius: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+
+.main-div .slider .img img {
+    height: 83vh;
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    margin-top: 2px;
+}
+
+.main-div .dunamic-text-div {
+    position: relative;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.main-div .dunamic-text-div div {
+    width: 80%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+.main-div .dunamic-text-div div button {
+    width: 10em;
+    position: relative;
+    height: 3em;
+    margin-top: 10px;
+    border: 3px ridge #149CEA;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main-div .dunamic-text-div div button::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: white;
+    transform-origin: center;
+}
+
+.main-div .dunamic-text-div div button::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: white;
 }
 
 .main-div .dunamic-text-div div button::before, button::after {
@@ -99,12 +212,4 @@
     color: orangered;
     font-style: italic;
     transition: all 0.5s;
-    /* font-size: 17px; */
-}
-/* .main-div .dunamic-text-div div button:hover::before, button:hover::after {
-    transform: scale(0)
-}
-
-.main-div .dunamic-text-div div button:hover {
-    box-shadow: inset 0px 0px 25px #1479EA;
 } */

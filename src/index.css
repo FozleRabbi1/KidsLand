@@ -48,7 +48,24 @@ html {
     width: 50%;
     background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1));
     color: white;
+    display: flex;
+    align-items: center;
+    height: 30px;
 }
+@media (max-width:768px) {
+    .headline-bg-style{
+        width: 70%;
+    }    
+}
+@media (max-width:425px) {
+    .headline-bg-style{
+        height: 30px !important;
+        /* width: 80%; */
+        border-radius: 5px;
+        /* padding: 0; */
+    }    
+}
+
 .headline-bg-style-control-panel{
     width: 100%;
     background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1));
@@ -69,4 +86,15 @@ html {
     color: white;
     padding-bottom: 5px;
     text-shadow: 1px 1px 2px rgb(3, 17, 143);
+}
+
+@media (max-width:768px) {
+    .main-headline-bg-style{
+        width: 80%;
+    }
+}
+@media (max-width:425px) {
+    .main-headline-bg-style{
+        width: 100%;
+    }    
 }

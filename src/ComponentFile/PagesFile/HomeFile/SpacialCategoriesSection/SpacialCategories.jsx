@@ -125,8 +125,8 @@ const SpacialCategories = () => {
     }
 
     return (
-        <div className='spacialCatagories-main-div md:px-20 md:py-8'>
-            <h2 className='main-headline-bg-style text-center text-3xl font-bold '>Special Collection</h2>
+        <div className='spacialCatagories-main-div mt-10 md:mt-0 pt-5 px-2 lg:px-20 md:py-8'>
+            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Special Collection</h2>
             {
                 isLoading ?
 
@@ -142,7 +142,7 @@ const SpacialCategories = () => {
                     :
 
                     <div className='spacial-main-div '>
-                        <div className="show-details-div md:w-9/12 overflow-hidden" >
+                        <div className="show-details-div lg:w-9/12 overflow-hidden" >
 
                             <div className=' relative h-full '>
                                 {imageError ? (
@@ -167,7 +167,6 @@ const SpacialCategories = () => {
                                             <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-sky-500 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
                                         </span>
 
-                                        {/* <button  className="showMore"> show deatails </button> */}
                                         <Link to={`/spacialDetails/${datas[activeIndexNo]?._id}`} className="showMore text-center"> show <br /> deatails </Link>
 
                                     </div>
@@ -176,11 +175,11 @@ const SpacialCategories = () => {
 
                         </div>
 
-                        <div className="slider w-10/12 md:w-7/12">
+                        <div className="slider w-full md:w-10/12 lg:w-7/12">
                             <div>
                                 <div className=' flex justify-between items-center mb-2'>
 
-                                    <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10`}>
+                                    <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10 `}>
                                         <h2 className='font-semibold'>{datas.length} / {activeIndexNo + 1}</h2>
                                         <select
                                             value={selectedOption}
@@ -193,6 +192,7 @@ const SpacialCategories = () => {
                                         </select>
 
                                     </div>
+
                                     <div className='flex items-center '>
                                         <h2 className='me-6 flex items-center'>
                                             <span className='text-xl'> {favouriteProducts?.length || 0}</span>

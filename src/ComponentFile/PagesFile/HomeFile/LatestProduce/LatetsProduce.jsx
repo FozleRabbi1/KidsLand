@@ -3,8 +3,8 @@ import './Latest.css'
 
 const LatetsProduce = () => {
     return (
-        <div>
-            <h2 className='main-headline-bg-style text-center text-3xl font-bold mt-5 md:mt-10'>Latest Product <small className='text-sm'>(TODO)</small> </h2>
+        <div className='mt-10 md:mt-0'>
+            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold mt-5 md:mt-10'>Latest Product <small className='text-sm'>(TODO)</small> </h2>
             <div className='latest-product-main-div py-10 grid md:grid-cols-2 justify-center gap-10 items-center'>
 
                 <div  data-aos="flip-left" className="container  grid grid-cols-2">

@@ -7,11 +7,11 @@ import './Count.css';
 const Count = () => {
     const [counterOn, setCounterOn] = useState(false)
     return (
-        <div className='counter-parent-div mb-36 mt-20 py-10'>
-            <h2 className='main-headline-bg-style text-center text-3xl font-bold'> Transactions </h2>
+        <div className='counter-parent-div md:mb-36 md:mt-20 md:py-10 mb-10'>
+            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold'> Transactions </h2>
 
 
-            <div className='counter-div grid md:grid-cols-2 lg:grid-cols-4 justify-center  text-center gap-5 md:gap:10'>
+            <div className='counter-div grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center  text-center gap-5 md:gap:10'>
                 <div className='div'>
                     <p className='font-semibold italic border-b-2 w-8/12 mb-2 mx-auto'>Total Product</p>
                     <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
