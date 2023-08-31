@@ -50,16 +50,16 @@ const Banner = () => {
                 <div className="dunamic-text-div">
 
                     <div className='px-2 md:px-5 lg:px-20'>
-                        <h2 className='headline-bg-style  lg:-mt-10 text-color flex justify-center text-lg md:text-2xl ps-1 font-bold'>
+                        <h2 data-aos="fade-right" data-aos-duration="3000" className='headline-bg-style  lg:-mt-10 text-color flex justify-center text-lg md:text-2xl ps-1 font-bold'>
                                 {sliderData[activeIndexNo].title}
                         </h2>
-                        <h2 className='md:text-lg lg:text-2xl font-semibold my-1'>
+                        <h2  data-aos="zoom-in" data-aos-duration="3000" className='md:text-lg lg:text-2xl font-semibold my-1'>
                             {sliderData[activeIndexNo].heading}
                         </h2>
-                        <p className='text-justify'>
+                        <p data-aos="zoom-in" data-aos-duration="3000"  className='text-justify'>
                             {sliderData[activeIndexNo].description}
                         </p>
-                        <button className=''>
+                        <button data-aos="fade-right" data-aos-duration="3000"  className=''>
                             Show More
                         </button>
                     </div>
@@ -72,7 +72,7 @@ const Banner = () => {
 
                 </div>
 
-                <div className="slider">
+                <div data-aos="zoom-in" data-aos-duration="3000" className="slider">
 
                     <Swiper
                         spaceBetween={30}

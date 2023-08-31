@@ -87,3 +87,10 @@
     width: 60%;
     text-align: center;
 }
+
+@media (max-width:768px) {
+    .animatio-headline-bg-style{
+        font-size: 10px !important;
+        width: 90%;
+    }    
+}

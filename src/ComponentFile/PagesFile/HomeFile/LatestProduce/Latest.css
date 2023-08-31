@@ -1,190 +1,196 @@
 .container {
-    display: flex;
-    /* align-items: center; */
-    border: 1px solid gray;
-    padding: 5px;
-    background-color: rgba(0,0,0,0.5);
-  }
-  
-  .card_box {
-    /* width: 200px;
+  display: flex;
+  /* align-items: center; */
+  border: 1px solid gray;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card_box {
+  /* width: 200px;
     height: 250px; */
-    border-radius: 20px;
-    background: linear-gradient(170deg, rgba(58, 56, 56, 0.623) 0%, rgb(31, 31, 31) 100%);
-    position: relative;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.55);
-    cursor: pointer;
-    transition: all .3s;
+  border-radius: 20px;
+  /* background: linear-gradient(170deg, rgba(58, 56, 56, 0.623) 0%, rgb(31, 31, 31) 100%); */
+  position: relative;
+  /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.container .card_box img {
+  /* width: 180px; */
+  /* height: 200px; */
+  height: 100%;
+}
+
+/* @media (max-width:768px) {
+  .container .card_box img {
   }
-  .container .card_box img{
-    width: 180px;
-    height: 200px;
-  }
-  .container:hover .card_box {
-    transform: scale(0.9);
-  }
-  
-  .card_box span {
-    position: absolute;
-    overflow: hidden;
-    width: 120px;
-    height: 120px;
-    top: -15px;
-    left: -15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card_box span::before {
-    content: 'Latest';
-    position: absolute;
-    width: 150%;
-    height: 30px;
-    background-image: linear-gradient(45deg, #ff6547 0%, #ffb144  51%, #ff7053  100%);
-    transform: rotate(-45deg) translateY(-20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.23);
-  }
-  
-  .card_box span::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    bottom: 0;
-    left: 0;
-    height: 10px;
-    z-index: -1;
-    box-shadow: 140px -140px #cc3f47;
-    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
-  }
-  .card_box img{
-    width: 100%;
-  }
-  .latest-product-main-div {
-    background-image: linear-gradient(to right, rgba(49, 100, 238, 0.9), rgba(121, 168, 207, 0.5)), url("https://img.freepik.com/premium-vector/kids-jumping-happy-diverse-children-jump-summer-activities-kid-friendship-cartoon-school-child-playing-outdoor-decent-vector-characters_543062-1680.jpg?w=2000");
-    background-size: cover;
-    margin-bottom: 50px;
-    padding: 20px;
-    color: white;
-  }
-  
-  .container .button {
-    --width: 100px;
-    --height: 35px;
-    --tooltip-height: 35px;
-    --tooltip-width: 90px;
-    --gap-between-tooltip-to-button: 18px;
-    --button-color: #222;
-    --tooltip-color: #fff;
-    width: var(--width);
-    height: var(--height);
-    background: var(--button-color);
-    position: relative;
-    text-align: center;
-    border-radius: 0.45em;
-    font-family: "Arial";
-    transition: background 0.3s;
-  }
-  
-  .container .button::before {
-    position: absolute;
-    content: attr(data-tooltip);
-    width: var(--tooltip-width);
-    height: var(--tooltip-height);
-    background-color: #555;
-    font-size: 0.9rem;
-    color: #fff;
-    border-radius: .25em;
-    line-height: var(--tooltip-height);
-    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
-    left: calc(50% - var(--tooltip-width) / 2);
-  }
-  
-  .container .button::after {
-    position: absolute;
-    content: '';
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-    border-top-color: #555;
-    left: calc(50% - 10px);
-    bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
-  }
-  
-  .container .button::after,.container .button::before {
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s;
-  }
-  
-  .text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .container .button-wrapper,.text,.icon {
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    color: #fff;
-  }
-  
-  .text {
-    top: 0
-  }
-  
-  .text,.icon {
-    transition: top 0.5s;
-  }
-  
-  .icon {
-    color: #fff;
-    top: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .icon svg {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .container .button:hover {
-    background: #222;
-  }
-  
-  .container .button:hover .text {
-    top: -100%;
-  }
-  
-  .container .button:hover .icon {
-    top: 0;
-  }
-  
-  .container .button:hover:before,.container .button:hover:after {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .container .button:hover:after {
-    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
-  }
-  
-  .container .button:hover:before {
-    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
-  }
-  
-  
-  
-  
+} */
+
+.container:hover .card_box {
+  transform: scale(0.9);
+}
+
+.card_box span {
+  position: absolute;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  top: -15px;
+  left: -15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card_box span::before {
+  content: 'Latest';
+  position: absolute;
+  width: 150%;
+  height: 30px;
+  background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
+  transform: rotate(-45deg) translateY(-20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
+}
+
+.card_box span::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  bottom: 0;
+  left: 0;
+  height: 10px;
+  z-index: -1;
+  box-shadow: 140px -140px #cc3f47;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819 51%, #FF512F 100%);
+}
+
+.card_box img {
+  width: 100%;
+}
+
+.latest-product-main-div {
+  background-image: linear-gradient(to right, rgba(49, 100, 238, 0.9), rgba(121, 168, 207, 0.5)), url("https://img.freepik.com/premium-vector/kids-jumping-happy-diverse-children-jump-summer-activities-kid-friendship-cartoon-school-child-playing-outdoor-decent-vector-characters_543062-1680.jpg?w=2000");
+  background-size: cover;
+  margin-bottom: 50px;
+  padding: 20px;
+  color: white;
+}
+
+.container .button {
+  --width: 100px;
+  --height: 35px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: #222;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 0.45em;
+  font-family: "Arial";
+  transition: background 0.3s;
+}
+
+.container .button::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: #555;
+  font-size: 0.9rem;
+  color: #fff;
+  border-radius: .25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.container .button::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #555;
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.container .button::after, .container .button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .button-wrapper, .text, .icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0
+}
+
+.text, .icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.container .button:hover {
+  background: #222;
+}
+
+.container .button:hover .text {
+  top: -100%;
+}
+
+.container .button:hover .icon {
+  top: 0;
+}
+
+.container .button:hover:before, .container .button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.container .button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.container .button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
