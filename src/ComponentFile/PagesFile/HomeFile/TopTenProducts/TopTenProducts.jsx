@@ -15,7 +15,7 @@ const TopTenProducts = () => {
 
     return (
         <div>
-            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Top 10 Selling Products  <small className='text-sm'>(TODO)</small> </h2>
+            <h2 data-aos="flip-up" className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Top 10 Selling Products  <small className='text-sm'>(TODO)</small> </h2>
 
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-10 justify-center -z-10 pb-10">

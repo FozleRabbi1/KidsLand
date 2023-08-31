@@ -36,7 +36,6 @@ const Home = () => {
             <TopTenProducts></TopTenProducts>
             <Count></Count>
 
-
         </div>
     );
 };

@@ -5,7 +5,7 @@ const LatetsProduce = () => {
     return (
         <div className='mt-10 md:mt-20'>
             <div className='latest-product-main-div'>
-                <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold mt-2 md:mt-5'>Latest Product <small className='text-sm'>(TODO)</small> </h2>
+                <h2 data-aos="flip-up" className='main-headline-bg-style text-center text-xl md:text-3xl font-bold mt-2 md:mt-5'>Latest Product <small className='text-sm'>(TODO)</small> </h2>
                 <div className=' pb-10 grid md:grid-cols-2 justify-center gap-y-5 md:gap-5 lg:gap-10 items-center'>
 
                     <div data-aos="flip-left" className="container  grid grid-cols-2">

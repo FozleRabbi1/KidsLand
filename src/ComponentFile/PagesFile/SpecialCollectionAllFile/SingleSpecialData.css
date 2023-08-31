@@ -15,7 +15,7 @@
     transition: all 0.5s;
 }
 .special-data-headline-bg-style{
-    width: 80%;
+    width: 100%;
     background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1));
     color: white;
 }

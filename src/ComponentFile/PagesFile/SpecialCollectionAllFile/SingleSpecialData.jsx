@@ -6,27 +6,27 @@ const SingleSpecialData = ({ data }) => {
     const [imgIndex, setImgIndex] = useState(0)
 
     // useEffect(() => {
-        setTimeout(() => {
-            if (imgIndex >= data.images?.length - 1) {
-                console.log(imgIndex)
-                setImgIndex(0)
-                return
-            }
-            setImgIndex(imgIndex + 1)
-        }, 3000);
+    setTimeout(() => {
+        if (imgIndex >= data.images?.length - 1) {
+            console.log(imgIndex)
+            setImgIndex(0)
+            return
+        }
+        setImgIndex(imgIndex + 1)
+    }, 3000);
     // }, [])
 
 
     return (
-        <div className='grid grid-cols-2 main-Single-specialDiv'>
-            <div className="w-72">
+        <div className='grid md:grid-cols-2 justify-center main-Single-specialDiv'>
+
+            <div className="md:w-11/12 p-2 md:p-0">
                 <img className=' w-full h-80 img' src={data?.images[imgIndex]} alt="" />
 
                 <div className='flex justify-center'>
                     {
                         data.images.map((image, i) =>
                             <img className={`w-16 h-16 mx-2 ${imgIndex === i ? "activee" : "diActivee"}`} src={image} alt="" />
-                            // <img onMouseOver={() => setImgIndex(i)} className={`w-16 h-16 mx-2 ${imgIndex === i ? "activee" : "diActivee"}`} src={image} alt="" />
                         )
                     }
                 </div>
@@ -46,6 +46,8 @@ const SingleSpecialData = ({ data }) => {
 
                 <Link to={`/spacialDetails/${data?._id}`} className="text-center text-color px-2 py-1 block mt-1 w-5/12 rounded-3xl shadow-xl font-semibold italic"> show deatails </Link>
             </div>
+
+
         </div>
     );
 };

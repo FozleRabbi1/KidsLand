@@ -9,7 +9,7 @@ const Count = () => {
     return (
         <div className='counter-parent-div mb-5 md:mb-20 md:mt-10 '>
             {/* <div className='counter-parent-div md:mb-36 md:mt-20 md:py-10 mb-10'> */}
-            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold'> Transactions </h2>
+            <h2 data-aos="flip-up" className='main-headline-bg-style text-center text-xl md:text-3xl font-bold'> Transactions </h2>
 
 
             <div className='counter-div grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center  text-center gap-5 md:gap:10'>

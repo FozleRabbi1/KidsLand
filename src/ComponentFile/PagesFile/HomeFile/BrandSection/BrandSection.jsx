@@ -6,7 +6,7 @@ const BrandSection = () => {
     return (
         <div className=' overflow-hidden relative'>
             <div className='brand-main-div pt-5 md:pt-10 md:pb-36'>
-                <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Our Brand</h2>
+                <h2 data-aos="flip-up" className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Our Brand</h2>
                 <div className="brand-logo-div md:mt-5 ">
                     <Marquee >
 

@@ -126,7 +126,7 @@ const SpacialCategories = () => {
 
     return (
         <div className='spacialCatagories-main-div mt-10 md:mt-0 pt-5 px-2 lg:px-20 md:py-8'>
-            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Special Collection</h2>
+            <h2 data-aos="flip-up" className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Special Collection</h2>
             {
                 isLoading ?
 
@@ -142,7 +142,7 @@ const SpacialCategories = () => {
                     :
 
                     <div className='spacial-main-div '>
-                        <div className="show-details-div lg:w-9/12 overflow-hidden" >
+                        <div data-aos="zoom-in-up" className="show-details-div lg:w-9/12 overflow-hidden" >
 
                             <div className=' relative h-full '>
                                 {imageError ? (
@@ -175,7 +175,7 @@ const SpacialCategories = () => {
 
                         </div>
 
-                        <div className="slider w-full md:w-10/12 lg:w-7/12">
+                        <div data-aos="zoom-in-up" className="slider w-full md:w-10/12 lg:w-7/12">
                             <div>
                                 <div className=' flex flex-col-reverse md:flex-row justify-between items-center mb-2'>
 
