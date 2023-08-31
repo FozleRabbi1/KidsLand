@@ -9,6 +9,7 @@ import SpacialCategories from "../SpacialCategoriesSection/SpacialCategories";
 import { useEffect } from "react";
 import TopTenProducts from "../TopTenProducts/TopTenProducts";
 import Count from "../CounterSection/Count";
+import AnimationCard from "../AnimationCollection/CercleAnimation/AnimationCard";
 
 const Home = () => {
     const { pathname } = useLocation();
@@ -30,6 +31,7 @@ const Home = () => {
             <AllDressCollection></AllDressCollection>
             <BrandSection></BrandSection>
             <LatetsProduce></LatetsProduce>
+            <AnimationCard></AnimationCard>
             <ContactSection></ContactSection>
             <TopTenProducts></TopTenProducts>
             <Count></Count>

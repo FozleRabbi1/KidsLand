@@ -7,7 +7,8 @@ import './Count.css';
 const Count = () => {
     const [counterOn, setCounterOn] = useState(false)
     return (
-        <div className='counter-parent-div md:mb-36 md:mt-20 md:py-10 mb-10'>
+        <div className='counter-parent-div mb-5 md:mb-20 md:mt-10 '>
+            {/* <div className='counter-parent-div md:mb-36 md:mt-20 md:py-10 mb-10'> */}
             <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold'> Transactions </h2>
 
 

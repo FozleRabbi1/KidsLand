@@ -3,6 +3,7 @@ import { AuthContext } from '../../AuthProvider/AuthContextProvider';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import useAddtoCardGetData from '../../HooksFile/useAddtoCardGetData';
+import { FaUserAlt } from 'react-icons/fa';
 
 const MainPageNav = () => {
     const { user, logInOut } = useContext(AuthContext);
@@ -43,7 +44,7 @@ const MainPageNav = () => {
                                     {
                                         user ? <img className=" rounded-full ms-1 h-10 w-10 " src={user?.photoURL} alt="" />
                                             : <div className=" rounded-full ms-1 h-10 w-10 flex justify-center items-center " alt="" >
-                                                I
+                                                <FaUserAlt className='text-xl'></FaUserAlt>
                                             </div>
                                     }
                                 </div>

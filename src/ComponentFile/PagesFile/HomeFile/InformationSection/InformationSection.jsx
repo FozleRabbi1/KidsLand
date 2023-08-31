@@ -36,6 +36,7 @@ const InformationSection = () => {
 
 
     return (
+      
         <div className="px-1 overflow-hidden md:py-20 lg:py-36 mt-72 md:mt-0 main-info-div grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-10 z-10">
 
             {/* data-aos="fade-right"  */}
@@ -62,6 +63,7 @@ const InformationSection = () => {
 
 
         </div>
+
     );
 };
 

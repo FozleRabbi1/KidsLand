@@ -18,12 +18,10 @@ html {
   }
 
 .nav-bg-color{
-    /* background-color: rgb(50,140,250); */
     background-color: rgb(235,125,35);
 }
 .local-text {
     color: rgb(3, 17, 143);
-    /* color: rgb(235,125,35); */
 }
 
 .nav-text {
@@ -45,8 +43,9 @@ html {
 }
 
 .headline-bg-style{
-    width: 50%;
-    background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1));
+    width: 60%;
+    /* background: linear-gradient(to left, rgba(207, 98, 8,0.6), rgb(250, 113, 1)); */
+    background: linear-gradient(to left,   rgb(250, 124, 21) , rgb(247, 157, 84), rgb(250, 124, 21)  );
     color: white;
     display: flex;
     align-items: center;
@@ -60,9 +59,7 @@ html {
 @media (max-width:425px) {
     .headline-bg-style{
         height: 30px !important;
-        /* width: 80%; */
         border-radius: 5px;
-        /* padding: 0; */
     }    
 }
 
@@ -82,7 +79,9 @@ html {
     font-style: oblique;
 }
 .controlPanel-headline-bg-style{
-    background: linear-gradient(to left,  rgb(235,125,35), rgba(207, 98, 8,1) , rgb(235,125,35) );
+    /* background: linear-gradient(to left,  rgb(252, 148, 64), rgb(250, 124, 21) , rgb(247, 157, 84), rgb(250, 124, 21)  ); */
+
+    background: linear-gradient(to left,   rgb(250, 124, 21) , rgb(247, 157, 84), rgb(250, 124, 21)  );
     color: white;
     padding-bottom: 5px;
     text-shadow: 1px 1px 2px rgb(3, 17, 143);

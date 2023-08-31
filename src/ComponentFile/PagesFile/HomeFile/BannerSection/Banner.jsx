@@ -45,61 +45,61 @@ const Banner = () => {
     return (
         <div className="pt-4">
 
-                <div className='main-div  bg-white '>
+            <div className='main-div  bg-white '>
 
-                    <div className="dunamic-text-div">
+                <div className="dunamic-text-div">
 
-                        <div className='px-2 md:px-5 lg:px-20'>
-                            <h2 className='headline-bg-style lg:-mt-10 text-color duration-700 text-lg md:text-2xl ps-1 font-bold'>
+                    <div className='px-2 md:px-5 lg:px-20'>
+                        <h2 className='headline-bg-style  lg:-mt-10 text-color flex justify-center text-lg md:text-2xl ps-1 font-bold'>
                                 {sliderData[activeIndexNo].title}
-                            </h2>
-                            <h2 className='md:text-lg lg:text-2xl font-semibold my-1'>
-                                {sliderData[activeIndexNo].heading}
-                            </h2>
-                            <p className='text-justify'>
-                                {sliderData[activeIndexNo].description}
-                            </p>
-                            <button className=''>
-                                Show More
-                            </button>
-                        </div>
-
-                        <div className='bird-animation-div overflow-hidden  z-10'>
-                            <Lottie className='' animationData={BirdAnimation} ></Lottie>
-                            <Lottie className='' animationData={BirdAnimation} ></Lottie>
-                            {/* <Lottie animationData={BirdAnimation} ></Lottie> */}
-                        </div>
-
+                        </h2>
+                        <h2 className='md:text-lg lg:text-2xl font-semibold my-1'>
+                            {sliderData[activeIndexNo].heading}
+                        </h2>
+                        <p className='text-justify'>
+                            {sliderData[activeIndexNo].description}
+                        </p>
+                        <button className=''>
+                            Show More
+                        </button>
                     </div>
 
-                    <div className="slider">
-
-                        <Swiper
-                            spaceBetween={30}
-                            effect={'fade'}
-                            navigation={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            onSlideChange={(e) => setactiveIndexNo(e.activeIndex)}
-                            modules={[EffectFade, Navigation, Pagination]}
-                            className="mySwiper"
-                        >
-                            {
-                                sliderData.map((data, index) =>
-                                    <SwiperSlide
-                                        key={index}
-                                        className='img'>
-                                        <img src={data.image} />
-                                    </SwiperSlide>
-                                )
-                            }
-
-                        </Swiper>
-
+                    <div className='bird-animation-div overflow-hidden  z-10'>
+                        <Lottie className='' animationData={BirdAnimation} ></Lottie>
+                        <Lottie className='' animationData={BirdAnimation} ></Lottie>
+                        {/* <Lottie animationData={BirdAnimation} ></Lottie> */}
                     </div>
 
                 </div>
+
+                <div className="slider">
+
+                    <Swiper
+                        spaceBetween={30}
+                        effect={'fade'}
+                        navigation={true}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        onSlideChange={(e) => setactiveIndexNo(e.activeIndex)}
+                        modules={[EffectFade, Navigation, Pagination]}
+                        className="mySwiper"
+                    >
+                        {
+                            sliderData.map((data, index) =>
+                                <SwiperSlide
+                                    key={index}
+                                    className='img'>
+                                    <img src={data.image} />
+                                </SwiperSlide>
+                            )
+                        }
+
+                    </Swiper>
+
+                </div>
+
+            </div>
 
             {/* <div className='block md:hidden '>
 

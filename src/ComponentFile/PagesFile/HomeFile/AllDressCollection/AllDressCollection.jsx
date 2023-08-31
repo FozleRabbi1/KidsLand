@@ -60,7 +60,7 @@ const AllDressCollection = () => {
 
     return (
         <div className='mt-16'>
-            <h2 className='main-headline-bg-style text-center text-xl md:3xl font-bold '>All Collection</h2>
+            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>All Collection</h2>
             <div className='flex flex-col lg:flex-row'>
 
                 <div data-aos="fade-right"  className="conterol-div w-full lg:w-3/12 h-5/6 pb-5">
