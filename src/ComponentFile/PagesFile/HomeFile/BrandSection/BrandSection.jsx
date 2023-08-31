@@ -5,7 +5,7 @@ import './BrandSection.css'
 const BrandSection = () => {
     return (
         <div className='brand-main-div mt-10 md:pt-10 md:pb-36'>
-            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold md:pb-10'>Our Brand</h2>
+            <h2 className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Our Brand</h2>
 
             <div className="brand-logo-div md:mt-5 ">
                 <Marquee >

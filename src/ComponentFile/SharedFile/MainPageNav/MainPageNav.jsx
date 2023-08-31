@@ -41,12 +41,14 @@ const MainPageNav = () => {
                                 }
                                 <div className='w-10 h-10'>
                                     {
-                                        user && <img className=" rounded-full ms-1 h-10 w-10 " src={user?.photoURL} alt="" />
+                                        user ? <img className=" rounded-full ms-1 h-10 w-10 " src={user?.photoURL} alt="" />
+                                            : <div className=" rounded-full ms-1 h-10 w-10 flex justify-center items-center " alt="" >
+                                                I
+                                            </div>
                                     }
                                 </div>
                             </span>
                         </span>
-
                     </div>
                 </div>
                 <div className="nav-bg-color flex justify-center py-4 px-2">

@@ -59,14 +59,15 @@ const Banner = () => {
                             <p className='text-justify'>
                                 {sliderData[activeIndexNo].description}
                             </p>
-                            <button>
+                            <button className=''>
                                 Show More
                             </button>
                         </div>
 
-                        <div className='bird-animation-div overflow-hidden -z-10'>
-                            <Lottie animationData={BirdAnimation} ></Lottie>
-                            <Lottie animationData={BirdAnimation} ></Lottie>
+                        <div className='bird-animation-div overflow-hidden  z-10'>
+                            <Lottie className='' animationData={BirdAnimation} ></Lottie>
+                            <Lottie className='' animationData={BirdAnimation} ></Lottie>
+                            {/* <Lottie animationData={BirdAnimation} ></Lottie> */}
                         </div>
 
                     </div>
