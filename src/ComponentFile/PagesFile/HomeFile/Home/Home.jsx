@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import TopTenProducts from "../TopTenProducts/TopTenProducts";
 import Count from "../CounterSection/Count";
 import AnimationCard from "../AnimationCollection/CercleAnimation/AnimationCard";
+import CustomersReview from "../CustomarsReview/CustomersReview";
 
 const Home = () => {
     const { pathname } = useLocation();
@@ -35,6 +36,8 @@ const Home = () => {
             <ContactSection></ContactSection>
             <TopTenProducts></TopTenProducts>
             <Count></Count>
+            <CustomersReview></CustomersReview>
+
 
         </div>
     );
