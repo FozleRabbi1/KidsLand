@@ -125,117 +125,121 @@ const SpacialCategories = () => {
     }
 
     return (
-        <div className='spacialCatagories-main-div mt-10 md:mt-0 pt-5 px-2 lg:px-20 md:py-8'>
+        <div  className='spacialCatagories-main-div mt-10 md:mt-0 pt-5 px-2 lg:px-20 md:py-8'>
             <h2 data-aos="flip-up" className='main-headline-bg-style text-center text-xl md:text-3xl font-bold '>Special Collection</h2>
-            {
-                isLoading ?
 
-                    <div className='flex gap-10 items-center' >
-                        <div className='w-6/12'><Skeleton width={"82%"} height={550} ></Skeleton></div>
-                        <div className='w-6/12 flex gap-10 justify-between'>
-                            <Skeleton width={190} height={250} ></Skeleton>
-                            <Skeleton width={190} height={250} ></Skeleton>
-                            <Skeleton width={190} height={250} ></Skeleton>
-                        </div>
-                    </div>
+            <div data-aos="zoom-in-up" >
+                {
+                    isLoading ?
 
-                    :
-
-                    <div className='spacial-main-div '>
-                        <div data-aos="zoom-in-up" className="show-details-div lg:w-9/12 overflow-hidden" >
-
-                            <div className=' relative h-full '>
-                                {imageError ? (
-                                    <div onMouseOver={() => setImageError(false)} >
-                                        <img className='img' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
-                                    </div>
-                                ) : (
-                                    <img
-                                        className=''
-                                        src={datas[activeIndexNo]?.images[imageIndex]}
-                                        onMouseOver={setIndexFun}
-                                        alt="Image"
-                                        onError={() => setImageError(true)}
-                                    />
-                                )}
-                                <p className='absolute top-1 right-4 text-2xl font-bold text-center bg-green-100 z-30 rounded-lg px-1 '> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
-
-                                <div className="show-details absolute flex justify-center items-center">
-                                    <div className='flex items-center'>
-                                        <Link to={"/specialCollectionAll"} className="showMore text-center"> Show <br /> All</Link>
-                                        <span className=' w-10 flex justify-center'>
-                                            <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-sky-500 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
-                                        </span>
-
-                                        <Link to={`/spacialDetails/${datas[activeIndexNo]?._id}`} className="showMore text-center"> show <br /> deatails </Link>
-
-                                    </div>
-                                </div>
+                        <div className='flex gap-10 items-center' >
+                            <div className='w-6/12'><Skeleton width={"82%"} height={550} ></Skeleton></div>
+                            <div className='w-6/12 flex gap-10 justify-between'>
+                                <Skeleton width={190} height={250} ></Skeleton>
+                                <Skeleton width={190} height={250} ></Skeleton>
+                                <Skeleton width={190} height={250} ></Skeleton>
                             </div>
-
                         </div>
 
-                        <div data-aos="zoom-in-up" className="slider w-full md:w-10/12 lg:w-7/12">
-                            <div>
-                                <div className=' flex flex-col-reverse md:flex-row justify-between items-center mb-2'>
+                        :
 
-                                    <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10 mt-2 md:mt-0 `}>
-                                        <h2 className='font-semibold'>{datas.length} / {activeIndexNo + 1}</h2>
-                                        <select
-                                            value={selectedOption}
-                                            onChange={handleOptionChange}
-                                            className=" ms-2 button button2 rounded  text-gray-800"
-                                        >
-                                            <option className='' value="All">All</option>
-                                            <option className='' value="Boy">Boy</option>
-                                            <option className='' value="Girl">Girl</option>
-                                        </select>
+                        <div className='spacial-main-div '>
+                            <div className="show-details-div lg:w-9/12 overflow-hidden" >
 
-                                    </div>
+                                <div className=' relative h-full '>
+                                    {imageError ? (
+                                        <div onMouseOver={() => setImageError(false)} >
+                                            <img className='img' src="https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg" alt="" />
+                                        </div>
+                                    ) : (
+                                        <img
+                                            className=''
+                                            src={datas[activeIndexNo]?.images[imageIndex]}
+                                            onMouseOver={setIndexFun}
+                                            alt="Image"
+                                            onError={() => setImageError(true)}
+                                        />
+                                    )}
+                                    <p className='absolute top-1 right-4 text-2xl font-bold text-center bg-green-100 z-30 rounded-lg px-1 '> {datas[activeIndexNo]?.images.length} / {imageIndex + 1} </p>
 
-                                    <div className='flex items-center '>
-                                        <h2 className='me-6 flex items-center'>
-                                            <span className='text-xl'> {favouriteProducts?.length || 0}</span>
-                                            <GiSelfLove className="text-xl text-red-600 ms-1 " ></GiSelfLove>
-                                            <Link className="border ms-1 px-1 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
-                                        </h2>
+                                    <div className="show-details absolute flex justify-center items-center">
                                         <div className='flex items-center'>
-                                            <button className='button' onClick={() => slidePrev()} > <AiOutlineArrowLeft className='font-bold' ></AiOutlineArrowLeft> </button>
-                                            <button className='ms-2 button' onClick={() => slideNext()} > <AiOutlineArrowRight className='font-bold' ></AiOutlineArrowRight> </button>
+                                            <Link to={"/specialCollectionAll"} className="showMore text-center"> Show <br /> All</Link>
+                                            <span className=' w-10 flex justify-center'>
+                                                <i onClick={() => SaveOnFavouriteFun(datas[activeIndexNo], datas[activeIndexNo]?.images[imageIndex])} title='Save On Favourite' className=' text-3xl hover:text-4xl duration-700 text-sky-500 cursor-pointer'> <GiSelfLove></GiSelfLove>  </i>
+                                            </span>
+
+                                            <Link to={`/spacialDetails/${datas[activeIndexNo]?._id}`} className="showMore text-center"> show <br /> deatails </Link>
+
                                         </div>
                                     </div>
-
                                 </div>
-                                <Swiper
-                                    slidesPerView={3}
-                                    centeredSlides={true}
-                                    spaceBetween={30}
-                                    grabCursor={true}
-                                    onSwiper={setSwiper}
-                                    onSlideChange={(swiper) => setactiveIndexNo(swiper.activeIndex)}
-                                    modules={[Pagination]}
-                                    className="mySwiper"
-                                >
-                                    {datas?.map((d, index) => (
-                                        <SwiperSlide key={index} className="pb-6">
-                                            {({ isActive }) => (
-                                                <div
-                                                    className=""
-                                                    style={{
-                                                        border: `${isActive ? "2px solid orange" : "2px solid white"}`,
-                                                        // boxShadow: `${isActive ? "1px 2px 1px orange" : "none"}`,
-                                                    }}
-                                                >
-                                                    <img className="w-64 h-52 md:w-60 md:h-60" src={d.images[0]} alt="" />
-                                                </div>
-                                            )}
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
+
+                            </div>
+
+                            <div className="slider w-full md:w-10/12 lg:w-7/12">
+                                <div>
+                                    <div className=' flex flex-col-reverse md:flex-row justify-between items-center mb-2'>
+
+                                        <div className={`${activeIndexNo == 0 ? "invisible" : "block"} flex items-center z-10 mt-2 md:mt-0 `}>
+                                            <h2 className='font-semibold'>{datas.length} / {activeIndexNo + 1}</h2>
+                                            <select
+                                                value={selectedOption}
+                                                onChange={handleOptionChange}
+                                                className=" ms-2 button button2 rounded  text-gray-800"
+                                            >
+                                                <option className='' value="All">All</option>
+                                                <option className='' value="Boy">Boy</option>
+                                                <option className='' value="Girl">Girl</option>
+                                            </select>
+
+                                        </div>
+
+                                        <div className='flex items-center '>
+                                            <h2 className='me-6 flex items-center'>
+                                                <span className='text-xl'> {favouriteProducts?.length || 0}</span>
+                                                <GiSelfLove className="text-xl text-red-600 ms-1 " ></GiSelfLove>
+                                                <Link className="border ms-1 px-1 text-center rounded mx-auto mb-1 hover:bg-gray-700 hover:text-white duration-500" to={"/seeAll"}>See All</Link>
+                                            </h2>
+                                            <div className='flex items-center'>
+                                                <button className='button' onClick={() => slidePrev()} > <AiOutlineArrowLeft className='font-bold' ></AiOutlineArrowLeft> </button>
+                                                <button className='ms-2 button' onClick={() => slideNext()} > <AiOutlineArrowRight className='font-bold' ></AiOutlineArrowRight> </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <Swiper
+                                        slidesPerView={3}
+                                        centeredSlides={true}
+                                        spaceBetween={30}
+                                        grabCursor={true}
+                                        onSwiper={setSwiper}
+                                        onSlideChange={(swiper) => setactiveIndexNo(swiper.activeIndex)}
+                                        modules={[Pagination]}
+                                        className="mySwiper"
+                                    >
+                                        {datas?.map((d, index) => (
+                                            <SwiperSlide key={index} className="pb-6">
+                                                {({ isActive }) => (
+                                                    <div
+                                                        className=""
+                                                        style={{
+                                                            border: `${isActive ? "2px solid orange" : "2px solid white"}`,
+                                                            // boxShadow: `${isActive ? "1px 2px 1px orange" : "none"}`,
+                                                        }}
+                                                    >
+                                                        <img className="w-64 h-52 md:w-60 md:h-60" src={d.images[0]} alt="" />
+                                                    </div>
+                                                )}
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
+                                </div>
                             </div>
                         </div>
-                    </div>
-            }
+                }
+            </div>
+
 
         </div>
     );
