@@ -37,7 +37,7 @@ const Login = () => {
 
         <div className="main-form-div font-serif ">
             <div className="w-7/12 rounded-sm   -mt-20 register-form-div px-6 py-10  ">
-                <h2 className=" text-center"> Login Here & Go To <Link className=" text-2xl font-bold text-sky-400" to={"/"}>Kids Land!</Link> </h2>
+                <h2 className=" text-center mb-1"> Login Here & Go To <Link className=" text-2xl font-bold text-sky-400 underline" to={"/"}>Kids Land!</Link> </h2>
                 <small className="-mt-3 mb-5 text-center block ">Come join the kids Land Community! If You Are New? Got To  <Link to={"/register"} className="text-xl italic text-sky-500 font-bold" >Sign Up Here...</Link>  </small>
 
                 <div className="flex">

@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import './Banner.css'
 
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 const Banner = () => {
     const [activeIndexNo, setactiveIndexNo] = useState(0);
 
@@ -42,37 +42,74 @@ const Banner = () => {
 
     ]
 
+
+    const [lines, setLines] = useState([]);
+    const createLine = () => {
+        const sizeW = Math.random() * 22;
+        const duration = Math.random() * 3;
+        const newLine = {
+            width: `12px`,
+            left: `${Math.random() * window.innerWidth}px`,
+            animationDuration: `${2 + duration}s`,
+        };
+        setLines((prevLines) => [...prevLines, newLine]);
+        // setTimeout(() => {
+        //     setLines((prevLines) => prevLines.filter((line) => line !== newLine));
+        // }, 5000);
+    };
+
+    useEffect(() => {
+        const intervalId = setInterval(createLine, 200);
+        return () => clearInterval(intervalId);
+    }, []);
+
     return (
-        <div className="pt-4">
+        <div className="md:pt-4">
 
-            <div className='main-div  bg-white '>
+            <div className='main-div '>
 
-                <div className="dunamic-text-div">
+                <div className="dunamic-text-div py-6 md:py-0 ">
 
-                    <div className='px-2 md:px-5 lg:px-20'>
+                    <div className='px-2 md:px-5 lg:px-20 z-20 text-white'>
                         <h2 data-aos="fade-right" data-aos-duration="3000" className='headline-bg-style  lg:-mt-10 text-color flex justify-center text-lg md:text-2xl ps-1 font-bold'>
-                                {sliderData[activeIndexNo].title}
+                            {sliderData[activeIndexNo].title}
                         </h2>
-                        <h2  data-aos="zoom-in" data-aos-duration="3000" className='md:text-lg lg:text-2xl font-semibold my-1'>
+                        <h2 data-aos="zoom-in" data-aos-duration="3000" className='md:text-lg lg:text-2xl font-semibold my-1'>
                             {sliderData[activeIndexNo].heading}
                         </h2>
-                        <p data-aos="zoom-in" data-aos-duration="3000"  className='text-justify'>
+                        <p data-aos="zoom-in" data-aos-duration="3000" className='text-justify z-10 '>
                             {sliderData[activeIndexNo].description}
                         </p>
-                        <button data-aos="fade-right" data-aos-duration="3000"  className=''>
+                        <button data-aos="fade-right" data-aos-duration="3000" className=''>
                             Show More
                         </button>
                     </div>
 
-                    <div className='bird-animation-div overflow-hidden  z-10'>
+                    <div className='bird-animation-div overflow-hidden '>
+
+                        <div className="banner-animation-div ">
+                            {lines.map((line, index) => (
+                                <div
+                                    key={index}
+                                    className="circle"
+                                    style={{
+                                        width: line.width,
+                                        left: line.left,
+                                        animationDuration: line.animationDuration,
+                                    }}
+                                ></div>
+                            ))}
+                        </div>
+
                         <Lottie className='' animationData={BirdAnimation} ></Lottie>
-                        <Lottie className='' animationData={BirdAnimation} ></Lottie>
+                        {/* <Lottie className='' animationData={BirdAnimation} ></Lottie> */}
+
                         {/* <Lottie animationData={BirdAnimation} ></Lottie> */}
                     </div>
 
                 </div>
 
-                <div data-aos="zoom-in" data-aos-duration="3000" className="slider">
+                <div className="slider">
 
                     <Swiper
                         spaceBetween={30}

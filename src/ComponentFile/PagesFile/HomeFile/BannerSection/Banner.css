@@ -2,11 +2,19 @@
     height: 85vh;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     margin: 0 auto;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     width: 100%;
+    overflow: hidden;
+}
+@media (max-width:425px) {
+    .main-div{
+        height: 700px;
+        box-shadow: none;
+        border-radius: 0;
+    }    
 }
 
 .main-div .dunamic-text-div {
@@ -29,12 +37,13 @@
 
 .main-div .mySwiper {
     height: 100%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .main-div .slider .img {
-    /* height: 100%; */
-    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    /* border-radius: 10px; */
 }
 
 .main-div .dunamic-text-div div button {
@@ -131,6 +140,55 @@
         padding: 0;
     }
 }
+
+
+.banner-animation-div {
+    height: 100%;
+    /* background: #001219; */
+    /* background: #001219; */
+    background: linear-gradient(to left, rgb(24, 11, 1), rgb(87, 52, 24) , rgb(24, 11, 1));
+    overflow: hidden;
+  }
+  
+  .circle {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    aspect-ratio: 1/1;
+    background: #fca311;
+    box-shadow: 0 0 10px #ff5400, 0 0 20px #ff5400, 0 0 30px #ff5400,
+      0 0 50px #ff5400;
+    border-radius: 50%;
+    animation: animate 5s linear forwards;
+  }
+  
+  @keyframes animate {
+    0% {
+      transform: translatey(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translatey(-100vh);
+      opacity: 1;
+    }
+  }
+  
+  .circle::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 25%;
+    width: 50%;
+    height: 100vh;
+    opacity: 0.5s;
+    background: linear-gradient(#ff5400, transparent);
+  }
+
+
+
 
 /* .main-div .slider {
     border-radius: 10px;

@@ -58,7 +58,7 @@ const Register = () => {
     return (
         <div className="main-form-div font-serif ">
             <div className="w-7/12 rounded-sm -mt-20 register-form-div px-6 py-10">
-                <h2 className=" text-center"> Create A New Accout For <Link className=" text-2xl font-bold text-sky-400" to={"/"}>Kids Land!</Link> </h2>
+                <h2 className=" text-center mb-1"> Create A New Accout For <Link className=" text-2xl font-bold text-sky-400 underline" to={"/"}>Kids Land!</Link> </h2>
                 <small className="-mt-3 mb-5 text-center block ">Come join the kids Land Community! Lets setup your Account. Already have One?  <Link to={"/login"} className="text-xl italic text-sky-500 font-bold" >Sign in here...</Link>  </small>
                 <div className="flex">
                     <div className="w-4/12  ">
