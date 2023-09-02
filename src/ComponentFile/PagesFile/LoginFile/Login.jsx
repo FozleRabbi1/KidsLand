@@ -66,26 +66,26 @@ const Login = () => {
             </div>
 
 
-            <div className="w-7/12 rounded-sm   -mt-20 register-form-div px-6 py-10  ">
-                <h2 className=" text-center mb-1"> Login Here & Go To <Link className=" text-2xl font-bold text-sky-400 underline" to={"/"}>Kids Land!</Link> </h2>
+            <div className="w-11/12 lg:w-7/12 rounded-sm   register-form-div px-6 py-10  ">
+                <h2 className=" text-center mb-1"> Login Here & Go To <Link className=" text-xl md:text-2xl font-bold text-sky-400 underline" to={"/"}>Kids Land!</Link> </h2>
                 <small className="-mt-3 mb-5 text-center block ">Come join the kids Land Community! If You Are New? Got To  <Link to={"/register"} className="text-xl italic text-sky-500 font-bold" >Sign Up Here...</Link>  </small>
 
-                <div className="flex">
-                    <div className="w-4/12  ">
+                <div className="flex flex-col-reverse lg:flex-row justify-center items-center">
+                    <div className="lg:w-4/12  ">
                         <SocialLogin></SocialLogin>
                     </div>
-                    <form className=" mx-auto flex flex-col justify-center flex-1 ps-6  border-l-2 border-indigo-500" onSubmit={handleSubmit(onSubmit)} >
+                    <form className=" w-full mx-auto flex flex-col justify-center flex-1 lg:ps-6  lg:border-l-2 border-indigo-500" onSubmit={handleSubmit(onSubmit)} >
                         {
                             error && <p className="text-red-500 text-center">{error}</p>
                         }
-                        <input onMouseDown={() => setError(" ")} className="p-1 px-3 text-black rounded-md  mt-2 w-full" placeholder="Email" {...register("email", { required: true })} />
-                        <input onMouseDown={() => setError(" ")} className="p-1 px-3 text-black rounded-md  my-2 w-full" placeholder="Password" {...register("password", { required: true })} />
+                        <input onMouseDown={() => setError(" ")} className="p-1 px-3  rounded-md  mt-2 w-full" placeholder="Email" {...register("email", { required: true })} />
+                        <input onMouseDown={() => setError(" ")} className="p-1 px-3  rounded-md  my-2 w-full" placeholder="Password" {...register("password", { required: true })} />
                         {errors.exampleRequired && <span>This field is required</span>}
                         {
                             isLoading ? <div className="border-2 mt-2 border-white py-1 rounded-md">
                                 <span className="loading loading-spinner loading-md p-2 block mx-auto"></span>
                             </div> :
-                                <input className="p-1 mt-2 rounded-md border text-lg font-semibold cursor-pointer hover:bg-green-300 hover:text-black duration-500" type="submit" value="Login" />
+                                <input className="p-1 mt-2 rounded-md border text-lg font-semibold cursor-pointer hover:bg-green-300 hover: duration-500" type="submit" value="Login" />
                         }
                     </form>
                 </div>

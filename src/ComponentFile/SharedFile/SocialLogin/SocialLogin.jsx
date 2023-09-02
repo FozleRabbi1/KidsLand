@@ -38,21 +38,21 @@ const SocialLogin = () => {
 
             <div className='flex items-center justify-between lg:items-start -mt-5 lg:mt-0 lg:flex-col ' >
 
-                <button   className="cursor-not-allowed flex bg-blue-300 lg:w-7/12 px-1 rounded-sm duration-500  hover:bg-blue-400  lg:mt-2 items-center lg:py-1 justify-center">
+                <button   className="cursor-not-allowed flex bg-blue-300 w-full lg:w-7/12 px-1 rounded-sm duration-500  hover:bg-blue-400  lg:mt-2 items-center lg:py-1 justify-center">
                     <AiFillFacebook className="text-4xl border-r-2 text-blue-600 "></AiFillFacebook>
                     <span className=" flex-1">
                         <p className="text-center text-black "> FaceBook</p>
                     </span>
                 </button>
 
-                <button onClick={googleLoginFun} className="flex mx-2 lg:mx-0 lg:my-2 bg-red-300 lg:w-7/12 px-1 rounded-sm duration-500 cursor-pointer hover:bg-red-400  items-center lg:py-1 justify-center">
+                <button onClick={googleLoginFun} className="flex mx-2 lg:mx-0 lg:my-2 bg-red-300 w-full lg:w-7/12 px-1 rounded-sm duration-500 cursor-pointer hover:bg-red-400  items-center lg:py-1 justify-center">
                     <FcGoogle className="text-4xl border-r-2"></FcGoogle>
                     <span className=" flex-1">
                         <p className="text-center text-black "> Google</p>
                     </span>
                 </button>
 
-                <button className="cursor-not-allowed flex bg-gray-300 lg:w-7/12 px-1 rounded-sm duration-500 hover:bg-gray-400   items-center lg:py-1 justify-center">
+                <button className="cursor-not-allowed flex bg-gray-300 w-full lg:w-7/12 px-1 rounded-sm duration-500 hover:bg-gray-400   items-center lg:py-1 justify-center">
                     <AiFillGithub className="text-4xl border-r-2 text-black"></AiFillGithub>
                     <span className=" flex-1">
                         <p className="text-center text-black "> GitHub</p>

@@ -10,10 +10,10 @@
 }
 
 .main-form-div .register-form-div{
-    outline:  4px solid rgb(34, 119, 231);
+    outline:  2px solid rgb(131, 65, 11);
     background-color: rgba(0,0,0,0.8);
     color: white;
-    
+
 }
 .main-form-div div form input{
     background-color: transparent;
