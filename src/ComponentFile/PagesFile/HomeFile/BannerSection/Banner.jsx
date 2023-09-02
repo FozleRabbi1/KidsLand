@@ -6,11 +6,11 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
 import './Banner.css'
-
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 import { useEffect, useState } from 'react';
+
+
 const Banner = () => {
     const [activeIndexNo, setactiveIndexNo] = useState(0);
 
@@ -43,25 +43,21 @@ const Banner = () => {
     ]
 
 
-    const [lines, setLines] = useState([]);
-    const createLine = () => {
-        const sizeW = Math.random() * 22;
-        const duration = Math.random() * 3;
-        const newLine = {
-            width: `12px`,
-            left: `${Math.random() * window.innerWidth}px`,
-            animationDuration: `${2 + duration}s`,
-        };
-        setLines((prevLines) => [...prevLines, newLine]);
-        // setTimeout(() => {
-        //     setLines((prevLines) => prevLines.filter((line) => line !== newLine));
-        // }, 5000);
-    };
-
-    useEffect(() => {
-        const intervalId = setInterval(createLine, 200);
-        return () => clearInterval(intervalId);
-    }, []);
+    // const [lines, setLines] = useState([]);
+    // const createLine = () => {
+    //     const sizeW = Math.random() * 22;
+    //     const duration = Math.random() * 3;
+    //     const newLine = {
+    //         width: `12px`,
+    //         left: `${Math.random() * window.innerWidth}px`,
+    //         animationDuration: `${2 + duration}s`,
+    //     };
+    //     setLines((prevLines) => [...prevLines, newLine]);
+    // };
+    // useEffect(() => {
+    //     const intervalId = setInterval(createLine, 200);
+    //     return () => clearInterval(intervalId);
+    // }, []);
 
     return (
         <div className="md:pt-4">
@@ -70,7 +66,7 @@ const Banner = () => {
 
                 <div className="dunamic-text-div py-6 md:py-0 ">
 
-                    <div className='px-2 md:px-5 lg:px-20 z-20 text-white'>
+                    <div className='px-2 md:px-5 lg:px-20 z-20 '>
                         <h2 data-aos="fade-right" data-aos-duration="3000" className='headline-bg-style  lg:-mt-10 text-color flex justify-center text-lg md:text-2xl ps-1 font-bold'>
                             {sliderData[activeIndexNo].title}
                         </h2>
@@ -87,7 +83,7 @@ const Banner = () => {
 
                     <div className='bird-animation-div overflow-hidden '>
 
-                        <div className="banner-animation-div ">
+                        {/* <div className="banner-animation-div ">
                             {lines.map((line, index) => (
                                 <div
                                     key={index}
@@ -99,7 +95,7 @@ const Banner = () => {
                                     }}
                                 ></div>
                             ))}
-                        </div>
+                        </div> */}
 
                         <Lottie className='' animationData={BirdAnimation} ></Lottie>
                         {/* <Lottie className='' animationData={BirdAnimation} ></Lottie> */}

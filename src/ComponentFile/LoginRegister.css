@@ -1,11 +1,11 @@
 .main-form-div{
     height: 100vh;
-    background-image: url("https://thumbs.gfycat.com/UglyDisloyalIndri-size_restricted.gif");
+    /* background-image: url("https://thumbs.gfycat.com/UglyDisloyalIndri-size_restricted.gif"); */
     display: flex;
     justify-content: center;
     align-items: center;
     background-repeat: no-repeat    ;
-    /* background-size: cover; */
+    background: linear-gradient(to left, rgb(24, 11, 1), rgb(87, 52, 24) , rgb(24, 11, 1));
 
 }
 
@@ -13,16 +13,59 @@
     outline:  4px solid rgb(34, 119, 231);
     background-color: rgba(0,0,0,0.8);
     color: white;
+    
 }
 .main-form-div div form input{
-    /* border: 1px solid white; */
     background-color: transparent;
-    /* color: white; */
     outline: none;
     box-shadow: 0px 1px 0px whitesmoke;
     margin-bottom: 5px;
 }
 .main-form-div div form input:focus{
-    /* border: none; */
     
 }
+
+.animation-div {
+    height: 100vh;
+    height: 100%;
+    background: linear-gradient(to left, rgb(24, 11, 1), rgb(87, 52, 24) , rgb(24, 11, 1));
+    overflow: hidden;
+  }
+  
+  .circle {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    aspect-ratio: 1/1;
+    background: #fca311;
+    box-shadow: 0 0 10px #ff5400, 0 0 20px #ff5400, 0 0 30px #ff5400,
+      0 0 50px #ff5400;
+    border-radius: 50%;
+    animation: animate 5s linear forwards;
+  }
+  
+  @keyframes animate {
+    0% {
+      transform: translatey(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translatey(-100vh);
+      opacity: 1;
+    }
+  }
+  
+  .circle::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 25%;
+    width: 50%;
+    height: 100vh;
+    opacity: 0.5s;
+    background: linear-gradient(#ff5400, transparent);
+  }
+

@@ -32,10 +32,40 @@ const Login = () => {
             })
     }
 
+    const [lines, setLines] = useState([]);
+    const createLine = () => {
+        const sizeW = Math.random() * 22;
+        const duration = Math.random() * 3;
+        const newLine = {
+            width: `12px`,
+            left: `${Math.random() * window.innerWidth}px`,
+            animationDuration: `${2 + duration}s`,
+        };
+        setLines((prevLines) => [...prevLines, newLine]);
+    };
+    useEffect(() => {
+        const intervalId = setInterval(createLine, 200);
+        return () => clearInterval(intervalId);
+    }, []);
 
     return (
 
-        <div className="main-form-div font-serif ">
+        <div className="main-form-div font-serif relative overflow-hidden ">
+            <div className="animation-div ">
+                {lines.map((line, index) => (
+                    <div
+                        key={index}
+                        className="circle"
+                        style={{
+                            width: line.width,
+                            left: line.left,
+                            animationDuration: line.animationDuration,
+                        }}
+                    ></div>
+                ))}
+            </div>
+
+
             <div className="w-7/12 rounded-sm   -mt-20 register-form-div px-6 py-10  ">
                 <h2 className=" text-center mb-1"> Login Here & Go To <Link className=" text-2xl font-bold text-sky-400 underline" to={"/"}>Kids Land!</Link> </h2>
                 <small className="-mt-3 mb-5 text-center block ">Come join the kids Land Community! If You Are New? Got To  <Link to={"/register"} className="text-xl italic text-sky-500 font-bold" >Sign Up Here...</Link>  </small>
@@ -60,6 +90,8 @@ const Login = () => {
                     </form>
                 </div>
             </div>
+
+
         </div>
     );
 };
