@@ -180,6 +180,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
 
     return (
         <div>
+            
             <dialog id="show_more_with_modal" className="modal">
                 <form method="dialog" className="modal-box w-11/12 max-w-5xl relative">
                     <div className="grid md:grid-cols-2 justify-center items-center ">
@@ -268,6 +269,7 @@ const ShowMoreWithModal = ({ product, setProduct }) => {
                     </div>
                 </form>
             </dialog>
+
         </div>
     );
 };

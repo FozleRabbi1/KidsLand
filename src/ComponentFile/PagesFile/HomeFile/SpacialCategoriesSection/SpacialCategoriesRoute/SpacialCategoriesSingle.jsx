@@ -46,6 +46,7 @@ const SpacialCategoriesSingle = () => {
             // return data;
         },
     });
+    
     const { images } = data
 
 

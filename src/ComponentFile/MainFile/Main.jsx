@@ -45,7 +45,9 @@ const Main = () => {
     const showNavAndFooter = location.pathname !== '/login' && location.pathname !== '/register';
 
     return (
-        <div style={{ backgroundColor: "rgba(50,150,250,0.1)", height: "100%" }} className="local-text ">
+        // <div style={{ backgroundColor: "rgba(50,150,250,0.1)", height: "100%" }} className="local-text dark:bg-white">
+        <div className="local-text bg-blue-50 h-full dark:bg-blue-50">
+
 
             {loading ? <div className="w-full h-screen flex items-center justify-center ">
 
@@ -56,7 +58,7 @@ const Main = () => {
                 <div className="main-section">
 
                     <a href="#top" className={`up-style upDown-style ${scrollValue >= 300 ? "addStylee" : "removeStylee"}`}>
-                       <div className=""> up </div>
+                        <div className=""> up </div>
                     </a>
 
                     {

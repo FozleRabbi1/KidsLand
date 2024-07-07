@@ -53,6 +53,7 @@ const Register = () => {
             })
     }
 
+
     const [lines, setLines] = useState([]);
     const createLine = () => {
         const sizeW = Math.random() * 22;
@@ -71,6 +72,7 @@ const Register = () => {
 
     return (
         <div className="main-form-div font-serif relative overflow-hidden  ">
+            
             <div className="animation-div overflow-hidden">
                 {lines.map((line, index) => (
                     <div

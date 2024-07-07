@@ -61,7 +61,7 @@ const Login = () => {
                             left: line.left,
                             animationDuration: line.animationDuration,
                         }}
-                    ></div>
+                    > </div>
                 ))}
             </div>
 
